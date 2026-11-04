@@ -1,0 +1,537 @@
+{
+  "generated_at": "2026-10-31 21:21:50",
+  "split": "test",
+  "split_sizes": {
+    "train": 420,
+    "val": 90,
+    "test": 90
+  },
+  "split_by": "field",
+  "n_eval_fields": 90,
+  "n_already_stressed": 45,
+  "n_healthy_evaluated": 45,
+  "t_history": 21,
+  "t_future": 14,
+  "alert_horizon": 3,
+  "classes": [
+    "healthy",
+    "water_stress",
+    "nutrient_stress",
+    "disease_stress"
+  ],
+  "encoder": "transformer",
+  "pooling": "attention",
+  "standardized_inputs": true,
+  "best_epoch": 58,
+  "seed": 42,
+  "proxy_flags": {
+    "ndvi_is_proxy": true,
+    "weather_is_proxy": true,
+    "weather_source": "proxy"
+  },
+  "ndvi_regression": {
+    "methods": {
+      "persistence": {
+        "mae": 0.107854,
+        "rmse": 0.144516,
+        "r2": 0.032837,
+        "day1_mae": 0.032178,
+        "per_day_mae": [
+          0.032178,
+          0.045208,
+          0.053369,
+          0.072164,
+          0.086864,
+          0.102072,
+          0.112043,
+          0.127396,
+          0.137617,
+          0.138162,
+          0.142716,
+          0.145859,
+          0.15118,
+          0.163133
+        ],
+        "n_samples": 90
+      },
+      "linear_extrapolation": {
+        "mae": 0.164932,
+        "rmse": 0.235631,
+        "r2": -1.533176,
+        "day1_mae": 0.035506,
+        "per_day_mae": [
+          0.035506,
+          0.056671,
+          0.081085,
+          0.104645,
+          0.128506,
+          0.151464,
+          0.172342,
+          0.189485,
+          0.206049,
+          0.215556,
+          0.229448,
+          0.239402,
+          0.246164,
+          0.252719
+        ],
+        "n_samples": 90
+      },
+      "trajectory_model": {
+        "mae": 0.076321,
+        "rmse": 0.10409,
+        "r2": 0.428305,
+        "day1_mae": 0.128734,
+        "per_day_mae": [
+          0.128734,
+          0.040023,
+          0.041752,
+          0.051194,
+          0.066416,
+          0.064379,
+          0.068751,
+          0.075608,
+          0.082456,
+          0.079994,
+          0.081355,
+          0.089126,
+          0.092213,
+          0.106491
+        ],
+        "n_samples": 90
+      }
+    }
+  },
+  "classification": {
+    "trajectory_model": {
+      "accuracy": 0.5871,
+      "macro_f1": 0.5424,
+      "mean_step_accuracy": 0.589,
+      "mean_step_macro_f1": 0.5397,
+      "step_accuracy": [
+        0.8235,
+        0.814,
+        0.7738,
+        0.7143,
+        0.6506,
+        0.5952,
+        0.5977,
+        0.5172,
+        0.5057,
+        0.4368,
+        0.4023,
+        0.4545,
+        0.4545,
+        0.5056
+      ],
+      "per_class_f1": {
+        "healthy": 0.5261,
+        "water_stress": 0.8432,
+        "nutrient_stress": 0.3571,
+        "disease_stress": 0.4432
+      }
+    },
+    "last_observed_class": {
+      "accuracy": 0.4179,
+      "macro_f1": 0.2204,
+      "mean_step_accuracy": 0.4189,
+      "mean_step_macro_f1": 0.2131,
+      "step_accuracy": [
+        0.5412,
+        0.5465,
+        0.5357,
+        0.5,
+        0.4458,
+        0.3929,
+        0.3793,
+        0.3563,
+        0.3448,
+        0.3563,
+        0.3678,
+        0.3636,
+        0.3636,
+        0.3708
+      ],
+      "per_class_f1": {
+        "healthy": 0.4954,
+        "water_stress": 0.6199,
+        "nutrient_stress": 0.0,
+        "disease_stress": 0.2069
+      }
+    },
+    "always_healthy": {
+      "accuracy": 0.4544,
+      "macro_f1": 0.1562,
+      "mean_step_accuracy": 0.4539,
+      "mean_step_macro_f1": 0.1559,
+      "step_accuracy": [
+        0.4353,
+        0.4419,
+        0.4405,
+        0.4405,
+        0.4096,
+        0.4048,
+        0.4253,
+        0.4483,
+        0.4483,
+        0.5172,
+        0.4943,
+        0.4886,
+        0.4886,
+        0.4719
+      ],
+      "per_class_f1": {
+        "healthy": 0.6249,
+        "water_stress": 0.0,
+        "nutrient_stress": 0.0,
+        "disease_stress": 0.0
+      }
+    }
+  },
+  "confusion_matrix": [
+    [
+      212,
+      47,
+      141,
+      148
+    ],
+    [
+      13,
+      336,
+      43,
+      0
+    ],
+    [
+      31,
+      22,
+      80,
+      45
+    ],
+    [
+      2,
+      0,
+      6,
+      80
+    ]
+  ],
+  "confusion_matrix_labels": [
+    "healthy",
+    "water_stress",
+    "nutrient_stress",
+    "disease_stress"
+  ],
+  "onset_detection": {
+    "precision": 0.8448,
+    "recall": 0.875,
+    "f1": 0.8596,
+    "tp": 49,
+    "fp": 9,
+    "fn": 7,
+    "support_positive": 56,
+    "n": 90
+  },
+  "early_warning": {
+    "best_threshold": 0.25,
+    "baseline_precision": 0.1864,
+    "alert_horizon": 3,
+    "selection_rule": "fallback: F1 >= 0.75 (max mean lead time)",
+    "records": [
+      {
+        "threshold": 0.2,
+        "precision": 0.6429,
+        "recall": 0.8182,
+        "f1": 0.72,
+        "false_positive_rate": 0.1042,
+        "mean_lead_days": 2.222,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.629,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 14,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.25,
+        "precision": 0.75,
+        "recall": 0.8182,
+        "f1": 0.7826,
+        "false_positive_rate": 0.0625,
+        "mean_lead_days": 2.222,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.629,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 12,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.3,
+        "precision": 0.7273,
+        "recall": 0.7273,
+        "f1": 0.7273,
+        "false_positive_rate": 0.0625,
+        "mean_lead_days": 2.25,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.661,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 11,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.35,
+        "precision": 0.7,
+        "recall": 0.6364,
+        "f1": 0.6667,
+        "false_positive_rate": 0.0625,
+        "mean_lead_days": 2.286,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.7,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 10,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.4,
+        "precision": 0.6667,
+        "recall": 0.5455,
+        "f1": 0.6,
+        "false_positive_rate": 0.0625,
+        "mean_lead_days": 2.333,
+        "median_lead_days": 2.5,
+        "std_lead_days": 0.745,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 9,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.45,
+        "precision": 0.6667,
+        "recall": 0.5455,
+        "f1": 0.6,
+        "false_positive_rate": 0.0625,
+        "mean_lead_days": 2.333,
+        "median_lead_days": 2.5,
+        "std_lead_days": 0.745,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 9,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.5,
+        "precision": 0.625,
+        "recall": 0.4545,
+        "f1": 0.5263,
+        "false_positive_rate": 0.0625,
+        "mean_lead_days": 2.2,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.748,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 8,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.55,
+        "precision": 0.625,
+        "recall": 0.4545,
+        "f1": 0.5263,
+        "false_positive_rate": 0.0625,
+        "mean_lead_days": 2.2,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.748,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 8,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.6,
+        "precision": 0.7143,
+        "recall": 0.4545,
+        "f1": 0.5556,
+        "false_positive_rate": 0.0417,
+        "mean_lead_days": 2.2,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.748,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 7,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.65,
+        "precision": 0.7143,
+        "recall": 0.4545,
+        "f1": 0.5556,
+        "false_positive_rate": 0.0417,
+        "mean_lead_days": 2.2,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.748,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 7,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.7,
+        "precision": 0.7143,
+        "recall": 0.4545,
+        "f1": 0.5556,
+        "false_positive_rate": 0.0417,
+        "mean_lead_days": 2.2,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.748,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 7,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.75,
+        "precision": 0.7143,
+        "recall": 0.4545,
+        "f1": 0.5556,
+        "false_positive_rate": 0.0417,
+        "mean_lead_days": 2.2,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.748,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 7,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.8,
+        "precision": 0.6667,
+        "recall": 0.3636,
+        "f1": 0.4706,
+        "false_positive_rate": 0.0417,
+        "mean_lead_days": 2.0,
+        "median_lead_days": 2.0,
+        "std_lead_days": 0.707,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 6,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.85,
+        "precision": 0.5,
+        "recall": 0.1818,
+        "f1": 0.2667,
+        "false_positive_rate": 0.0417,
+        "mean_lead_days": 1.5,
+        "median_lead_days": 1.5,
+        "std_lead_days": 0.5,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 4,
+        "n_true": 11
+      },
+      {
+        "threshold": 0.9,
+        "precision": 0.3333,
+        "recall": 0.0909,
+        "f1": 0.1429,
+        "false_positive_rate": 0.0417,
+        "mean_lead_days": 1.0,
+        "median_lead_days": 1.0,
+        "std_lead_days": 0.0,
+        "pct_before_onset": 100.0,
+        "pct_on_onset": 0.0,
+        "pct_after_onset": 0.0,
+        "n_alerts": 3,
+        "n_true": 11
+      }
+    ]
+  },
+  "alert_quality": {
+    "precision": 0.5,
+    "recall": 0.6154,
+    "f1": 0.5517,
+    "false_positive_rate": 0.25,
+    "mean_lead_days": 1.25,
+    "median_lead_days": 1.0,
+    "std_lead_days": 0.661,
+    "pct_before_onset": 100.0,
+    "pct_on_onset": 0.0,
+    "pct_after_onset": 0.0,
+    "lead_time_histogram": {
+      "-3d": 0,
+      "-2d": 0,
+      "-1d": 0,
+      "0d": 0,
+      "+1d": 7,
+      "+2d": 0,
+      "+3d": 1
+    },
+    "n_alerts": 16,
+    "n_true": 13,
+    "n_healthy_evaluated": 45,
+    "tp": 8,
+    "fp": 8,
+    "fn": 5,
+    "tn": 24,
+    "positive_rate": 0.2889,
+    "always_alert_reference": {
+      "precision": 0.2889,
+      "recall": 1.0,
+      "f1": 0.4483,
+      "tp": 13,
+      "fp": 32,
+      "fn": 0,
+      "support_positive": 13,
+      "n": 45
+    },
+    "example": "EARLY WARNING: water_stress onset predicted within 3 days (confidence 98%)",
+    "best_threshold": 0.25,
+    "warning": "",
+    "lead_definition": "actual_onset_day - alert_day (positive = alert fired ahead of real onset)"
+  },
+  "nutrient_stress_deep_dive": {
+    "precision": 0.2963,
+    "recall": 0.4494,
+    "f1": 0.3571,
+    "support": 178,
+    "confusions_when_actual": {
+      "healthy": 31,
+      "water_stress": 22,
+      "disease_stress": 45
+    },
+    "recommended_features": [
+      "NDVI 7-day velocity/slope (chlorosis is gradual, not abrupt drought drop)",
+      "Precipitation rolling sum (if rainfall normal but NDVI declining -> nutrient deficiency)",
+      "Soil NPK sensors or fertilizer application dates",
+      "Soil moisture decoupling (dry soil = drought; wet soil + low NDVI = nutrient leaching/deficiency)"
+    ]
+  },
+  "baselines": [
+    "persistence",
+    "linear_extrapolation"
+  ],
+  "figures": [
+    "plots\\trajectory_curves.png",
+    "plots\\trajectory_confusion_matrix.png",
+    "plots\\trajectory_baselines.png",
+    "artifacts\\trajectory_alert_threshold.json",
+    "plots\\trajectory_lead_time_histogram.png"
+  ]
+}

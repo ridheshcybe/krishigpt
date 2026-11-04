@@ -1,0 +1,104 @@
+{
+  "generated_at": "2026-10-31 01:18:32",
+  "target": {
+    "latency_ms_max": 500.0,
+    "size_mb_max": 50.0
+  },
+  "environment": {
+    "python": "3.14.7",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.12.0+cu130",
+    "onnxruntime": "1.30.0",
+    "cuda_available": true
+  },
+  "quantization": {
+    "pytorch": "dynamic INT8 (torch.ao.quantization.quantize_dynamic, nn.Linear weights) - no calibration data required",
+    "onnx": "dynamic INT8 (onnxruntime.quantization.quantize_dynamic, QInt8)"
+  },
+  "timing": {
+    "warmup_runs": 5,
+    "timed_runs": 30,
+    "batch_size": 1
+  },
+  "accuracy_samples": 256,
+  "onnx_verification": {
+    "verified": true,
+    "max_abs_logit_diff": 5.72e-06,
+    "max_abs_attention_diff": 0.0,
+    "tolerance": 0.001,
+    "onnx_outputs": [
+      "logits",
+      "attention"
+    ]
+  },
+  "variants": {
+    "pytorch_fp32_cpu": {
+      "label": "PyTorch FP32 (CPU)",
+      "size_mb": 12.33,
+      "latency_ms": 18.96,
+      "accuracy": 1.0,
+      "max_abs_logit_diff": 0.0,
+      "accuracy_drop_vs_fp32": 0.0,
+      "within_2pct": true
+    },
+    "pytorch_int8_cpu": {
+      "label": "PyTorch dynamic INT8 (CPU)",
+      "size_mb": 10.81,
+      "latency_ms": 18.74,
+      "accuracy": 1.0,
+      "max_abs_logit_diff": 0.036731,
+      "accuracy_drop_vs_fp32": 0.0,
+      "within_2pct": true
+    },
+    "pytorch_fp32_cuda": {
+      "label": "PyTorch FP32 (CUDA)",
+      "size_mb": 12.33,
+      "latency_ms": 13.07,
+      "accuracy": 1.0,
+      "max_abs_logit_diff": null,
+      "device_name": "NVIDIA GeForce RTX 5060",
+      "accuracy_drop_vs_fp32": 0.0,
+      "within_2pct": true
+    },
+    "onnx_fp32_cpu": {
+      "label": "ONNX Runtime FP32 (CPU)",
+      "size_mb": 12.07,
+      "latency_ms": 3.36,
+      "accuracy": 1.0,
+      "max_abs_logit_diff": 2e-06,
+      "accuracy_drop_vs_fp32": 0.0,
+      "within_2pct": true
+    },
+    "onnx_int8_cpu": {
+      "label": "ONNX Runtime dynamic INT8 (CPU)",
+      "size_mb": 3.88,
+      "latency_ms": 82.21,
+      "accuracy": 1.0,
+      "max_abs_logit_diff": 0.324417,
+      "accuracy_drop_vs_fp32": 0.0,
+      "within_2pct": true
+    }
+  },
+  "targets_met": {
+    "pytorch_fp32_cpu": {
+      "latency": true,
+      "size": true
+    },
+    "pytorch_int8_cpu": {
+      "latency": true,
+      "size": true
+    },
+    "pytorch_fp32_cuda": {
+      "latency": true,
+      "size": true
+    },
+    "onnx_fp32_cpu": {
+      "latency": true,
+      "size": true
+    },
+    "onnx_int8_cpu": {
+      "latency": true,
+      "size": true
+    }
+  }
+}

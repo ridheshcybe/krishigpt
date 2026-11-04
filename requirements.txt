@@ -1,0 +1,34 @@
+# ==============================================================================
+# KisanGPT: Master Dependencies (Pinned Versions)
+# ==============================================================================
+
+# Core numerical, tabular and machine learning libraries
+numpy==2.5.2
+pandas==3.0.5
+scipy==1.18.1
+scikit-learn==1.9.1
+xgboost==3.4.1
+joblib==1.6.0
+
+# Deep learning framework (PyTorch CUDA 13.0 build for GPU acceleration)
+--extra-index-url https://download.pytorch.org/whl/cu130
+torch==2.12.0+cu130
+torchvision==0.27.0+cu130
+
+# Edge deployment & quantization runtimes (Stage 4.1)
+onnx==1.23.2
+onnxruntime==1.30.0
+
+# Image loading and processing
+pillow==12.2.0
+
+# Interactive dashboard and web visualizations (Stage 2B & 3B)
+streamlit==1.66.1
+plotly==7.1.0
+
+# Static plotting and explainability figures (Grad-CAM, attention, benchmarks)
+matplotlib==3.11.2
+
+# Progress tracking and dataset downloads
+tqdm==4.70.1
+kagglehub==1.0.2

@@ -1,0 +1,62 @@
+Collecting streamlit
+  Using cached streamlit-1.66.1-py3-none-any.whl.metadata (10 kB)
+Collecting plotly
+  Using cached plotly-7.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting altair!=5.4.0,!=5.4.1,<7,>=5.0.0 (from streamlit)
+  Using cached altair-6.3.0-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: click<9,>=7.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (8.5.0)
+Requirement already satisfied: numpy<3,>=1.25.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (2.5.2)
+Requirement already satisfied: packaging>=20 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (26.3)
+Requirement already satisfied: pandas<4,>=1.5.3 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (3.0.5)
+Requirement already satisfied: pillow<14,>=9.2.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (12.2.0)
+Collecting pydeck<1,>=0.8.0b4 (from streamlit)
+  Using cached pydeck-0.9.3-py2.py3-none-any.whl.metadata (4.2 kB)
+Requirement already satisfied: protobuf<8,>=5.26.1 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (7.36.1)
+Collecting pyarrow!=25.0.0,<27,>=10.0.1 (from streamlit)
+  Using cached pyarrow-26.0.0-cp314-cp314-win_amd64.whl.metadata (3.0 kB)
+Requirement already satisfied: requests<3,>=2.27 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (2.34.2)
+Requirement already satisfied: typing-extensions<5,>=4.10.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (4.16.0)
+Requirement already satisfied: starlette<2,>=0.46.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (1.6.0)
+Requirement already satisfied: uvicorn<1,>=0.30.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (0.52.4)
+Requirement already satisfied: anyio<5,>=4.0.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (4.12.1)
+Requirement already satisfied: python-multipart<1,>=0.0.10 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (0.0.32)
+Requirement already satisfied: websockets<18,>=12.0.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from streamlit) (17.1)
+Collecting itsdangerous<3,>=2.1.2 (from streamlit)
+  Using cached itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting watchdog<7,>=2.1.5 (from streamlit)
+  Using cached watchdog-6.0.0-py3-none-win_amd64.whl.metadata (44 kB)
+Requirement already satisfied: jinja2 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit) (3.1.6)
+Requirement already satisfied: jsonschema>=3.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit) (4.26.0)
+Requirement already satisfied: narwhals>=2.4.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit) (2.26.0)
+Requirement already satisfied: idna>=2.8 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from anyio<5,>=4.0.0->streamlit) (3.18)
+Requirement already satisfied: python-dateutil>=2.8.2 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from pandas<4,>=1.5.3->streamlit) (2.9.0.post0)
+Requirement already satisfied: tzdata in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from pandas<4,>=1.5.3->streamlit) (2026.3)
+Requirement already satisfied: charset_normalizer<4,>=2 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from requests<3,>=2.27->streamlit) (3.4.7)
+Requirement already satisfied: urllib3<3,>=1.26 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from requests<3,>=2.27->streamlit) (2.7.0)
+Requirement already satisfied: certifi>=2023.5.7 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from requests<3,>=2.27->streamlit) (2026.7.22)
+Requirement already satisfied: h11>=0.8 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from uvicorn<1,>=0.30.0->streamlit) (0.16.0)
+Requirement already satisfied: MarkupSafe>=2.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from jinja2->altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit) (3.0.3)
+Requirement already satisfied: attrs>=22.2.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit) (26.1.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit) (2025.9.1)
+Requirement already satisfied: referencing>=0.28.4 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit) (0.37.0)
+Requirement already satisfied: rpds-py>=0.25.0 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit) (0.28.0)
+Requirement already satisfied: six>=1.5 in C:\Users\Lenovo\anaconda3\envs\ridhesh\Lib\site-packages (from python-dateutil>=2.8.2->pandas<4,>=1.5.3->streamlit) (1.17.0)
+Using cached streamlit-1.66.1-py3-none-any.whl (10.4 MB)
+Using cached altair-6.3.0-py3-none-any.whl (797 kB)
+Using cached itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Downloading pyarrow-26.0.0-cp314-cp314-win_amd64.whl (29.2 MB)
+   -                                        1.0/29.2 MB 10.3 kB/s eta 0:45:42
+WARNING: Connection interrupted while downloading.
+WARNING: Attempting to resume incomplete download (1.0 MB/29.2 MB, attempt 1)
+Resuming download pyarrow-26.0.0-cp314-cp314-win_amd64.wh   ---------------------------------------- 29.2/29.2 MB 699.0 kB/s  0:03:36
+Using cached pydeck-0.9.3-py2.py3-none-any.whl (11.4 MB)
+Using cached watchdog-6.0.0-py3-none-win_amd64.whl (79 kB)
+Using cached plotly-7.1.0-py3-none-any.whl (9.7 MB)
+Installing collected packages: watchdog, pyarrow, plotly, itsdangerous, pydeck, altair, streaInstalERROR: Could not install packages due to an OSError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Lenovo\\anaconda3\\envs\\ridhesh\\Lib\\site-packages\\streamlit\\elements\\markdown.py'
+Consider using the `--user` option or check the permissions.
+
+
+\arrow.dll'
+Consider using the `--user` option or check the permissions.
+
+

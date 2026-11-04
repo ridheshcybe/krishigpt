@@ -1,0 +1,3 @@
+timestamp,image_name,predicted_class,confidence,user_actual_class,feedback
+2026-10-29 15:26:21,test_sample_01.jpg,water_stress,0.875,,correct
+2026-10-29 15:28:24,sample_test.png,disease_stress,0.9412,disease_stress,correct

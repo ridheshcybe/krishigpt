@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-10-31 01:18:48",
+  "seed": 42,
+  "comparison": "unified multi-modal (AttentionFusion) vs XGBoost tabular-only",
+  "test": "McNemar exact (two-sided binomial on discordant pairs)",
+  "alpha": 0.05,
+  "pairing": "intersection of the Stage-1A test split (row-sourced samples) and the XGBoost test split; neither model is scored on training rows",
+  "n_paired": 5038,
+  "accuracy": {
+    "unified": 1.0,
+    "xgb_tabular": 0.7912,
+    "difference": 0.2088
+  },
+  "mcnemar": {
+    "b": 1052,
+    "c": 0,
+    "discordant": 1052,
+    "p_value": 0.0,
+    "p_value_log10": -316.3825,
+    "chi2_correction": 1050.001,
+    "significant_at_0.05": true
+  },
+  "verdict": "significant (reject H0: equal error rates)"
+}

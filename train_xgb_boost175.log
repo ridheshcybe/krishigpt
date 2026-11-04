@@ -1,0 +1,26 @@
+[load] data\ches_dataset.csv  rows=212,019  columns=32
+[labels] WARNING: 61,263 binary=0 rows fall outside the strict healthy window; assigned to 'stress_generic' as the deterministic residual bucket.
+[labels] relaxation step=0  counts={'healthy': 2558, 'nutrient_stress': 13512, 'stress_generic': 122311, 'water_stress': 73638}
+[split] train=148,413  val=31,803  test=31,803
+[train] xgboost device=cpu  trees=2000 early_stopping=30
+[train] class weights: {'healthy': 3625.3874, 'nutrient_stress': 3.9229, 'stress_generic': 0.4334, 'water_stress': 0.7198}
+[train] best iteration: 1148
+
+=== TEST METRICS (XGBoost, 4-class) ===
+accuracy        : 0.7961
+macro precision : 0.6656
+macro recall    : 0.8174
+macro F1        : 0.7034
+weighted F1     : 0.7971
+
+Per-class metrics:
+class              precision   recall       f1  support
+healthy               0.2878   0.6589   0.4006      384
+nutrient_stress       0.6932   0.9541   0.8030    2,027
+stress_generic        0.9872   0.6618   0.7924   18,346
+water_stress          0.6940   0.9949   0.8176   11,046
+[save] C:\ridhesh\agrotech\crop_stress_detection\artifacts\xgb_stress_model.json
+[save] C:\ridhesh\agrotech\crop_stress_detection\artifacts\xgb_preprocessor.json
+[save] C:\ridhesh\agrotech\crop_stress_detection\artifacts\xgb_metrics.json
+[plot] C:\ridhesh\agrotech\crop_stress_detection\plots\confusion_matrix_xgb.png
+[plot] C:\ridhesh\agrotech\crop_stress_detection\plots\feature_importance_top10.png

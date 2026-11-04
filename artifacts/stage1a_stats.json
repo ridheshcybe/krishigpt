@@ -1,0 +1,160 @@
+{
+  "tabular": {
+    "rows": 212019,
+    "raw_columns": 32,
+    "feature_dim": 27,
+    "feature_dim_note": "(N, 27) = 25 scaled group features + 2 ordinal encodings; the spec's 32 is the raw CSV column count (label + annotations + raw categoricals excluded by the existing preprocessing)",
+    "binary0_outside_window": 61263,
+    "binary0_policy": "Option B: binary=0 rows outside the strict healthy window are routed to stress_generic as a documented residual class; widening the window (Option A) was evaluated and rejected because it does not change separability (precision ceiling ~0.29 vs ~0.30).",
+    "label_counts": {
+      "healthy": 2558,
+      "water_stress": 73638,
+      "nutrient_stress": 13512,
+      "disease_stress": 0,
+      "pest_stress": 0,
+      "stress_generic": 122311
+    }
+  },
+  "images": {
+    "total": 2200,
+    "classes": [
+      "BLB",
+      "blast",
+      "healthy",
+      "hispa",
+      "leaf_spot"
+    ],
+    "pools": {
+      "train": {
+        "BLB": 308,
+        "blast": 328,
+        "healthy": 326,
+        "hispa": 298,
+        "leaf_spot": 280
+      },
+      "val": {
+        "BLB": 66,
+        "blast": 70,
+        "healthy": 70,
+        "hispa": 64,
+        "leaf_spot": 60
+      },
+      "test": {
+        "BLB": 66,
+        "blast": 71,
+        "healthy": 69,
+        "hispa": 64,
+        "leaf_spot": 60
+      }
+    }
+  },
+  "ndvi": {
+    "steps": 20,
+    "is_proxy": true,
+    "source": "PROXY (class-conditional synthetic)",
+    "shape": [
+      213754,
+      20
+    ]
+  },
+  "labels": {
+    "class_order": [
+      "healthy",
+      "water_stress",
+      "nutrient_stress",
+      "disease_stress",
+      "pest_stress",
+      "stress_generic"
+    ],
+    "class_map": {
+      "0": "healthy",
+      "1": "water_stress",
+      "2": "nutrient_stress",
+      "3": "disease_stress",
+      "4": "pest_stress",
+      "5": "stress_generic"
+    },
+    "counts": {
+      "healthy": 2558,
+      "water_stress": 73638,
+      "nutrient_stress": 13512,
+      "disease_stress": 1735,
+      "pest_stress": 0,
+      "stress_generic": 122311
+    },
+    "reserved_untrained": [
+      "pest_stress"
+    ]
+  },
+  "pairing": {
+    "strategy": "weak pairing (seed 42), split-restricted pools",
+    "row_sourced": 212019,
+    "image_sourced": 1735,
+    "fallback": "healthy row -> healthy photo; stress row -> random disease photo (only stress imagery available)"
+  },
+  "coverage": {
+    "train": {
+      "samples": 149627,
+      "class_counts": {
+        "healthy": 1791,
+        "water_stress": 51546,
+        "nutrient_stress": 9458,
+        "disease_stress": 1214,
+        "pest_stress": 0,
+        "stress_generic": 85618
+      },
+      "missing_classes": [
+        "pest_stress"
+      ]
+    },
+    "val": {
+      "samples": 32063,
+      "class_counts": {
+        "healthy": 383,
+        "water_stress": 11046,
+        "nutrient_stress": 2027,
+        "disease_stress": 260,
+        "pest_stress": 0,
+        "stress_generic": 18347
+      },
+      "missing_classes": [
+        "pest_stress"
+      ]
+    },
+    "test": {
+      "samples": 32064,
+      "class_counts": {
+        "healthy": 384,
+        "water_stress": 11046,
+        "nutrient_stress": 2027,
+        "disease_stress": 261,
+        "pest_stress": 0,
+        "stress_generic": 18346
+      },
+      "missing_classes": [
+        "pest_stress"
+      ]
+    },
+    "missing_classes_overall": [
+      "pest_stress"
+    ]
+  },
+  "sample_shapes": {
+    "tabular": [
+      27
+    ],
+    "image": [
+      3,
+      224,
+      224
+    ],
+    "ndvi": [
+      20
+    ],
+    "label": 5
+  },
+  "dataset_class": {
+    "yields": "(tabular, image, ndvi, label)",
+    "ndvi_is_proxy": true
+  }
+}

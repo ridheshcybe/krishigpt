@@ -1,0 +1,8 @@
+{
+  "retrain_flag": false,
+  "generated_at": "2026-10-30 14:54:52",
+  "rule": "> 50 corrections (incorrect + labelled) for any actual class",
+  "per_class": {},
+  "total_corrections": 0,
+  "next_step": "no action yet - keep collecting feedback"
+}

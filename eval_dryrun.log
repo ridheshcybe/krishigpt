@@ -1,0 +1,24 @@
+[stage1b 11:13:16] device=cpu amp=off
+[load] C:\ridhesh\agrotech\crop_stress_detection\data\ches_dataset.csv  rows=212,019  columns=32
+[labels] WARNING: 61,263 binary=0 rows fall outside the strict healthy window; assigned to 'stress_generic' as the deterministic residual bucket.
+[labels] relaxation step=0  counts={'healthy': 2558, 'nutrient_stress': 13512, 'stress_generic': 122311, 'water_stress': 73638}
+[stage1a 11:13:20] tabular: 212,019 rows x 27 features | binary=0 out-of-window 61,263 -> stress_generic (Option B)
+[stage1a 11:13:22] image pool train: BLB=308, blast=328, healthy=326, hispa=298, leaf_spot=280
+[stage1a 11:13:22] image pool val: BLB=66, blast=70, healthy=70, hispa=64, leaf_spot=60
+[stage1a 11:13:22] image pool test: BLB=66, blast=71, healthy=69, hispa=64, leaf_spot=60
+[stage1a 11:13:25] sample table: 213,754 samples (212,019 row-sourced + 1,735 image-sourced disease)
+[stage1b 11:13:25] PROXY NDVI in use (class-conditional, 20 steps)
+[stage1b 11:14:08] loaders ready: train 149,627 / val 32,063 / test 32,064 (proxy=True)
+[stage1b 11:14:09] parameters: 3,016,582
+[stage1b 11:14:09] loaded existing checkpoint
+[stage1b 11:25:31] scoring Stage-0 baselines on the same test samples ...
+[plot] plots\stage1_confusion_matrix.png
+[stage1b 11:26:03] explainability: 4 Grad-CAM overlays + 2 attention plots
+[save] C:\ridhesh\agrotech\crop_stress_detection\artifacts\stage1_metrics.json
+[stage1b 11:26:03] metrics -> C:\ridhesh\agrotech\crop_stress_detection\artifacts\stage1_metrics.json
+[stage1b 11:26:03] report  -> report_stage1.txt
+[stage1b 11:26:03] done in 767.6s
+[stage1b 11:26:03]   attention fusion (Stage 1)           acc 0.2777  macro F1 0.1235
+[stage1b 11:26:03]   XGBoost tabular-only                 acc 0.8571  macro F1 0.5415
+[stage1b 11:26:03]   MobileNetV2 image-only               acc 0.0196  macro F1 0.1144
+[stage1b 11:26:03]   rule-based fusion (post-fix)         acc 0.0196  macro F1 0.1140

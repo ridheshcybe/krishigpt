@@ -1,0 +1,224 @@
+{
+  "numeric_features": [
+    "Canopy_Coverage",
+    "Chlorophyll_Content",
+    "Crop_Stress_Indicator",
+    "Elevation_Data",
+    "Expected_Yield",
+    "Leaf_Area_Index",
+    "Organic_Matter",
+    "Pest_Damage",
+    "Pest_Hotspots",
+    "Soil_Moisture",
+    "Soil_pH",
+    "Temperature",
+    "Humidity",
+    "Rainfall",
+    "Wind_Speed",
+    "Weed_Coverage",
+    "NDVI",
+    "SAVI",
+    "Spatial_Resolution",
+    "High_Resolution_RGB",
+    "Multispectral_Images",
+    "Thermal_Images",
+    "GPS_Coordinates",
+    "Field_Boundaries",
+    "Temporal_Images"
+  ],
+  "feature_names": [
+    "Canopy_Coverage",
+    "Chlorophyll_Content",
+    "Crop_Stress_Indicator",
+    "Elevation_Data",
+    "Expected_Yield",
+    "Leaf_Area_Index",
+    "Organic_Matter",
+    "Pest_Damage",
+    "Pest_Hotspots",
+    "Soil_Moisture",
+    "Soil_pH",
+    "Temperature",
+    "Humidity",
+    "Rainfall",
+    "Wind_Speed",
+    "Weed_Coverage",
+    "NDVI",
+    "SAVI",
+    "Spatial_Resolution",
+    "High_Resolution_RGB",
+    "Multispectral_Images",
+    "Thermal_Images",
+    "GPS_Coordinates",
+    "Field_Boundaries",
+    "Temporal_Images",
+    "growth_stage_enc",
+    "crop_name_enc"
+  ],
+  "groups": {
+    "ground": {
+      "columns": [
+        "Canopy_Coverage",
+        "Chlorophyll_Content",
+        "Crop_Stress_Indicator",
+        "Elevation_Data",
+        "Expected_Yield",
+        "Leaf_Area_Index",
+        "Organic_Matter",
+        "Pest_Damage",
+        "Pest_Hotspots",
+        "Soil_Moisture",
+        "Soil_pH",
+        "Temperature",
+        "Humidity",
+        "Rainfall",
+        "Wind_Speed",
+        "Weed_Coverage"
+      ],
+      "mean": [
+        49.907986355545795,
+        1.0001728264169034,
+        49.44322936669968,
+        54.90363134596752,
+        3001.5791957963074,
+        1.7151456480864,
+        1.9859348566096815,
+        49.506727847291,
+        0.14940065897192295,
+        20.043189264748527,
+        6.502165122920793,
+        24.98497159785642,
+        59.99858201581825,
+        19.944948309401155,
+        1.9978603876484509,
+        2.8578588619203757
+      ],
+      "scale": [
+        49.85900975310505,
+        0.7067042197823921,
+        28.870226126600276,
+        25.96476318910486,
+        798.0028134661402,
+        0.9585111106735617,
+        1.9736435436545257,
+        28.907752830212022,
+        0.35648296182381295,
+        8.674734291134776,
+        0.5013110262445156,
+        4.993984534299828,
+        17.306223755715244,
+        19.902192376438975,
+        1.4080610806925353,
+        1.5982013788508547
+      ]
+    },
+    "satellite": {
+      "columns": [
+        "NDVI",
+        "SAVI",
+        "Spatial_Resolution",
+        "High_Resolution_RGB",
+        "Multispectral_Images",
+        "Thermal_Images",
+        "GPS_Coordinates",
+        "Field_Boundaries"
+      ],
+      "mean": [
+        0.5001029256010645,
+        0.40070943390963415,
+        1.1995766203632925,
+        0.20002964699857828,
+        0.30042516491142957,
+        0.3987521308780228,
+        550843.731074771,
+        2.6006953568757454
+      ],
+      "scale": [
+        0.14993265597669686,
+        0.1203331609753788,
+        0.4999912342190148,
+        0.4000222335323406,
+        0.4584428919716936,
+        0.4896415719669429,
+        260502.49185165105,
+        0.663744792499539
+      ]
+    },
+    "temporal": {
+      "columns": [
+        "Temporal_Images"
+      ],
+      "mean": [
+        0.1003416142790726
+      ],
+      "scale": [
+        0.3004549462447613
+      ]
+    }
+  },
+  "medians": {
+    "Canopy_Coverage": 34.51796458879297,
+    "Chlorophyll_Content": 0.8397229307242886,
+    "Crop_Stress_Indicator": 49.0,
+    "Elevation_Data": 54.76915721922863,
+    "Expected_Yield": 3001.931725953521,
+    "Leaf_Area_Index": 1.5864985288819111,
+    "Organic_Matter": 1.3810525057332652,
+    "Pest_Damage": 50.0,
+    "Pest_Hotspots": 0.0,
+    "Soil_Moisture": 20.08224630018861,
+    "Soil_pH": 6.503074824535127,
+    "Temperature": 24.986034669662573,
+    "Humidity": 59.987845268018205,
+    "Rainfall": 13.802449205244631,
+    "Wind_Speed": 1.680015282767855,
+    "Weed_Coverage": 2.637944315445502,
+    "NDVI": 0.5004561486953192,
+    "SAVI": 0.4008056804377592,
+    "Spatial_Resolution": 1.1999861211777687,
+    "High_Resolution_RGB": 0.0,
+    "Multispectral_Images": 0.0,
+    "Thermal_Images": 0.0,
+    "GPS_Coordinates": 551432.0,
+    "Field_Boundaries": 3.0,
+    "Temporal_Images": 0.0
+  },
+  "categorical": [
+    {
+      "name": "growth_stage",
+      "source": "Crop_Growth_Stage",
+      "encoded": "growth_stage_enc",
+      "categories": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "name": "crop_name",
+      "source": "Crop_Type",
+      "encoded": "crop_name_enc",
+      "categories": [
+        "Maize",
+        "Rice",
+        "Wheat"
+      ]
+    }
+  ],
+  "class_order": [
+    "healthy",
+    "nutrient_stress",
+    "stress_generic",
+    "water_stress"
+  ],
+  "source_columns": {
+    "soil_moisture": "Soil_Moisture",
+    "rainfall": "Rainfall",
+    "soil_ph": "Soil_pH",
+    "binary_label": "Crop_Health_Label",
+    "growth_stage": "Crop_Growth_Stage",
+    "crop_name": "Crop_Type"
+  },
+  "best_iteration": 1036
+}

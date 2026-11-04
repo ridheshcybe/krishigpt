@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "name": "KisanGPT crop-stress knowledge base",
+    "version": "1.0",
+    "classes": [
+      "healthy",
+      "water_stress",
+      "nutrient_stress",
+      "disease_stress",
+      "pest_stress",
+      "stress_generic"
+    ],
+    "notes": "Every fact rendered by diagnosis_engine.py comes from this file or from the model output. Severity is computed from severity_rules below (numeric operators), never guessed.",
+    "feature_labels": {
+      "Soil_Moisture": "soil moisture",
+      "Humidity": "humidity",
+      "Temperature": "temperature",
+      "Rainfall": "rainfall",
+      "Soil_pH": "soil pH",
+      "NDVI": "NDVI",
+      "Canopy_Coverage": "canopy coverage",
+      "Chlorophyll_Content": "chlorophyll",
+      "Leaf_Area_Index": "leaf area index",
+      "Organic_Matter": "organic matter",
+      "Pest_Damage": "pest damage",
+      "Pest_Hotspots": "pest hotspots",
+      "Weed_Coverage": "weed coverage",
+      "Wind_Speed": "wind speed",
+      "Crop_Stress_Indicator": "crop stress indicator",
+      "growth_stage_enc": "growth stage",
+      "crop_name_enc": "crop type"
+    }
+  },
+  "healthy": {
+    "description": "Crop is within normal agronomic ranges; no stress signature detected.",
+    "visual_symptoms": [
+      "uniform green canopy",
+      "no lesions or discolouration",
+      "upright turgid leaves"
+    ],
+    "favorable_conditions": {
+      "soil_moisture": "40-60%",
+      "temperature": "24-30C",
+      "humidity": "50-75%"
+    },
+    "actions": [
+      "Continue the current irrigation and nutrition schedule",
+      "Scout the field weekly for early signs of stress",
+      "Keep records of weather and input applications"
+    ],
+    "escalation": "Consult the local agricultural officer if symptoms appear in more than one patch of the field.",
+    "severity_rules": {
+      "base": "low",
+      "high_if_confidence_below": 0.5,
+      "critical_features": []
+    }
+  },
+  "water_stress": {
+    "description": "Water deficit (drought or uneven irrigation) is limiting plant growth.",
+    "visual_symptoms": [
+      "wilting of older leaves first",
+      "leaf curling and rolling",
+      "dull, dry leaf surface",
+      "stunted new growth"
+    ],
+    "favorable_conditions": {
+      "soil_moisture": "<20%",
+      "rainfall": "<50mm in the last 10 days",
+      "temperature": ">32C"
+    },
+    "actions": [
+      "Irrigate early morning to a soil depth of 10-15cm",
+      "Reduce irrigation spacing to match the moisture deficit",
+      "Mulch around the base to retain soil moisture",
+      "Re-check soil moisture after 48 hours"
+    ],
+    "escalation": "If soil moisture stays below 15% for more than 5 days, or wilting persists overnight, consult the local agricultural officer.",
+    "severity_rules": {
+      "base": "medium",
+      "high_if_confidence_below": 0.45,
+      "critical_features": [
+        {"feature": "Soil_Moisture", "op": "<", "value": 15, "note": "severe moisture deficit"},
+        {"feature": "Temperature", "op": ">", "value": 38, "note": "extreme heat load"},
+        {"feature": "Rainfall", "op": "<", "value": 10, "note": "no meaningful rainfall"}
+      ]
+    }
+  },
+  "nutrient_stress": {
+    "description": "Nutrient imbalance or deficiency (nitrogen, micronutrients) or soil pH outside the uptake range.",
+    "visual_symptoms": [
+      "yellowing between or along older leaves",
+      "purpling or browning of leaf margins",
+      "poor tillering or small new leaves",
+      "patchy, uneven canopy colour"
+    ],
+    "favorable_conditions": {
+      "soil_pH": "<6.0 or >7.5 (nutrient lockout)",
+      "soil_moisture": "low moisture reduces nutrient uptake",
+      "organic_matter": "low organic matter"
+    },
+    "actions": [
+      "Get a soil test before applying fertilizer",
+      "Correct soil pH with lime (acidic) or gypsum (alkaline) as advised",
+      "Apply a balanced N-K feed in split doses, not as a single heavy application",
+      "Ensure soil moisture is adequate when feeding"
+    ],
+    "escalation": "If yellowing spreads to the newest leaves or covers more than 40% of the canopy after one corrective feed, consult the local agricultural officer.",
+    "severity_rules": {
+      "base": "medium",
+      "high_if_confidence_below": 0.4,
+      "critical_features": [
+        {"feature": "Soil_pH", "op": "<", "value": 5.5, "note": "strongly acidic soil"},
+        {"feature": "Soil_pH", "op": ">", "value": 8.0, "note": "strongly alkaline soil"},
+        {"feature": "Chlorophyll_Content", "op": "<", "value": 2.0, "note": "very low chlorophyll"}
+      ]
+    }
+  },
+  "disease_stress": {
+    "description": "Fungal or bacterial infection causing leaf lesions and spread under humid conditions.",
+    "visual_symptoms": [
+      "spindle-shaped or angular lesions",
+      "brown or water-soaked spots",
+      "yellowing margins around lesions",
+      "lesions merging into blighted areas"
+    ],
+    "favorable_conditions": {
+      "humidity": ">70%",
+      "temperature": "25-30C",
+      "leaf_wetness": ">8hrs"
+    },
+    "actions": [
+      "Apply a recommended fungicide (for blast, tricyclazole-based) within 48 hours",
+      "Remove and destroy heavily infected leaves",
+      "Improve air circulation by spacing and weed control",
+      "Avoid overhead irrigation; water at the base in the morning",
+      "Monitor neighbouring plants daily for spread"
+    ],
+    "escalation": "If more than 30% of the field is affected, or lesions keep spreading after two sprays, consult the local agricultural officer.",
+    "severity_rules": {
+      "base": "medium",
+      "high_if_confidence_below": 0.5,
+      "critical_features": [
+        {"feature": "Humidity", "op": ">", "value": 85, "note": "very high humidity favours spread"},
+        {"feature": "Pest_Damage", "op": ">", "value": 60, "note": "extensive tissue damage"}
+      ]
+    }
+  },
+  "pest_stress": {
+    "description": "Insect or mite feeding damage is the dominant stress.",
+    "visual_symptoms": [
+      "shot-holes or windowing of leaves",
+      "rolling or tunnelled leaves",
+      "visible insects, frass or webbing",
+      "irregular chewing along leaf edges"
+    ],
+    "favorable_conditions": {
+      "pest_hotspots": "nearby hotspot reports",
+      "temperature": "warm, dry spells favour many pests",
+      "canopy": "dense, unpruned canopy"
+    },
+    "actions": [
+      "Scout 10 plants per zone to confirm pest type and count",
+      "Install yellow sticky traps to monitor flight activity",
+      "Use a targeted, locally registered insecticide only above threshold",
+      "Encourage natural enemies; keep field borders flowering",
+      "Remove and destroy heavily infested plants"
+    ],
+    "escalation": "If more than 20% of plants show active feeding or counts keep rising after two treatments, consult the local agricultural officer.",
+    "severity_rules": {
+      "base": "medium",
+      "high_if_confidence_below": 0.45,
+      "critical_features": [
+        {"feature": "Pest_Damage", "op": ">", "value": 70, "note": "severe feeding damage"},
+        {"feature": "Pest_Hotspots", "op": ">", "value": 70, "note": "active hotspot nearby"}
+      ]
+    }
+  },
+  "stress_generic": {
+    "description": "Stress detected but the signature does not match a single named cause; treat as an undifferentiated stress signal requiring field inspection.",
+    "visual_symptoms": [
+      "mild, non-specific discoloration",
+      "slower than expected growth",
+      "no clear lesion, pest or wilting pattern"
+    ],
+    "favorable_conditions": {
+      "note": "mixed or borderline conditions; no single driver dominates"
+    },
+    "actions": [
+      "Walk the field and note which symptom dominates: wilting, yellowing, lesions or chewing",
+      "Check soil moisture and recent weather against the ranges above",
+      "Take photos of the worst and the average plant for comparison",
+      "Re-run the diagnosis after 3 days, or after collecting a soil test"
+    ],
+    "escalation": "If symptoms worsen within 3 days or affect more than 25% of the field, consult the local agricultural officer.",
+    "severity_rules": {
+      "base": "low",
+      "high_if_confidence_below": 0.4,
+      "critical_features": [
+        {"feature": "Crop_Stress_Indicator", "op": ">", "value": 70, "note": "high aggregate stress reading"}
+      ]
+    }
+  }
+}

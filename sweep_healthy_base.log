@@ -1,0 +1,13 @@
+[load] C:\ridhesh\agrotech\crop_stress_detection\data\ches_dataset.csv  rows=212,019  columns=32
+[labels] WARNING: 61,263 binary=0 rows fall outside the strict healthy window; assigned to 'stress_generic' as the deterministic residual bucket.
+[labels] relaxation step=0  counts={'healthy': 2558, 'nutrient_stress': 13512, 'stress_generic': 122311, 'water_stress': 73638}
+[split] train=148,413 val=31,803 test=31,803  base_w=[20.716, 3.923, 0.433, 0.72]
+{"boost": 3.0, "best_iteration": 846, "accuracy": 0.7979435902273371, "macro_f1": 0.7031297178427891, "healthy_p": 0.29590488771466317, "healthy_r": 0.5833333333333334, "healthy_f1": 0.39263803680981596, "pr_best_f1": 0.4386271087841769, "pr_best_p": 0.28239700374531834, "pr_best_r": 0.9817708333333334, "n_predicted_healthy": 757, "val_macro_f1": 0.7078551855652359, "val_healthy_p": 0.30089628681177977, "val_healthy_r": 0.6135770234986945, "val_healthy_f1": 0.40378006872852235}
+{"boost": 6.0, "best_iteration": 909, "accuracy": 0.7973461623117316, "macro_f1": 0.7040966602191183, "healthy_p": 0.2960609911054638, "healthy_r": 0.6067708333333334, "healthy_f1": 0.39795046968403075, "pr_best_f1": 0.4450063211125158, "pr_best_p": 0.2938230383973289, "pr_best_r": 0.9166666666666666, "n_predicted_healthy": 787, "val_macro_f1": 0.703956996717879, "val_healthy_p": 0.28992628992628994, "val_healthy_r": 0.6161879895561357, "val_healthy_f1": 0.3943191311612364}
+{"boost": 1.5, "best_iteration": 766, "accuracy": 0.7987296795899758, "macro_f1": 0.7047101685883165, "healthy_p": 0.29654255319148937, "healthy_r": 0.5807291666666666, "healthy_f1": 0.3926056338028169, "pr_best_f1": 0.4381828637147786, "pr_best_p": 0.2811808118081181, "pr_best_r": 0.9921875, "n_predicted_healthy": 752, "val_macro_f1": 0.7038765795209374, "val_healthy_p": 0.2894736842105263, "val_healthy_r": 0.5744125326370757, "val_healthy_f1": 0.38495188101487315}
+
+SUMMARY (test split, n=31,803)
+ boost  iters     acc  macroF1    h_P    h_R   h_F1 |  valMac  valhF1 |  PRbestF1     P     R
+   3.0    846  0.7979   0.7031  0.296  0.583  0.393 |  0.7079  0.4038 |     0.439 0.282 0.982
+   6.0    909  0.7973   0.7041  0.296  0.607  0.398 |  0.7040  0.3943 |     0.445 0.294 0.917
+   1.5    766  0.7987   0.7047  0.297  0.581  0.393 |  0.7039  0.3850 |     0.438 0.281 0.992

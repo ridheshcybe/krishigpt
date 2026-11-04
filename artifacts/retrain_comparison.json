@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-10-30 14:45:22",
+  "seed": 42,
+  "eval": {
+    "n_per_version": 128,
+    "split": "test",
+    "note": "identical seeded subset for every version"
+  },
+  "versions": [
+    {
+      "version": "v1",
+      "checkpoint": "artifacts\\unified_model.pth",
+      "n_eval": 128,
+      "accuracy": 1.0,
+      "macro_f1": 0.8333,
+      "per_class_f1": {
+        "healthy": 1.0,
+        "water_stress": 1.0,
+        "nutrient_stress": 1.0,
+        "disease_stress": 1.0,
+        "pest_stress": 0.0,
+        "stress_generic": 1.0
+      }
+    }
+  ],
+  "latest": {
+    "version": "v1",
+    "checkpoint": "artifacts\\unified_model.pth",
+    "n_eval": 128,
+    "accuracy": 1.0,
+    "macro_f1": 0.8333,
+    "per_class_f1": {
+      "healthy": 1.0,
+      "water_stress": 1.0,
+      "nutrient_stress": 1.0,
+      "disease_stress": 1.0,
+      "pest_stress": 0.0,
+      "stress_generic": 1.0
+    }
+  },
+  "delta_vs_v1": {
+    "accuracy": 0.0,
+    "macro_f1": 0.0
+  },
+  "curve_plot": "plots\\retrain_curve.png",
+  "ndvi_is_proxy": true
+}

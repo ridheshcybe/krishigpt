@@ -1,0 +1,86 @@
+==============================================================================
+KisanGPT - Stage 3A Trajectory & Early-Warning Evaluation
+generated: 2026-10-31 21:21:50
+==============================================================================
+
+split            : test (by FIELD, leakage-checked disjoint)
+horizon          : 21d history -> 14d forecast
+alert horizon    : 3 days ahead
+encoder          : transformer (pooling=attention, checkpoint epoch 58)
+classes (4): healthy, water_stress, nutrient_stress, disease_stress
+NDVI PROXY       : YES - synthetic class-conditional curves
+weather PROXY    : YES - declared synthetic
+
+------------------------------------------------------------------------------
+1) NDVI FORECASTING PERFORMANCE (test fields)
+------------------------------------------------------------------------------
+method                         MAE      RMSE        R2   Day-1 MAE
+persistence                 0.1079    0.1445    0.0328      0.0322
+linear_extrapolation        0.1649    0.2356   -1.5332      0.0355
+trajectory_model            0.0763    0.1041    0.4283      0.1287
+
+------------------------------------------------------------------------------
+2) STRESS-TRAJECTORY CLASSIFICATION PERFORMANCE
+------------------------------------------------------------------------------
+trajectory_model         accuracy=0.5871  macro F1=0.5424  mean step acc=0.5890
+last_observed_class      accuracy=0.4179  macro F1=0.2204  mean step acc=0.4189
+always_healthy           accuracy=0.4544  macro F1=0.1562  mean step acc=0.4539
+model per-class F1 : healthy=0.526, water_stress=0.843, nutrient_stress=0.357, disease_stress=0.443
+per-day accuracy (model): 0.82, 0.81, 0.77, 0.71, 0.65, 0.60, 0.60, 0.52, 0.51, 0.44, 0.40, 0.45, 0.45, 0.51
+
+------------------------------------------------------------------------------
+3) STRESS ONSET DETECTION PERFORMANCE (within 3 days)
+------------------------------------------------------------------------------
+precision=0.8448  recall=0.8750  F1=0.8596  (tp=49 fp=9 fn=7 of 90)
+
+------------------------------------------------------------------------------
+4) K-DAY-AHEAD EARLY-WARNING PERFORMANCE & THRESHOLD TUNING
+------------------------------------------------------------------------------
+selected threshold       : 0.25
+tuning selection rule    : fallback: F1 >= 0.75 (max mean lead time)
+always-alert base prec   : 0.1864
+
+------------------------------------------------------------------------------
+5) ALERT LEAD-TIME ANALYSIS (HEALTHY-AT-ENDPOINT FIELDS)
+------------------------------------------------------------------------------
+evaluated healthy fields : 45
+excluded ongoing stress  : 45 fields (already stressed at history endpoint)
+alert precision          : 0.5000
+alert recall             : 0.6154
+alert F1                 : 0.5517
+false positive rate (FPR): 0.2500
+alerts fired             : 16
+true onsets              : 13
+mean lead time           : 1.25 days
+median lead time         : 1.00 days
+lead time std dev        : 0.66 days
+alerts fired BEFORE onset: 100.0%
+alerts fired ON onset day: 0.0%
+alerts fired AFTER onset : 0.0%
+lead time histogram      : -3d:0, -2d:0, -1d:0, 0d:0, +1d:7, +2d:0, +3d:1
+lead definition          : actual_onset_day - alert_day (positive = ahead of real onset)
+example alert            : EARLY WARNING: water_stress onset predicted within 3 days (confidence 98%)
+
+------------------------------------------------------------------------------
+6) PER-CLASS PERFORMANCE & NUTRIENT STRESS DEEP DIVE
+------------------------------------------------------------------------------
+nutrient_stress: precision=0.2963  recall=0.4494  F1=0.3571  support=178 tokens
+top confusions when ground truth is nutrient_stress:
+   -> predicted as healthy           :    31 (17.4%)
+   -> predicted as water_stress      :    22 (12.4%)
+   -> predicted as disease_stress    :    45 (25.3%)
+
+Recommended telemetry features to separate nutrient stress from healthy/water stress:
+   * NDVI 7-day velocity/slope (chlorosis is gradual, not abrupt drought drop)
+   * Precipitation rolling sum (if rainfall normal but NDVI declining -> nutrient deficiency)
+   * Soil NPK sensors or fertilizer application dates
+   * Soil moisture decoupling (dry soil = drought; wet soil + low NDVI = nutrient leaching/deficiency)
+
+------------------------------------------------------------------------------
+7) BASELINE COMPARISONS
+------------------------------------------------------------------------------
+method                         MAE      RMSE        R2
+persistence                 0.1079    0.1445    0.0328
+linear_extrapolation        0.1649    0.2356   -1.5332
+trajectory_model            0.0763    0.1041    0.4283
+==============================================================================

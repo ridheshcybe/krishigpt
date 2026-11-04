@@ -1,0 +1,312 @@
+{
+  "dataset": {
+    "path": "data\\ches_dataset.csv",
+    "n_rows": 212019,
+    "n_features": 27,
+    "feature_names": [
+      "Canopy_Coverage",
+      "Chlorophyll_Content",
+      "Crop_Stress_Indicator",
+      "Elevation_Data",
+      "Expected_Yield",
+      "Leaf_Area_Index",
+      "Organic_Matter",
+      "Pest_Damage",
+      "Pest_Hotspots",
+      "Soil_Moisture",
+      "Soil_pH",
+      "Temperature",
+      "Humidity",
+      "Rainfall",
+      "Wind_Speed",
+      "Weed_Coverage",
+      "NDVI",
+      "SAVI",
+      "Spatial_Resolution",
+      "High_Resolution_RGB",
+      "Multispectral_Images",
+      "Thermal_Images",
+      "GPS_Coordinates",
+      "Field_Boundaries",
+      "Temporal_Images",
+      "growth_stage_enc",
+      "crop_name_enc"
+    ],
+    "feature_groups": {
+      "ground": [
+        "Canopy_Coverage",
+        "Chlorophyll_Content",
+        "Crop_Stress_Indicator",
+        "Elevation_Data",
+        "Expected_Yield",
+        "Leaf_Area_Index",
+        "Organic_Matter",
+        "Pest_Damage",
+        "Pest_Hotspots",
+        "Soil_Moisture",
+        "Soil_pH",
+        "Temperature",
+        "Humidity",
+        "Rainfall",
+        "Wind_Speed",
+        "Weed_Coverage"
+      ],
+      "satellite": [
+        "NDVI",
+        "SAVI",
+        "Spatial_Resolution",
+        "High_Resolution_RGB",
+        "Multispectral_Images",
+        "Thermal_Images",
+        "GPS_Coordinates",
+        "Field_Boundaries"
+      ],
+      "temporal": [
+        "Temporal_Images"
+      ]
+    },
+    "binary_label_column": "Crop_Health_Label",
+    "class_order": [
+      "healthy",
+      "nutrient_stress",
+      "stress_generic",
+      "water_stress"
+    ],
+    "class_counts": {
+      "healthy": 2558,
+      "nutrient_stress": 13512,
+      "stress_generic": 122311,
+      "water_stress": 73638
+    },
+    "split_sizes": {
+      "train": 148413,
+      "val": 31803,
+      "test": 31803
+    }
+  },
+  "label_rules": {
+    "relaxation_step": 0,
+    "residual_policy": "Option B: binary=0 rows outside the strict healthy window are routed to stress_generic as a documented residual class; widening the window was evaluated and does not change separability.",
+    "thresholds": {
+      "healthy_moisture": [
+        20.0,
+        60.0
+      ],
+      "healthy_rainfall": [
+        50.0,
+        200.0
+      ],
+      "water_moisture_max": 20.0,
+      "nutrient_ph": [
+        6.0,
+        7.5
+      ]
+    },
+    "class_counts": {
+      "healthy": 2558,
+      "nutrient_stress": 13512,
+      "stress_generic": 122311,
+      "water_stress": 73638
+    },
+    "unassigned_binary0_rows": 61263
+  },
+  "hyperparameters": {
+    "n_estimators": 2000,
+    "max_depth": 8,
+    "learning_rate": 0.05,
+    "colsample_bytree": 0.8,
+    "subsample": 0.8,
+    "objective": "multi:softprob",
+    "eval_metric": "mlogloss",
+    "tree_method": "hist",
+    "n_jobs": -1,
+    "random_state": 42,
+    "early_stopping_rounds": 30,
+    "device": "cpu",
+    "healthy_weight_boost": 200.0
+  },
+  "class_weights": {
+    "healthy": 4143.299832495812,
+    "nutrient_stress": 3.9229488263903574,
+    "stress_generic": 0.4333580555490668,
+    "water_stress": 0.7198085205447562
+  },
+  "best_iteration": 1036,
+  "train": {
+    "accuracy": 0.8971788185671067,
+    "macro_precision": 0.88760458582716,
+    "macro_recall": 0.9554416127449835,
+    "macro_f1": 0.9140813917759298,
+    "weighted_f1": 0.8980760430895413,
+    "per_class": {
+      "healthy": {
+        "precision": 0.8460085025980161,
+        "recall": 1.0,
+        "f1": 0.9165813715455476,
+        "support": 1791
+      },
+      "nutrient_stress": {
+        "precision": 0.9192341335406745,
+        "recall": 1.0,
+        "f1": 0.9579176583784879,
+        "support": 9458
+      },
+      "stress_generic": {
+        "precision": 1.0,
+        "recall": 0.8217664509799342,
+        "f1": 0.9021644355541878,
+        "support": 85618
+      },
+      "water_stress": {
+        "precision": 0.7851757071699492,
+        "recall": 1.0,
+        "f1": 0.879662101625496,
+        "support": 51546
+      }
+    },
+    "confusion_matrix": [
+      [
+        1791,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        9458,
+        0,
+        0
+      ],
+      [
+        326,
+        831,
+        70358,
+        14103
+      ],
+      [
+        0,
+        0,
+        0,
+        51546
+      ]
+    ]
+  },
+  "validation": {
+    "accuracy": 0.7960255321824985,
+    "macro_precision": 0.6688868856893835,
+    "macro_recall": 0.8264111312111404,
+    "macro_f1": 0.7071097521335654,
+    "weighted_f1": 0.7971695991526241,
+    "per_class": {
+      "healthy": {
+        "precision": 0.29366812227074235,
+        "recall": 0.7023498694516971,
+        "f1": 0.41416474210931487,
+        "support": 383
+      },
+      "nutrient_stress": {
+        "precision": 0.7002555677254473,
+        "recall": 0.946225949679329,
+        "f1": 0.804867813680235,
+        "support": 2027
+      },
+      "stress_generic": {
+        "precision": 0.9890692552410474,
+        "recall": 0.6608709870823568,
+        "f1": 0.7923283016402013,
+        "support": 18347
+      },
+      "water_stress": {
+        "precision": 0.692554597520297,
+        "recall": 0.9961977186311787,
+        "f1": 0.8170781511045109,
+        "support": 11046
+      }
+    },
+    "confusion_matrix": [
+      [
+        269,
+        32,
+        79,
+        3
+      ],
+      [
+        85,
+        1918,
+        13,
+        11
+      ],
+      [
+        562,
+        789,
+        12125,
+        4871
+      ],
+      [
+        0,
+        0,
+        42,
+        11004
+      ]
+    ]
+  },
+  "test": {
+    "accuracy": 0.7959626450334875,
+    "macro_precision": 0.6686893368332643,
+    "macro_recall": 0.8297977748481403,
+    "macro_f1": 0.708332271187878,
+    "weighted_f1": 0.7969829099816309,
+    "per_class": {
+      "healthy": {
+        "precision": 0.3021978021978022,
+        "recall": 0.7161458333333334,
+        "f1": 0.4250386398763524,
+        "support": 384
+      },
+      "nutrient_stress": {
+        "precision": 0.6902877697841726,
+        "recall": 0.9467192895905279,
+        "f1": 0.7984189723320159,
+        "support": 2027
+      },
+      "stress_generic": {
+        "precision": 0.9883427080785848,
+        "recall": 0.6608525019077728,
+        "f1": 0.7920817953157155,
+        "support": 18346
+      },
+      "water_stress": {
+        "precision": 0.6939290672724978,
+        "recall": 0.995473474560927,
+        "f1": 0.8177896772274282,
+        "support": 11046
+      }
+    },
+    "confusion_matrix": [
+      [
+        275,
+        37,
+        71,
+        1
+      ],
+      [
+        78,
+        1919,
+        22,
+        8
+      ],
+      [
+        557,
+        824,
+        12124,
+        4841
+      ],
+      [
+        0,
+        0,
+        50,
+        10996
+      ]
+    ]
+  }
+}

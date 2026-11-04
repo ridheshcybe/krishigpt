@@ -1,0 +1,212 @@
+{
+  "generated_at": "2026-10-31 21:23:16",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "n_seeds": 5,
+  "classes": [
+    "healthy",
+    "water_stress",
+    "nutrient_stress",
+    "disease_stress"
+  ],
+  "alert_horizon": 3,
+  "summary": {
+    "ndvi_mae": {
+      "mean": 0.0793,
+      "std": 0.0029,
+      "min": 0.0763,
+      "max": 0.0831,
+      "values": [
+        0.0763,
+        0.0822,
+        0.0831,
+        0.0785,
+        0.0765
+      ]
+    },
+    "ndvi_rmse": {
+      "mean": 0.1095,
+      "std": 0.0037,
+      "min": 0.1041,
+      "max": 0.1143,
+      "values": [
+        0.1041,
+        0.1126,
+        0.1143,
+        0.1098,
+        0.1067
+      ]
+    },
+    "ndvi_r2": {
+      "mean": 0.3663,
+      "std": 0.0413,
+      "min": 0.3288,
+      "max": 0.4283,
+      "values": [
+        0.4283,
+        0.3356,
+        0.3355,
+        0.3288,
+        0.4034
+      ]
+    },
+    "accuracy": {
+      "mean": 0.5821,
+      "std": 0.0184,
+      "min": 0.5657,
+      "max": 0.6159,
+      "values": [
+        0.5871,
+        0.5686,
+        0.5657,
+        0.6159,
+        0.5732
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.4898,
+      "std": 0.0377,
+      "min": 0.4286,
+      "max": 0.5424,
+      "values": [
+        0.5424,
+        0.4804,
+        0.4286,
+        0.5116,
+        0.4862
+      ]
+    },
+    "alert_precision": {
+      "mean": 0.6317,
+      "std": 0.1049,
+      "min": 0.5,
+      "max": 0.75,
+      "values": [
+        0.5,
+        0.5333,
+        0.75,
+        0.625,
+        0.75
+      ]
+    },
+    "alert_recall": {
+      "mean": 0.4752,
+      "std": 0.162,
+      "min": 0.2308,
+      "max": 0.625,
+      "values": [
+        0.6154,
+        0.5714,
+        0.2308,
+        0.625,
+        0.3333
+      ]
+    },
+    "alert_f1": {
+      "mean": 0.5086,
+      "std": 0.0935,
+      "min": 0.3529,
+      "max": 0.625,
+      "values": [
+        0.5517,
+        0.5517,
+        0.3529,
+        0.625,
+        0.4615
+      ]
+    },
+    "mean_lead_time": {
+      "mean": 1.5383,
+      "std": 0.2678,
+      "min": 1.25,
+      "max": 2.0,
+      "values": [
+        1.25,
+        1.375,
+        2.0,
+        1.4,
+        1.6667
+      ]
+    },
+    "pct_before_onset": {
+      "mean": 100.0,
+      "std": 0.0,
+      "min": 100.0,
+      "max": 100.0,
+      "values": [
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ]
+    }
+  },
+  "per_seed": {
+    "42": {
+      "ndvi_mae": 0.076321,
+      "ndvi_rmse": 0.10409,
+      "ndvi_r2": 0.428305,
+      "accuracy": 0.5871,
+      "macro_f1": 0.5424,
+      "alert_precision": 0.5,
+      "alert_recall": 0.6153846153846154,
+      "alert_f1": 0.5517241379310345,
+      "mean_lead_time": 1.25,
+      "pct_before_onset": 100.0
+    },
+    "43": {
+      "ndvi_mae": 0.08222,
+      "ndvi_rmse": 0.112625,
+      "ndvi_r2": 0.335599,
+      "accuracy": 0.5686,
+      "macro_f1": 0.4804,
+      "alert_precision": 0.5333333333333333,
+      "alert_recall": 0.5714285714285714,
+      "alert_f1": 0.5517241379310344,
+      "mean_lead_time": 1.375,
+      "pct_before_onset": 100.0
+    },
+    "44": {
+      "ndvi_mae": 0.083136,
+      "ndvi_rmse": 0.114256,
+      "ndvi_r2": 0.335546,
+      "accuracy": 0.5657,
+      "macro_f1": 0.4286,
+      "alert_precision": 0.75,
+      "alert_recall": 0.23076923076923078,
+      "alert_f1": 0.3529411764705882,
+      "mean_lead_time": 2.0,
+      "pct_before_onset": 100.0
+    },
+    "45": {
+      "ndvi_mae": 0.078513,
+      "ndvi_rmse": 0.109835,
+      "ndvi_r2": 0.328814,
+      "accuracy": 0.6159,
+      "macro_f1": 0.5116,
+      "alert_precision": 0.625,
+      "alert_recall": 0.625,
+      "alert_f1": 0.625,
+      "mean_lead_time": 1.4,
+      "pct_before_onset": 100.0
+    },
+    "46": {
+      "ndvi_mae": 0.076461,
+      "ndvi_rmse": 0.106679,
+      "ndvi_r2": 0.403372,
+      "accuracy": 0.5732,
+      "macro_f1": 0.4862,
+      "alert_precision": 0.75,
+      "alert_recall": 0.3333333333333333,
+      "alert_f1": 0.46153846153846156,
+      "mean_lead_time": 1.6666666666666667,
+      "pct_before_onset": 100.0
+    }
+  }
+}

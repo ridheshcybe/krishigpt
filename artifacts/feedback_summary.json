@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-10-30 14:54:52",
+  "log": "feedback_log.csv",
+  "totals": {
+    "rows": 2,
+    "correct": 2,
+    "incorrect": 0,
+    "unlabelled": 0,
+    "observed_accuracy": 1.0,
+    "mean_confidence_correct": 0.9081,
+    "mean_confidence_incorrect": null
+  },
+  "incorrect": {
+    "n_incorrect": 0,
+    "by_predicted_class": {},
+    "hottest_class": null,
+    "predicted_to_actual": {}
+  },
+  "weekly_trend": [
+    {
+      "week": "2026-W44",
+      "total": 2,
+      "correct": 2,
+      "accuracy": 1.0
+    }
+  ],
+  "corrections_by_actual_class": {},
+  "modality": {
+    "available": false,
+    "reason": "feedback_log.csv has no attention columns (attention_image, attention_tabular, attention_ndvi); the Stage-2B logger records verdicts only. Add them to append_feedback_record to enable modality-vs-error correlation."
+  },
+  "retrain": {
+    "threshold_per_class": 50,
+    "max_corrections": 0,
+    "would_trigger": false
+  }
+}

@@ -1,0 +1,6917 @@
+{
+  "started_at": "2026-10-26T13:47:28",
+  "finished_at": "2026-10-26T13:47:34",
+  "runtime_seconds": 6.4,
+  "data": {
+    "ches": {
+      "path": "C:\\ridhesh\\agrotech\\crop_stress_detection\\data\\ches_dataset.csv",
+      "n_rows": 212019,
+      "n_columns": 32,
+      "label_column": "Crop_Health_Label",
+      "binary_counts": {
+        "0_healthy": 63821,
+        "1_stressed": 148198
+      },
+      "class_counts": {
+        "healthy": 2558,
+        "nutrient_stress": 13512,
+        "stress_generic": 122311,
+        "water_stress": 73638
+      },
+      "class_share": {
+        "healthy": 0.0121,
+        "nutrient_stress": 0.0637,
+        "stress_generic": 0.5769,
+        "water_stress": 0.3473
+      },
+      "missing_columns": {},
+      "n_columns_with_missing": 0,
+      "overall_missing_pct": 0.0,
+      "label_rules": {
+        "relaxation_step": 0,
+        "thresholds": {
+          "healthy_moisture": [
+            20.0,
+            60.0
+          ],
+          "healthy_rainfall": [
+            50.0,
+            200.0
+          ],
+          "water_moisture_max": 20.0,
+          "nutrient_ph": [
+            6.0,
+            7.5
+          ]
+        },
+        "class_counts": {
+          "healthy": 2558,
+          "nutrient_stress": 13512,
+          "stress_generic": 122311,
+          "water_stress": 73638
+        },
+        "unassigned_binary0_rows": 61263
+      },
+      "split_sizes": {
+        "train": 148413,
+        "val": 31803,
+        "test": 31803
+      }
+    },
+    "paddy": {
+      "root": "C:\\ridhesh\\agrotech\\crop_stress_detection\\data\\paddy_images",
+      "class_folders": {
+        "BLB": [
+          "test\\BLB",
+          "train\\BLB",
+          "val\\BLB"
+        ],
+        "blast": [
+          "test\\Blast",
+          "train\\Blast",
+          "val\\Blast"
+        ],
+        "healthy": [
+          "test\\healthy",
+          "train\\healthy",
+          "val\\healthy"
+        ],
+        "hispa": [
+          "test\\hispa",
+          "train\\hispa",
+          "val\\hispa"
+        ],
+        "leaf_spot": [
+          "test\\leaf_spot",
+          "train\\leaf_spot",
+          "val\\leaf_spot"
+        ]
+      },
+      "class_counts": {
+        "BLB": 440,
+        "blast": 469,
+        "healthy": 465,
+        "hispa": 426,
+        "leaf_spot": 400
+      },
+      "total_images": 2200,
+      "corrupted_skipped": 0,
+      "img_size": 224,
+      "imagenet_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "imagenet_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "split_sizes": {
+        "train": 1540,
+        "val": 330,
+        "test": 330
+      }
+    }
+  },
+  "tabular": {
+    "n_test": 31803,
+    "class_order": [
+      "healthy",
+      "nutrient_stress",
+      "stress_generic",
+      "water_stress"
+    ],
+    "metrics": {
+      "accuracy": 0.7968745086941483,
+      "macro_precision": 0.6683430557882539,
+      "macro_recall": 0.8295091619768802,
+      "macro_f1": 0.7084300156559942,
+      "weighted_f1": 0.7974680235512526,
+      "per_class": {
+        "healthy": {
+          "precision": 0.29705215419501135,
+          "recall": 0.6822916666666666,
+          "f1": 0.41390205371248023,
+          "support": 384
+        },
+        "nutrient_stress": {
+          "precision": 0.689822855158041,
+          "recall": 0.9797730636408486,
+          "f1": 0.8096208724011414,
+          "support": 2027
+        },
+        "stress_generic": {
+          "precision": 0.9920282708744247,
+          "recall": 0.6579635887931974,
+          "f1": 0.7911778200170414,
+          "support": 18346
+        },
+        "water_stress": {
+          "precision": 0.6944689429255386,
+          "recall": 0.9980083288068079,
+          "f1": 0.8190193164933135,
+          "support": 11046
+        }
+      },
+      "confusion_matrix": [
+        [
+          262,
+          58,
+          63,
+          1
+        ],
+        [
+          19,
+          1986,
+          17,
+          5
+        ],
+        [
+          601,
+          830,
+          12071,
+          4844
+        ],
+        [
+          0,
+          5,
+          17,
+          11024
+        ]
+      ]
+    },
+    "binary": {
+      "accuracy": 0.9766688677168821,
+      "macro_f1": 0.7009997916942254,
+      "healthy_recall": 0.6822916666666666,
+      "stress_recall": 0.9802667175912664,
+      "support_healthy": 384,
+      "support_stress": 31419
+    },
+    "importances": [
+      {
+        "feature": "Soil_Moisture",
+        "gain": 84.90522766113281,
+        "share": 0.3195827350658382
+      },
+      {
+        "feature": "Rainfall",
+        "gain": 68.70806121826172,
+        "share": 0.25861670394242203
+      },
+      {
+        "feature": "Soil_pH",
+        "gain": 61.743370056152344,
+        "share": 0.23240165085571216
+      },
+      {
+        "feature": "crop_name_enc",
+        "gain": 2.299886703491211,
+        "share": 0.008656758874456673
+      },
+      {
+        "feature": "Crop_Stress_Indicator",
+        "gain": 2.251128673553467,
+        "share": 0.008473233960936426
+      },
+      {
+        "feature": "SAVI",
+        "gain": 2.2192137241363525,
+        "share": 0.008353106295006164
+      },
+      {
+        "feature": "NDVI",
+        "gain": 2.2025933265686035,
+        "share": 0.008290547224629697
+      },
+      {
+        "feature": "Temporal_Images",
+        "gain": 2.199781656265259,
+        "share": 0.008279964115551507
+      },
+      {
+        "feature": "Weed_Coverage",
+        "gain": 2.1789116859436035,
+        "share": 0.008201409680449384
+      },
+      {
+        "feature": "Pest_Damage",
+        "gain": 2.1745107173919678,
+        "share": 0.008184844462907256
+      }
+    ],
+    "best_iteration": 499,
+    "hyperparameters": {
+      "n_estimators": 500,
+      "max_depth": 8,
+      "learning_rate": 0.05,
+      "colsample_bytree": 0.8,
+      "subsample": 0.8,
+      "objective": "multi:softprob",
+      "eval_metric": "mlogloss",
+      "tree_method": "hist",
+      "n_jobs": -1,
+      "random_state": 42,
+      "early_stopping_rounds": 30
+    },
+    "n_features": 27,
+    "feature_names": [
+      "Canopy_Coverage",
+      "Chlorophyll_Content",
+      "Crop_Stress_Indicator",
+      "Elevation_Data",
+      "Expected_Yield",
+      "Leaf_Area_Index",
+      "Organic_Matter",
+      "Pest_Damage",
+      "Pest_Hotspots",
+      "Soil_Moisture",
+      "Soil_pH",
+      "Temperature",
+      "Humidity",
+      "Rainfall",
+      "Wind_Speed",
+      "Weed_Coverage",
+      "NDVI",
+      "SAVI",
+      "Spatial_Resolution",
+      "High_Resolution_RGB",
+      "Multispectral_Images",
+      "Thermal_Images",
+      "GPS_Coordinates",
+      "Field_Boundaries",
+      "Temporal_Images",
+      "growth_stage_enc",
+      "crop_name_enc"
+    ],
+    "reproduces_saved_metrics": true
+  },
+  "image": {
+    "n_test": 330,
+    "split_sizes": {
+      "train": 1540,
+      "val": 330,
+      "test": 330
+    },
+    "classes": [
+      "BLB",
+      "blast",
+      "healthy",
+      "hispa",
+      "leaf_spot"
+    ],
+    "labels": [
+      1,
+      0,
+      1,
+      0,
+      3,
+      3,
+      2,
+      0,
+      3,
+      3,
+      4,
+      1,
+      4,
+      0,
+      0,
+      0,
+      4,
+      1,
+      0,
+      1,
+      2,
+      4,
+      2,
+      2,
+      2,
+      4,
+      4,
+      4,
+      2,
+      3,
+      0,
+      1,
+      3,
+      4,
+      1,
+      4,
+      0,
+      3,
+      2,
+      0,
+      0,
+      2,
+      1,
+      0,
+      1,
+      2,
+      4,
+      1,
+      0,
+      0,
+      1,
+      2,
+      2,
+      3,
+      2,
+      0,
+      3,
+      4,
+      3,
+      0,
+      1,
+      2,
+      3,
+      4,
+      3,
+      3,
+      3,
+      0,
+      1,
+      1,
+      0,
+      2,
+      4,
+      2,
+      2,
+      2,
+      0,
+      3,
+      1,
+      2,
+      4,
+      3,
+      2,
+      1,
+      3,
+      0,
+      4,
+      0,
+      2,
+      2,
+      4,
+      3,
+      0,
+      1,
+      1,
+      0,
+      0,
+      4,
+      1,
+      3,
+      1,
+      4,
+      0,
+      1,
+      3,
+      3,
+      3,
+      0,
+      1,
+      2,
+      2,
+      0,
+      3,
+      0,
+      3,
+      2,
+      2,
+      4,
+      1,
+      1,
+      2,
+      4,
+      0,
+      3,
+      3,
+      2,
+      4,
+      2,
+      0,
+      0,
+      0,
+      4,
+      2,
+      0,
+      4,
+      3,
+      2,
+      1,
+      2,
+      3,
+      2,
+      4,
+      3,
+      1,
+      4,
+      1,
+      0,
+      1,
+      4,
+      3,
+      1,
+      2,
+      2,
+      1,
+      1,
+      0,
+      1,
+      1,
+      3,
+      3,
+      1,
+      2,
+      0,
+      2,
+      4,
+      2,
+      1,
+      4,
+      2,
+      0,
+      2,
+      4,
+      4,
+      4,
+      0,
+      4,
+      2,
+      0,
+      3,
+      1,
+      3,
+      2,
+      4,
+      3,
+      4,
+      2,
+      3,
+      0,
+      0,
+      0,
+      0,
+      4,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      4,
+      1,
+      2,
+      2,
+      4,
+      3,
+      4,
+      2,
+      3,
+      3,
+      2,
+      1,
+      0,
+      1,
+      3,
+      4,
+      2,
+      4,
+      3,
+      4,
+      3,
+      0,
+      2,
+      4,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      4,
+      2,
+      4,
+      2,
+      4,
+      1,
+      3,
+      3,
+      3,
+      1,
+      3,
+      3,
+      2,
+      2,
+      3,
+      1,
+      3,
+      0,
+      2,
+      2,
+      3,
+      1,
+      3,
+      1,
+      1,
+      4,
+      4,
+      1,
+      2,
+      3,
+      1,
+      4,
+      3,
+      3,
+      2,
+      1,
+      0,
+      4,
+      4,
+      1,
+      1,
+      2,
+      0,
+      4,
+      4,
+      3,
+      2,
+      2,
+      2,
+      0,
+      0,
+      1,
+      2,
+      0,
+      1,
+      4,
+      0,
+      3,
+      1,
+      1,
+      0,
+      1,
+      0,
+      2,
+      3,
+      4,
+      4,
+      3,
+      3,
+      3,
+      0,
+      4,
+      0,
+      0,
+      1,
+      1,
+      3,
+      1,
+      4,
+      1,
+      1,
+      4,
+      3,
+      4,
+      1,
+      1,
+      1,
+      2,
+      0,
+      2,
+      2,
+      3,
+      0,
+      2,
+      2,
+      3,
+      2,
+      4,
+      0
+    ],
+    "device": "cpu",
+    "metrics": {
+      "accuracy": 0.9727272727272728,
+      "macro_precision": 0.9728788389087747,
+      "macro_recall": 0.9734597042067955,
+      "macro_f1": 0.9731229312899213,
+      "weighted_f1": 0.9726881569244662,
+      "per_class": {
+        "BLB": {
+          "precision": 0.9846153846153847,
+          "recall": 0.9696969696969697,
+          "f1": 0.9770992366412213,
+          "support": 66
+        },
+        "blast": {
+          "precision": 0.9714285714285714,
+          "recall": 0.9577464788732394,
+          "f1": 0.9645390070921985,
+          "support": 71
+        },
+        "healthy": {
+          "precision": 0.9565217391304348,
+          "recall": 0.9565217391304348,
+          "f1": 0.9565217391304348,
+          "support": 69
+        },
+        "hispa": {
+          "precision": 0.9846153846153847,
+          "recall": 1.0,
+          "f1": 0.9922480620155039,
+          "support": 64
+        },
+        "leaf_spot": {
+          "precision": 0.9672131147540983,
+          "recall": 0.9833333333333333,
+          "f1": 0.9752066115702479,
+          "support": 60
+        }
+      },
+      "confusion_matrix": [
+        [
+          64,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          68,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          66,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          64,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          59
+        ]
+      ],
+      "binary_healthy_vs_disease": {
+        "accuracy": 0.9818181818181818,
+        "macro_f1": 0.9725137431284359,
+        "healthy_recall": 0.9565217391304348,
+        "stress_recall": 0.9885057471264368,
+        "support_healthy": 69,
+        "support_stress": 261
+      }
+    },
+    "binary": {
+      "accuracy": 0.9818181818181818,
+      "macro_f1": 0.9725137431284359,
+      "healthy_recall": 0.9565217391304348,
+      "stress_recall": 0.9885057471264368,
+      "support_healthy": 69,
+      "support_stress": 261
+    },
+    "paths": [
+      "train\\Blast\\Thermalimage11i__rot-90.jpg",
+      "train\\BLB\\thermalimage38a.jpg",
+      "train\\Blast\\Thermalimage10m__rot-90.jpg",
+      "val\\BLB\\thermalimage61b.jpg",
+      "train\\hispa\\thermalimage30a.jpg",
+      "val\\hispa\\thermalimage13c__flipv.jpg",
+      "val\\healthy\\thermalimage3d__rot90.jpg",
+      "train\\BLB\\thermalimage101b.jpg",
+      "val\\hispa\\thermalimage57a.jpg",
+      "train\\hispa\\thermalimage15a__fliph.jpg",
+      "train\\leaf_spot\\thermalimage1e__rot-90.jpg",
+      "val\\Blast\\Thermalimage7b__fliph.jpg",
+      "train\\leaf_spot\\thermalimage4a.jpg",
+      "train\\BLB\\thermalimage44a.jpg",
+      "train\\BLB\\thermalimage54a__fliph.jpg",
+      "train\\BLB\\thermalimage4a__fliph.jpg",
+      "train\\leaf_spot\\thermalimage1b__fliph.jpg",
+      "train\\Blast\\Thermalimage10i__flipv.jpg",
+      "test\\BLB\\thermalimage4d__fliph.jpg",
+      "val\\Blast\\Thermalimagex__rot90.jpg",
+      "train\\healthy\\thermalimage8s.jpg",
+      "train\\leaf_spot\\thermalimage12a__rot90.jpg",
+      "train\\healthy\\thermalimage8r__rot90.jpg",
+      "train\\healthy\\thermalimage6q.jpg",
+      "val\\healthy\\thermalimage8hh__rot90.jpg",
+      "train\\leaf_spot\\thermalimage5a__flipv.jpg",
+      "train\\leaf_spot\\thermalimage2g__flipv.jpg",
+      "train\\leaf_spot\\thermalimage2e__rot-90.jpg",
+      "train\\healthy\\thermalimage8x__rot-90.jpg",
+      "val\\hispa\\thermalimage72a__flipv.jpg",
+      "train\\BLB\\thermalimage68a.jpg",
+      "val\\Blast\\Thermalimage11s.jpg",
+      "val\\hispa\\thermalimage20a__flipv.jpg",
+      "train\\leaf_spot\\thermalimage12f__rot90.jpg",
+      "train\\Blast\\Thermalimage10j__fliph.jpg",
+      "val\\leaf_spot\\thermalimage1g__rot90.jpg",
+      "train\\BLB\\thermalimage51a.jpg",
+      "train\\hispa\\thermalimage57c__flipv.jpg",
+      "val\\healthy\\thermalimage8rr__flipv.jpg",
+      "train\\BLB\\thermalimage78b__fliph.jpg",
+      "train\\BLB\\thermalimage101a__fliph.jpg",
+      "train\\healthy\\thermalimage8jj.jpg",
+      "train\\Blast\\Thermalimage11q__rot90.jpg",
+      "train\\BLB\\thermalimage76b__fliph.jpg",
+      "train\\Blast\\Thermalimage3a__rot90.jpg",
+      "train\\healthy\\thermalimage8t__rot90.jpg",
+      "val\\leaf_spot\\thermalimage12a__fliph.jpg",
+      "train\\Blast\\Thermalimage9g__flipv.jpg",
+      "train\\BLB\\thermalimage74a__fliph.jpg",
+      "train\\BLB\\thermalimage36a.jpg",
+      "test\\Blast\\Thermalimage1d__rot45.jpg",
+      "val\\healthy\\thermalimage8l__fliph.jpg",
+      "val\\healthy\\thermalimage6j__rot90.jpg",
+      "train\\hispa\\thermalimage15d__flipv.jpg",
+      "train\\healthy\\thermalimage8r__flipv.jpg",
+      "train\\BLB\\thermalimage3e__fliph.jpg",
+      "train\\hispa\\thermalimage9a__fliph.jpg",
+      "val\\leaf_spot\\thermalimage26c__rot-90.jpg",
+      "test\\hispa\\thermalimage15e.jpg",
+      "train\\BLB\\thermalimage5b__fliph.jpg",
+      "val\\Blast\\Thermalimage5d__rot90.jpg",
+      "test\\healthy\\thermalimage8z__fliph.jpg",
+      "train\\hispa\\thermalimage2b__flipv.jpg",
+      "train\\leaf_spot\\thermalimage24b.jpg",
+      "train\\hispa\\thermalimage71a__fliph.jpg",
+      "val\\hispa\\thermalimage29b__flipv.jpg",
+      "train\\hispa\\thermalimage65b__flipv.jpg",
+      "val\\BLB\\thermalimage58a__fliph.jpg",
+      "train\\Blast\\Thermalimage10i__rot90.jpg",
+      "train\\Blast\\Thermalimage9a__flipv.jpg",
+      "val\\BLB\\thermalimage28b.jpg",
+      "train\\healthy\\thermalimage8kk__rot-90.jpg",
+      "train\\leaf_spot\\thermalimage3a__rot-90.jpg",
+      "train\\healthy\\thermalimage8xx__rot90.jpg",
+      "train\\healthy\\thermalimage7a__rot-90.jpg",
+      "train\\healthy\\thermalimage8y__flipv.jpg",
+      "train\\BLB\\thermalimage2i__fliph.jpg",
+      "train\\hispa\\thermalimage__fliph.jpg",
+      "train\\Blast\\Thermalimage2a__rot45.jpg",
+      "test\\healthy\\thermalimage5a__rot90.jpg",
+      "train\\leaf_spot\\thermalimage1j.jpg",
+      "test\\hispa\\thermalimage2a__flipv.jpg",
+      "test\\healthy\\thermalimage6a__fliph.jpg",
+      "train\\Blast\\Thermalimage1i__rot45.jpg",
+      "train\\hispa\\thermalimage14b__fliph.jpg",
+      "train\\BLB\\thermalimage65a__fliph.jpg",
+      "train\\leaf_spot\\thermalimage3a.jpg",
+      "train\\BLB\\thermalimage1d__fliph.jpg",
+      "val\\healthy\\thermalimage3c__fliph.jpg",
+      "train\\healthy\\thermalimage8y__rot90.jpg",
+      "val\\leaf_spot\\thermalimage30c__flipv.jpg",
+      "train\\hispa\\thermalimage1g.jpg",
+      "train\\BLB\\thermalimage2g.jpg",
+      "train\\Blast\\Thermalimage1g__rot45.jpg",
+      "train\\Blast\\Thermalimage11g__rot-90.jpg",
+      "train\\BLB\\thermalimage59b.jpg",
+      "train\\BLB\\thermalimage22a.jpg",
+      "val\\leaf_spot\\thermalimage1k__flipv.jpg",
+      "val\\Blast\\Thermalimage10a__rot90.jpg",
+      "train\\hispa\\thermalimage28a.jpg",
+      "test\\Blast\\Thermalimage9b.jpg",
+      "val\\leaf_spot\\thermalimage24b__flipv.jpg",
+      "train\\BLB\\thermalimage50a__fliph.jpg",
+      "train\\Blast\\Thermalimage10b__rot-90.jpg",
+      "train\\hispa\\thermalimage50a.jpg",
+      "train\\hispa\\thermalimage4a__fliph.jpg",
+      "train\\hispa\\thermalimage61a__flipv.jpg",
+      "train\\BLB\\thermalimage16a__fliph.jpg",
+      "train\\Blast\\Thermalimage10h__rot-45.jpg",
+      "test\\healthy\\thermalimage6t__rot-90.jpg",
+      "train\\healthy\\thermalimage6i__fliph.jpg",
+      "val\\BLB\\thermalimage103f__fliph.jpg",
+      "train\\hispa\\thermalimage15g.jpg",
+      "test\\BLB\\thermalimage70c.jpg",
+      "train\\hispa\\thermalimage5a__fliph.jpg",
+      "train\\healthy\\thermalimage6q__fliph.jpg",
+      "train\\healthy\\thermalimage8j__rot90.jpg",
+      "test\\leaf_spot\\thermalimage33b__fliph.jpg",
+      "train\\Blast\\Thermalimage10a__rot-45.jpg",
+      "train\\Blast\\Thermalimage5b__flipv.jpg",
+      "train\\healthy\\thermalimage8r.jpg",
+      "train\\leaf_spot\\thermalimage27a__rot90.jpg",
+      "train\\BLB\\thermalimage62g.jpg",
+      "test\\hispa\\thermalimage29c__flipv.jpg",
+      "test\\hispa\\thermalimage63b__fliph.jpg",
+      "train\\healthy\\thermalimage4c__fliph.jpg",
+      "train\\leaf_spot\\thermalimage2b__rot-90.jpg",
+      "train\\healthy\\thermalimage6g__rot90.jpg",
+      "train\\BLB\\thermalimage32b__fliph.jpg",
+      "train\\BLB\\thermalimage82c__fliph.jpg",
+      "train\\BLB\\thermalimage5g.jpg",
+      "test\\leaf_spot\\thermalimage21a__rot90.jpg",
+      "train\\healthy\\thermalimage8ff__rot-90.jpg",
+      "train\\BLB\\thermalimage1d.jpg",
+      "train\\leaf_spot\\thermalimage28a__flipv.jpg",
+      "train\\hispa\\thermalimage65b__fliph.jpg",
+      "train\\healthy\\thermalimage5b__rot90.jpg",
+      "train\\Blast\\Thermalimage11i__rot90.jpg",
+      "val\\healthy\\thermalimage8ii.jpg",
+      "train\\hispa\\thermalimage6b__flipv.jpg",
+      "test\\healthy\\thermalimage8jj__rot-90.jpg",
+      "val\\leaf_spot\\thermalimage9a.jpg",
+      "train\\hispa\\thermalimage57b__flipv.jpg",
+      "train\\Blast\\Thermalimage11m.jpg",
+      "train\\leaf_spot\\thermalimage31c__rot-90.jpg",
+      "train\\Blast\\Thermalimage1d__rot90.jpg",
+      "val\\BLB\\thermalimage76a__fliph.jpg",
+      "train\\Blast\\Thermalimagex__fliph.jpg",
+      "train\\leaf_spot\\thermalimage21a__fliph.jpg",
+      "val\\hispa\\thermalimage1e__fliph.jpg",
+      "test\\Blast\\Thermalimage11l__rot45.jpg",
+      "train\\healthy\\thermalimage8i__flipv.jpg",
+      "train\\healthy\\thermalimage8dd__fliph.jpg",
+      "train\\Blast\\Thermalimage11f__rot90.jpg",
+      "val\\Blast\\Thermalimage1h__fliph.jpg",
+      "test\\BLB\\thermalimage48a.jpg",
+      "train\\Blast\\Thermalimage1i__rot-90.jpg",
+      "train\\Blast\\Thermalimage3a.jpg",
+      "train\\hispa\\thermalimage13a.jpg",
+      "train\\hispa\\thermalimage16m__fliph.jpg",
+      "train\\Blast\\Thermalimage1a__rot90.jpg",
+      "train\\healthy\\thermalimage5b__rot-90.jpg",
+      "train\\BLB\\thermalimage18b.jpg",
+      "train\\healthy\\thermalimage8w.jpg",
+      "train\\leaf_spot\\thermalimage24a__rot-90.jpg",
+      "train\\healthy\\thermalimage6e.jpg",
+      "train\\Blast\\Thermalimage10c__rot-45.jpg",
+      "val\\leaf_spot\\thermalimage31a__flipv.jpg",
+      "train\\healthy\\thermalimage8ii__rot-90.jpg",
+      "val\\BLB\\thermalimage61b__fliph.jpg",
+      "train\\healthy\\thermalimage8e__fliph.jpg",
+      "test\\leaf_spot\\thermalimage2d__rot-90.jpg",
+      "test\\leaf_spot\\thermalimage1a__rot90.jpg",
+      "train\\leaf_spot\\thermalimage17a__fliph.jpg",
+      "test\\BLB\\thermalimage72c__fliph.jpg",
+      "test\\leaf_spot\\thermalimage30a__rot90.jpg",
+      "train\\healthy\\thermalimage3b__rot-90.jpg",
+      "train\\BLB\\thermalimage4b.jpg",
+      "train\\hispa\\thermalimage29b__fliph.jpg",
+      "train\\Blast\\Thermalimage11f__flipv.jpg",
+      "train\\hispa\\thermalimage6a.jpg",
+      "train\\healthy\\thermalimage6k__flipv.jpg",
+      "val\\leaf_spot\\thermalimage1b__rot90.jpg",
+      "train\\hispa\\thermalimage1b__fliph.jpg",
+      "train\\leaf_spot\\thermalimage26c.jpg",
+      "test\\healthy\\thermalimage2a__rot-90.jpg",
+      "val\\hispa\\thermalimage63a__flipv.jpg",
+      "train\\BLB\\thermalimage75a__fliph.jpg",
+      "train\\BLB\\thermalimage22a__fliph.jpg",
+      "train\\BLB\\thermalimage19a__fliph.jpg",
+      "train\\BLB\\thermalimage3d.jpg",
+      "train\\leaf_spot\\thermalimage33b.jpg",
+      "val\\Blast\\Thermalimage1h.jpg",
+      "train\\BLB\\thermalimage72b.jpg",
+      "train\\Blast\\Thermalimage10g.jpg",
+      "val\\Blast\\Thermalimage9d__flipv.jpg",
+      "val\\Blast\\Thermalimage5e.jpg",
+      "train\\Blast\\Thermalimage11v.jpg",
+      "train\\BLB\\thermalimage2j.jpg",
+      "test\\Blast\\Thermalimage7b__rot-90.jpg",
+      "val\\Blast\\Thermalimage11f.jpg",
+      "val\\leaf_spot\\thermalimage30c__rot-90.jpg",
+      "train\\Blast\\Thermalimage1i__rot-45.jpg",
+      "train\\healthy\\thermalimage3b__flipv.jpg",
+      "test\\healthy\\thermalimage6s__rot90.jpg",
+      "train\\leaf_spot\\thermalimage12f__fliph.jpg",
+      "val\\hispa\\thermalimage__flipv.jpg",
+      "val\\leaf_spot\\thermalimage33c__fliph.jpg",
+      "test\\healthy\\thermalimage8a.jpg",
+      "train\\hispa\\thermalimage13c__fliph.jpg",
+      "val\\hispa\\thermalimage16m__flipv.jpg",
+      "test\\healthy\\thermalimage6o__rot-90.jpg",
+      "val\\Blast\\Thermalimage10o.jpg",
+      "train\\BLB\\thermalimage82b__fliph.jpg",
+      "val\\Blast\\Thermalimage10f__fliph.jpg",
+      "train\\hispa\\thermalimage58b.jpg",
+      "train\\leaf_spot\\thermalimage32c.jpg",
+      "train\\healthy\\thermalimage5a__flipv.jpg",
+      "test\\leaf_spot\\thermalimage25a__fliph.jpg",
+      "train\\hispa\\thermalimage52a__fliph.jpg",
+      "train\\leaf_spot\\thermalimage2i__flipv.jpg",
+      "train\\hispa\\thermalimage5a__flipv.jpg",
+      "train\\BLB\\thermalimage62h__fliph.jpg",
+      "train\\healthy\\thermalimage8r__rot-90.jpg",
+      "test\\leaf_spot\\thermalimage7a__rot90.jpg",
+      "val\\BLB\\thermalimage104e.jpg",
+      "train\\BLB\\thermalimage12a.jpg",
+      "train\\BLB\\thermalimage104b__fliph.jpg",
+      "train\\BLB\\thermalimage2b.jpg",
+      "train\\healthy\\thermalimage8u.jpg",
+      "train\\Blast\\Thermalimage1e__rot90.jpg",
+      "test\\leaf_spot\\thermalimage25b__rot90.jpg",
+      "val\\healthy\\thermalimage8j__flipv.jpg",
+      "train\\leaf_spot\\thermalimage29b__rot90.jpg",
+      "val\\healthy\\thermalimage8qq.jpg",
+      "val\\leaf_spot\\thermalimage27b.jpg",
+      "train\\Blast\\Thermalimage10l__rot-90.jpg",
+      "test\\hispa\\thermalimage59b.jpg",
+      "test\\hispa\\thermalimage2b.jpg",
+      "val\\hispa\\thermalimage15d__fliph.jpg",
+      "val\\Blast\\Thermalimage5a__rot-90.jpg",
+      "train\\hispa\\thermalimage59a__flipv.jpg",
+      "train\\hispa\\thermalimage39a__fliph.jpg",
+      "train\\healthy\\thermalimage6f__rot-90.jpg",
+      "val\\healthy\\thermalimage8y__rot-90.jpg",
+      "train\\hispa\\thermalimage10a__flipv.jpg",
+      "val\\Blast\\Thermalimage9g__rot45.jpg",
+      "train\\hispa\\thermalimage51a.jpg",
+      "train\\BLB\\thermalimage52a.jpg",
+      "train\\healthy\\thermalimage6l.jpg",
+      "train\\healthy\\thermalimage8o.jpg",
+      "val\\hispa\\thermalimage56a__flipv.jpg",
+      "train\\Blast\\Thermalimage1e.jpg",
+      "train\\hispa\\thermalimage5b.jpg",
+      "train\\Blast\\Thermalimage11c__rot90.jpg",
+      "train\\Blast\\Thermalimage10h__fliph.jpg",
+      "train\\leaf_spot\\thermalimage33c__rot90.jpg",
+      "val\\leaf_spot\\thermalimage8a__fliph.jpg",
+      "val\\Blast\\Thermalimage10n__fliph.jpg",
+      "train\\healthy\\thermalimage8rr.jpg",
+      "train\\hispa\\thermalimage55a.jpg",
+      "train\\Blast\\Thermalimage10j__rot90.jpg",
+      "train\\leaf_spot\\thermalimage1j__flipv.jpg",
+      "train\\hispa\\thermalimage12b__fliph.jpg",
+      "train\\hispa\\thermalimage7a.jpg",
+      "test\\healthy\\thermalimage8u__rot90.jpg",
+      "test\\Blast\\Thermalimage11k__rot45.jpg",
+      "train\\BLB\\thermalimage98a.jpg",
+      "train\\leaf_spot\\thermalimage2a__fliph.jpg",
+      "train\\leaf_spot\\thermalimage1e.jpg",
+      "train\\Blast\\Thermalimage11w__rot-90.jpg",
+      "test\\Blast\\Thermalimage11o__fliph.jpg",
+      "train\\healthy\\thermalimage6a__flipv.jpg",
+      "val\\BLB\\thermalimage4f.jpg",
+      "train\\leaf_spot\\thermalimage1k__fliph.jpg",
+      "train\\leaf_spot\\thermalimage2g__rot-90.jpg",
+      "train\\hispa\\thermalimage43a__fliph.jpg",
+      "val\\healthy\\thermalimage8v.jpg",
+      "train\\healthy\\thermalimage8oo.jpg",
+      "train\\healthy\\thermalimage8aa.jpg",
+      "train\\BLB\\thermalimage42a.jpg",
+      "train\\BLB\\thermalimage39a.jpg",
+      "train\\Blast\\Thermalimage10m__rot45.jpg",
+      "train\\healthy\\thermalimage8s__fliph.jpg",
+      "train\\BLB\\thermalimage62f__fliph.jpg",
+      "val\\Blast\\Thermalimage9c__flipv.jpg",
+      "train\\leaf_spot\\thermalimage6a.jpg",
+      "val\\BLB\\thermalimage71a__fliph.jpg",
+      "test\\hispa\\thermalimage16n__fliph.jpg",
+      "train\\Blast\\Thermalimage11d__rot45.jpg",
+      "val\\Blast\\Thermalimage8b__rot45.jpg",
+      "train\\BLB\\thermalimage103e.jpg",
+      "train\\Blast\\Thermalimage10e__rot-45.jpg",
+      "val\\BLB\\thermalimage9a__fliph.jpg",
+      "train\\healthy\\thermalimage7b__rot-90.jpg",
+      "train\\hispa\\thermalimage23a.jpg",
+      "train\\leaf_spot\\thermalimage27b__fliph.jpg",
+      "test\\leaf_spot\\thermalimage24a.jpg",
+      "val\\hispa\\thermalimage44a__flipv.jpg",
+      "train\\hispa\\thermalimage22a__flipv.jpg",
+      "train\\hispa\\thermalimage23a__flipv.jpg",
+      "train\\BLB\\thermalimage32a__fliph.jpg",
+      "train\\leaf_spot\\thermalimage31b.jpg",
+      "train\\BLB\\thermalimage4g.jpg",
+      "val\\BLB\\thermalimage96a.jpg",
+      "train\\Blast\\Thermalimage11s__fliph.jpg",
+      "train\\Blast\\Thermalimage11v__rot45.jpg",
+      "train\\hispa\\thermalimage28a__flipv.jpg",
+      "train\\Blast\\Thermalimage9g__rot-90.jpg",
+      "train\\leaf_spot\\thermalimage10a.jpg",
+      "val\\Blast\\Thermalimage1h__rot-90.jpg",
+      "train\\Blast\\Thermalimage11w__rot90.jpg",
+      "train\\leaf_spot\\thermalimage28c__rot90.jpg",
+      "test\\hispa\\thermalimage50a__flipv.jpg",
+      "train\\leaf_spot\\thermalimage19a.jpg",
+      "train\\Blast\\Thermalimage11o__rot-90.jpg",
+      "train\\Blast\\Thermalimage1a.jpg",
+      "train\\Blast\\Thermalimage3a__rot-90.jpg",
+      "train\\healthy\\thermalimage6r__flipv.jpg",
+      "train\\BLB\\thermalimage80a.jpg",
+      "val\\healthy\\thermalimage6c__flipv.jpg",
+      "val\\healthy\\thermalimage8mm__rot-90.jpg",
+      "train\\hispa\\thermalimage33a.jpg",
+      "train\\BLB\\thermalimage90a.jpg",
+      "train\\healthy\\thermalimage4a__fliph.jpg",
+      "val\\healthy\\thermalimage8tt__rot90.jpg",
+      "train\\hispa\\thermalimage16a.jpg",
+      "train\\healthy\\thermalimage3b.jpg",
+      "test\\leaf_spot\\thermalimage2a__rot-90.jpg",
+      "train\\BLB\\thermalimage2k__fliph.jpg"
+    ],
+    "probabilities": [
+      [
+        5.641758726859791e-10,
+        0.9999991655349731,
+        2.703801840198139e-07,
+        1.489860412817734e-08,
+        6.205340241649537e-07
+      ],
+      [
+        0.999998927116394,
+        1.2214910506680443e-11,
+        9.452766676076862e-07,
+        1.504741362623463e-07,
+        2.0848549553420526e-09
+      ],
+      [
+        7.0483835781787185e-12,
+        0.9999998807907104,
+        6.498628835061027e-08,
+        1.9388549432619584e-08,
+        1.8020829273268646e-08
+      ],
+      [
+        0.999992847442627,
+        2.7469951226904987e-12,
+        7.117449968063738e-06,
+        3.2898087032329215e-10,
+        7.975404336946212e-09
+      ],
+      [
+        4.1992705970481103e-13,
+        5.402161465557775e-13,
+        3.200560048616881e-16,
+        1.0,
+        8.339769269891104e-17
+      ],
+      [
+        4.329267611069554e-08,
+        7.299500737190101e-08,
+        4.359385741281585e-09,
+        0.9999998807907104,
+        6.056575596949387e-13
+      ],
+      [
+        3.789177860369364e-09,
+        2.8159884095657617e-05,
+        0.9991462230682373,
+        9.882404228278574e-09,
+        0.000825626018922776
+      ],
+      [
+        0.999559223651886,
+        6.01715370862621e-08,
+        0.0002343889937037602,
+        1.487975623604143e-06,
+        0.00020479306112974882
+      ],
+      [
+        4.3077903683297336e-05,
+        0.0031644951086491346,
+        5.3279251005733386e-05,
+        0.9967383742332458,
+        7.301874802578823e-07
+      ],
+      [
+        1.1395919763401707e-08,
+        8.248680849476386e-09,
+        1.6135398572814097e-10,
+        1.0,
+        1.6116918726254842e-13
+      ],
+      [
+        1.434291050372849e-07,
+        0.0001225624291691929,
+        0.0003688645956572145,
+        7.498205434330885e-08,
+        0.9995083808898926
+      ],
+      [
+        0.00010753692185971886,
+        0.9956102967262268,
+        0.0003607329854276031,
+        0.0038001968059688807,
+        0.00012125238572480157
+      ],
+      [
+        0.0006576512241736054,
+        0.0005867193685844541,
+        0.009827331639826298,
+        4.8960868298308924e-05,
+        0.9888793230056763
+      ],
+      [
+        0.9999834299087524,
+        2.1176397441147188e-11,
+        1.6538077034056187e-05,
+        2.397320919556023e-08,
+        8.321848210535165e-10
+      ],
+      [
+        0.9998413324356079,
+        1.679189676195847e-09,
+        0.00015781533147674054,
+        6.137009904705337e-07,
+        2.0326395144820708e-07
+      ],
+      [
+        0.9935864806175232,
+        1.777821125870105e-05,
+        0.0003509840171318501,
+        0.0004645018489100039,
+        0.0055803461000323296
+      ],
+      [
+        0.6086001992225647,
+        4.833990169572644e-05,
+        0.00029113932396285236,
+        0.0003506212087813765,
+        0.39070969820022583
+      ],
+      [
+        4.644591378166751e-09,
+        0.9996838569641113,
+        4.9365730774297845e-06,
+        0.00031116767786443233,
+        1.036454122527175e-07
+      ],
+      [
+        0.7427805066108704,
+        0.000221583730308339,
+        0.0008239443995989859,
+        0.0025949962437152863,
+        0.25357896089553833
+      ],
+      [
+        1.911992265901663e-11,
+        0.9999998807907104,
+        9.258527278177553e-09,
+        1.339245336851036e-08,
+        6.176188094286772e-08
+      ],
+      [
+        5.270688774317023e-08,
+        6.924107509576061e-08,
+        0.9999966621398926,
+        2.0015143709084526e-10,
+        3.212843921573949e-06
+      ],
+      [
+        1.7135043384186588e-09,
+        3.0423714747485064e-07,
+        2.024618197538075e-07,
+        4.780705692430942e-11,
+        0.9999995231628418
+      ],
+      [
+        4.161222408316512e-11,
+        8.284546026970929e-08,
+        0.999998927116394,
+        1.439705438199823e-10,
+        9.77463741946849e-07
+      ],
+      [
+        6.008511945765349e-07,
+        2.6950479181664377e-08,
+        0.9999992847442627,
+        3.032282758219651e-10,
+        1.3316558522546984e-07
+      ],
+      [
+        8.194606451739084e-12,
+        1.2727024056857772e-07,
+        0.9999990463256836,
+        1.7195955770432647e-10,
+        8.481329700771312e-07
+      ],
+      [
+        0.00011274381540715694,
+        1.3793144717055839e-05,
+        0.0010471210116520524,
+        1.7702870991342934e-06,
+        0.9988245368003845
+      ],
+      [
+        0.0007595873903483152,
+        6.405188469216228e-05,
+        0.0014492045156657696,
+        3.9260112316696905e-06,
+        0.9977231621742249
+      ],
+      [
+        2.5281915441155434e-06,
+        0.0002729441039264202,
+        1.0706920875236392e-05,
+        1.1862748117152933e-08,
+        0.9997138381004333
+      ],
+      [
+        6.337026389746647e-12,
+        1.9443226051407692e-07,
+        0.9999954700469971,
+        1.793000123373467e-11,
+        4.290387551009189e-06
+      ],
+      [
+        8.515716558576969e-07,
+        0.002079595113173127,
+        6.9989714575058315e-06,
+        0.9979124665260315,
+        7.124120315893379e-08
+      ],
+      [
+        0.9999960660934448,
+        1.9852632038297457e-10,
+        3.658792365968111e-06,
+        6.565019816662243e-08,
+        6.205637959055821e-08
+      ],
+      [
+        1.5893716636128374e-06,
+        0.9996930360794067,
+        6.861755537101999e-06,
+        0.0002941249404102564,
+        4.351368261268362e-06
+      ],
+      [
+        0.0007763616158626974,
+        0.0006626917165704072,
+        0.00041806985973380506,
+        0.998123824596405,
+        1.9038481696043164e-05
+      ],
+      [
+        2.081792899844004e-06,
+        1.0282791663485114e-05,
+        9.632352657718002e-07,
+        8.866234857407562e-09,
+        0.9999866485595703
+      ],
+      [
+        1.6339132713483195e-08,
+        0.9999884366989136,
+        1.6267441651507397e-06,
+        9.661473995947745e-06,
+        2.274918813327531e-07
+      ],
+      [
+        0.0003936587308999151,
+        0.00011438775254646316,
+        0.0005964452284388244,
+        5.359640340429905e-07,
+        0.998894989490509
+      ],
+      [
+        0.9999366998672485,
+        4.038224615809938e-11,
+        6.331095210043713e-05,
+        8.195374157082824e-09,
+        3.723060260085731e-08
+      ],
+      [
+        3.0087858249316923e-07,
+        4.755658210342517e-06,
+        6.330777324592418e-08,
+        0.9999948740005493,
+        7.046550842826349e-11
+      ],
+      [
+        6.988012302144853e-08,
+        7.961197115946561e-05,
+        0.9998910427093506,
+        1.2994697499379981e-05,
+        1.6273979781544767e-05
+      ],
+      [
+        0.999975323677063,
+        2.1524826365748595e-09,
+        2.386180858593434e-05,
+        6.902088784954685e-07,
+        1.6154716320215812e-07
+      ],
+      [
+        0.9962795376777649,
+        7.197764261945849e-06,
+        0.0028813774697482586,
+        0.0003738106170203537,
+        0.0004580691456794739
+      ],
+      [
+        1.3670617526884143e-08,
+        2.4078847218333976e-06,
+        0.9999847412109375,
+        5.684467296873663e-08,
+        1.2916884770675097e-05
+      ],
+      [
+        1.8181336991496266e-10,
+        0.9999991655349731,
+        2.5697556793602416e-07,
+        1.958608741858825e-08,
+        5.687876409865567e-07
+      ],
+      [
+        0.9930769205093384,
+        2.4278302589664236e-05,
+        0.0011502427514642477,
+        0.0015820235712453723,
+        0.004166679922491312
+      ],
+      [
+        9.477902835897112e-07,
+        0.029063429683446884,
+        0.9463200569152832,
+        1.5743957192171365e-05,
+        0.024599770084023476
+      ],
+      [
+        1.5559113719643136e-10,
+        3.761406787816668e-06,
+        0.999966025352478,
+        2.208522253965839e-09,
+        3.0186924050212838e-05
+      ],
+      [
+        1.1180442015756853e-05,
+        1.0752269190561492e-05,
+        0.004154842812567949,
+        4.213093234284315e-07,
+        0.9958227872848511
+      ],
+      [
+        1.0964300827254192e-06,
+        0.9986149072647095,
+        5.054634129919577e-06,
+        0.0013735793763771653,
+        5.528447218239307e-06
+      ],
+      [
+        0.9992719292640686,
+        1.0767245584020202e-07,
+        0.00047779438318684697,
+        5.484737357619451e-06,
+        0.00024467118782922626
+      ],
+      [
+        0.9999518394470215,
+        6.022154774854016e-09,
+        1.8877799448091537e-05,
+        2.934916665253695e-05,
+        9.450465299210009e-09
+      ],
+      [
+        2.6340066239249893e-10,
+        0.9999939203262329,
+        5.799052814836614e-06,
+        7.446549687983861e-08,
+        1.4397964775980654e-07
+      ],
+      [
+        3.2465347077348383e-10,
+        1.2860588149976593e-09,
+        1.0,
+        5.081992552474768e-12,
+        2.5389800484276748e-08
+      ],
+      [
+        8.196515514924396e-12,
+        4.040633427848661e-08,
+        0.9999994039535522,
+        2.830767391326372e-11,
+        6.450165415117226e-07
+      ],
+      [
+        3.107565191839967e-07,
+        0.0003951741964556277,
+        6.044797373760957e-07,
+        0.9996039271354675,
+        3.4396641090950197e-10
+      ],
+      [
+        6.211716030435355e-09,
+        1.9715892562999215e-07,
+        0.9999990463256836,
+        2.662582332391139e-08,
+        7.039272986730793e-07
+      ],
+      [
+        0.9998261332511902,
+        4.921336653751496e-07,
+        9.981111361412331e-05,
+        1.0150218940907507e-06,
+        7.254318188643083e-05
+      ],
+      [
+        4.822705079732259e-08,
+        3.6955967175344995e-07,
+        7.125680601127726e-10,
+        0.9999995231628418,
+        6.231833715730772e-09
+      ],
+      [
+        9.172431703063921e-09,
+        2.343655722825133e-07,
+        2.2489483342269523e-07,
+        3.495185044166682e-11,
+        0.9999995231628418
+      ],
+      [
+        2.599951087756125e-10,
+        3.7309075828773075e-09,
+        5.360441257540316e-12,
+        1.0,
+        3.990206534870526e-14
+      ],
+      [
+        0.9983606934547424,
+        2.37948415815481e-06,
+        8.517690002918243e-05,
+        0.00010208631283603609,
+        0.001449529780074954
+      ],
+      [
+        5.219198442318884e-07,
+        0.9975605010986328,
+        0.0002742748474702239,
+        6.106224645918701e-06,
+        0.0021587125957012177
+      ],
+      [
+        1.0070593248201476e-09,
+        1.192291421148184e-07,
+        0.9999991655349731,
+        3.082420152455967e-10,
+        6.626295885325817e-07
+      ],
+      [
+        1.2941715795022901e-05,
+        0.00041823211358860135,
+        2.91873948299326e-05,
+        0.999536395072937,
+        3.2079092306958046e-06
+      ],
+      [
+        2.4116802705975715e-06,
+        6.472799379819705e-11,
+        1.1638224606258518e-08,
+        5.982216805255902e-11,
+        0.999997615814209
+      ],
+      [
+        5.0463087973184884e-05,
+        9.663148375693709e-06,
+        1.2869264764958643e-06,
+        0.9999386072158813,
+        5.9042015720933705e-09
+      ],
+      [
+        1.4892784783171464e-09,
+        2.5157930849672994e-08,
+        3.242658919155872e-11,
+        1.0,
+        2.6658102392218552e-09
+      ],
+      [
+        2.584437552854979e-09,
+        4.6456941071859603e-10,
+        6.215054512703766e-12,
+        1.0,
+        2.378463221934155e-16
+      ],
+      [
+        0.9999867677688599,
+        3.903998546661569e-08,
+        1.0543994903855491e-05,
+        2.591559905340546e-06,
+        8.354837177648733e-08
+      ],
+      [
+        8.270593411519034e-12,
+        0.9999995231628418,
+        3.180685155257379e-07,
+        3.967691952766472e-08,
+        1.0494829894014401e-07
+      ],
+      [
+        2.6169036573264748e-06,
+        0.9994229078292847,
+        5.901885742787272e-06,
+        0.0005659186863340437,
+        2.5786871447053272e-06
+      ],
+      [
+        0.9999974966049194,
+        1.2889532774451595e-09,
+        2.4076491627056384e-06,
+        9.118639354710467e-08,
+        2.419214695237315e-08
+      ],
+      [
+        2.8095741289035914e-09,
+        1.4694600395159796e-05,
+        0.9998992681503296,
+        1.2027171480966103e-09,
+        8.605574839748442e-05
+      ],
+      [
+        3.496706535432992e-10,
+        4.6596042579949426e-07,
+        1.585413968996363e-07,
+        1.0022627866534961e-10,
+        0.9999994039535522
+      ],
+      [
+        4.820288168616571e-09,
+        0.00028850880335085094,
+        0.9994475245475769,
+        1.781346412599305e-07,
+        0.00026374205481261015
+      ],
+      [
+        4.810777998187632e-09,
+        0.0008740324410609901,
+        0.992139995098114,
+        1.55980135474465e-08,
+        0.006985990796238184
+      ],
+      [
+        1.155807581199042e-06,
+        0.0019996350165456533,
+        0.9976911544799805,
+        8.56159022077918e-05,
+        0.0002223920455435291
+      ],
+      [
+        0.920931339263916,
+        0.007406675722450018,
+        0.020554905757308006,
+        0.04180412366986275,
+        0.009302987717092037
+      ],
+      [
+        2.4332910797397744e-08,
+        3.5074917832389474e-05,
+        3.40112705998763e-07,
+        0.9999645948410034,
+        3.8066179541829115e-08
+      ],
+      [
+        3.8877185914998336e-08,
+        0.9999679327011108,
+        6.097225650592009e-06,
+        1.3087502566122566e-06,
+        2.465126999595668e-05
+      ],
+      [
+        4.875320286368279e-11,
+        3.7044399050500942e-06,
+        0.9999686479568481,
+        3.9133618567888107e-10,
+        2.770950050035026e-05
+      ],
+      [
+        0.0068886843509972095,
+        0.00037822528975084424,
+        0.0006615978199988604,
+        0.0026801396161317825,
+        0.9893913269042969
+      ],
+      [
+        0.00021948017820250243,
+        0.001023696269840002,
+        0.00018210927373729646,
+        0.9985544085502625,
+        2.0386041796882637e-05
+      ],
+      [
+        2.86822014459176e-05,
+        2.0024415903208137e-07,
+        0.9999394416809082,
+        1.7829414389325393e-08,
+        3.168937473674305e-05
+      ],
+      [
+        1.5368314398855887e-09,
+        0.9999330043792725,
+        6.575317092938349e-05,
+        1.407991305768519e-07,
+        1.12262500806537e-06
+      ],
+      [
+        6.203167146612287e-11,
+        1.5242140882776312e-10,
+        1.4605649318027297e-13,
+        1.0,
+        3.1063298566963264e-15
+      ],
+      [
+        0.9998482465744019,
+        4.853372370661191e-09,
+        0.00012149290705565363,
+        1.6527319530723616e-06,
+        2.8550590286613442e-05
+      ],
+      [
+        6.845797906862572e-05,
+        7.668092507628899e-07,
+        3.5728913644561544e-05,
+        5.969536687189247e-07,
+        0.999894380569458
+      ],
+      [
+        0.41849470138549805,
+        0.09754924476146698,
+        0.05323321372270584,
+        0.3528510332107544,
+        0.07787182927131653
+      ],
+      [
+        0.28064072132110596,
+        0.02346547320485115,
+        0.6446983814239502,
+        0.04394712671637535,
+        0.0072482614777982235
+      ],
+      [
+        9.566670122751475e-09,
+        0.0011598175624385476,
+        0.9981557726860046,
+        4.776271680384525e-07,
+        0.0006839261041022837
+      ],
+      [
+        3.0569228215426847e-07,
+        0.00012662996596191078,
+        0.00010368802031734958,
+        3.085671096414444e-07,
+        0.9997690320014954
+      ],
+      [
+        4.927185727865435e-06,
+        0.003710056422278285,
+        6.156799940981728e-07,
+        0.9962843656539917,
+        2.8761197867765986e-09
+      ],
+      [
+        1.0,
+        3.560231265613972e-14,
+        4.132238018428325e-08,
+        1.1952260361991485e-11,
+        3.232557832522076e-10
+      ],
+      [
+        1.305438646070911e-09,
+        0.9998811483383179,
+        0.00011632975656539202,
+        2.1060427002339566e-07,
+        2.2629637896898203e-06
+      ],
+      [
+        1.504124741424917e-10,
+        0.9999997615814209,
+        8.974377863069094e-08,
+        2.190081715980341e-08,
+        1.0017983953503062e-07
+      ],
+      [
+        0.9999737739562988,
+        1.9200728118562438e-08,
+        2.284357833559625e-05,
+        4.874472097071703e-07,
+        2.8436409138521412e-06
+      ],
+      [
+        0.999996542930603,
+        1.6935775004611742e-10,
+        3.4784904983098386e-06,
+        1.9684796015440043e-08,
+        3.853094288075454e-09
+      ],
+      [
+        0.00010964697867166251,
+        2.6561938284430653e-05,
+        0.0008024955168366432,
+        7.676566724512668e-07,
+        0.9990605711936951
+      ],
+      [
+        4.1082504065315106e-10,
+        0.9999679327011108,
+        2.364372085139621e-05,
+        4.455500004496571e-07,
+        7.967486453708261e-06
+      ],
+      [
+        1.5633858096997244e-10,
+        4.911967721454857e-07,
+        5.92848159453041e-10,
+        0.9999995231628418,
+        8.365635406626382e-10
+      ],
+      [
+        1.3575379398389487e-07,
+        0.999329686164856,
+        3.0894329938746523e-06,
+        0.0006660281796939671,
+        1.0739240678958595e-06
+      ],
+      [
+        4.208089432466977e-09,
+        1.8595844863966704e-08,
+        3.30450802721316e-07,
+        1.0823295593098692e-09,
+        0.9999996423721313
+      ],
+      [
+        0.9999938011169434,
+        9.675779275020169e-12,
+        6.160602879390353e-06,
+        1.0914071868484143e-09,
+        4.057524094491782e-08
+      ],
+      [
+        1.0423500640399652e-07,
+        0.950432538986206,
+        0.012701010331511497,
+        9.62149442784721e-07,
+        0.03686549514532089
+      ],
+      [
+        2.120615152662736e-13,
+        8.06705613767833e-13,
+        3.2484449387075345e-16,
+        1.0,
+        2.01711301093506e-16
+      ],
+      [
+        1.355465628627428e-09,
+        3.1654441290385193e-09,
+        6.869892241884168e-12,
+        1.0,
+        1.562398214277616e-12
+      ],
+      [
+        3.161007725793752e-06,
+        2.064728323603049e-05,
+        3.403711616556393e-06,
+        0.9998195767402649,
+        0.00015326404536608607
+      ],
+      [
+        0.9992764592170715,
+        4.266645134975988e-07,
+        0.0001464206143282354,
+        0.0005746257957071066,
+        1.999834694288438e-06
+      ],
+      [
+        7.514366733019084e-12,
+        1.0,
+        3.8455946760329596e-10,
+        3.418485716721875e-09,
+        5.31271859838256e-10
+      ],
+      [
+        2.8294283149071786e-12,
+        8.850000909887967e-08,
+        0.9999997615814209,
+        7.009774705135641e-11,
+        1.747750530967096e-07
+      ],
+      [
+        0.0030590796377509832,
+        0.035561453551054,
+        0.9212890863418579,
+        0.007369840983301401,
+        0.032720521092414856
+      ],
+      [
+        0.18926167488098145,
+        0.013173401355743408,
+        0.049356766045093536,
+        0.7461112141609192,
+        0.00209699640981853
+      ],
+      [
+        3.1026649999210676e-11,
+        2.8041111099774696e-10,
+        7.3091933981001e-13,
+        1.0,
+        5.1632553484462496e-15
+      ],
+      [
+        0.9999856948852539,
+        1.7988137368529777e-10,
+        1.2643226000363939e-05,
+        3.5841811296677406e-08,
+        1.7164516066259239e-06
+      ],
+      [
+        4.6813886100949276e-09,
+        5.404420448940073e-07,
+        2.4600032233479396e-08,
+        0.9999992847442627,
+        1.7218467007751315e-07
+      ],
+      [
+        3.201971310318186e-08,
+        1.3265341713974976e-08,
+        1.0,
+        1.143290351279802e-09,
+        1.9865758815740264e-08
+      ],
+      [
+        1.059160953387206e-10,
+        4.96826351081836e-06,
+        0.9999603033065796,
+        3.972410844710339e-09,
+        3.469837974989787e-05
+      ],
+      [
+        4.1873630607369705e-07,
+        1.649643643908405e-09,
+        3.0844040566080366e-07,
+        8.71292621384967e-11,
+        0.9999992847442627
+      ],
+      [
+        4.435630753348756e-15,
+        1.0,
+        5.87333168211579e-11,
+        2.507289948577851e-12,
+        1.4857567953718842e-10
+      ],
+      [
+        4.0362817088634984e-08,
+        0.9998620748519897,
+        0.00011051990441046655,
+        2.6606579922372475e-05,
+        8.606378401054826e-07
+      ],
+      [
+        1.2716368402720946e-08,
+        1.1290262591501232e-07,
+        0.9999983310699463,
+        4.0563179481978295e-09,
+        1.5504973589486326e-06
+      ],
+      [
+        9.055394656343196e-08,
+        0.05714257061481476,
+        0.25400373339653015,
+        3.0838370435049e-07,
+        0.6888532638549805
+      ],
+      [
+        0.9999979734420776,
+        8.464386309914307e-12,
+        1.4833046861895127e-06,
+        3.414790450406713e-09,
+        5.817130954710592e-07
+      ],
+      [
+        8.648098059893528e-08,
+        6.927474169060588e-05,
+        2.492677992904646e-07,
+        0.9999262094497681,
+        4.114383955311496e-06
+      ],
+      [
+        2.2701170721006747e-08,
+        1.040968697907374e-07,
+        1.6274616099209993e-09,
+        0.9999998807907104,
+        6.343833236499563e-10
+      ],
+      [
+        0.000445018638856709,
+        0.0035197646357119083,
+        0.9941440224647522,
+        0.0013573382748290896,
+        0.0005338736809790134
+      ],
+      [
+        2.134079579718673e-09,
+        1.1608585737121757e-06,
+        9.792310606826504e-08,
+        6.507256539167727e-11,
+        0.9999986886978149
+      ],
+      [
+        6.537360430769468e-09,
+        1.0914030099229421e-05,
+        0.9998754262924194,
+        2.7369653210485012e-09,
+        0.0001135774509748444
+      ],
+      [
+        0.9966022968292236,
+        8.075349614955485e-05,
+        0.0005527232424356043,
+        0.0002589894866105169,
+        0.002505174372345209
+      ],
+      [
+        0.9996604919433594,
+        3.228921059417189e-07,
+        7.25797435734421e-05,
+        0.00021375871438067406,
+        5.2839659474557266e-05
+      ],
+      [
+        0.9870712161064148,
+        1.8746059140539728e-06,
+        6.819951522629708e-05,
+        6.115732685429975e-05,
+        0.012797500006854534
+      ],
+      [
+        3.026654127324946e-08,
+        5.0831538828788325e-05,
+        8.46643524710089e-05,
+        1.1987161485649267e-08,
+        0.9998644590377808
+      ],
+      [
+        3.4917301688919267e-11,
+        3.66472754365077e-08,
+        0.9999947547912598,
+        1.6763221019622243e-11,
+        5.262903869152069e-06
+      ],
+      [
+        0.39178696274757385,
+        0.11502086371183395,
+        0.06333699077367783,
+        0.25177985429763794,
+        0.17807526886463165
+      ],
+      [
+        3.795943939621793e-06,
+        0.014292589388787746,
+        0.1660945564508438,
+        6.017926807544427e-06,
+        0.8196030855178833
+      ],
+      [
+        2.3758011113983457e-09,
+        7.075901198305701e-09,
+        4.3064080079702194e-11,
+        1.0,
+        4.589196725543129e-14
+      ],
+      [
+        2.9056507173663704e-06,
+        0.28833088278770447,
+        0.02817373163998127,
+        5.018460797145963e-06,
+        0.6834874153137207
+      ],
+      [
+        3.335537054893756e-11,
+        0.9999998807907104,
+        7.418935865644016e-08,
+        8.28785307049884e-09,
+        3.245936852636078e-08
+      ],
+      [
+        1.315494500886416e-05,
+        2.8784206733689643e-06,
+        0.9999709129333496,
+        6.968578958321814e-08,
+        1.2869293641415425e-05
+      ],
+      [
+        3.947021198769107e-08,
+        7.895349881437141e-06,
+        9.690772913018009e-07,
+        0.9999909400939941,
+        1.2532787252439448e-07
+      ],
+      [
+        1.6230072841239007e-11,
+        2.1345266532080132e-07,
+        0.9999972581863403,
+        2.5213355708819662e-11,
+        2.4848125121934572e-06
+      ],
+      [
+        0.008505573496222496,
+        1.643083305680193e-05,
+        0.0004985391278751194,
+        7.098478818079457e-06,
+        0.9909723997116089
+      ],
+      [
+        0.00022998685017228127,
+        0.0007623010315001011,
+        4.510206053964794e-05,
+        0.9989607334136963,
+        1.856843255154672e-06
+      ],
+      [
+        5.201647468311421e-08,
+        0.9999964237213135,
+        6.720851501995639e-07,
+        2.4840594505803892e-06,
+        3.9828611875236675e-07
+      ],
+      [
+        2.3490391853897563e-09,
+        4.374230400117085e-07,
+        1.8873242879635654e-07,
+        4.094070568672059e-11,
+        0.9999994039535522
+      ],
+      [
+        1.6113029914777144e-06,
+        0.9866273999214172,
+        0.0074494038708508015,
+        7.336999260587618e-05,
+        0.005848235916346312
+      ],
+      [
+        0.9994179010391235,
+        5.205536695029878e-07,
+        0.0001284283061977476,
+        0.00044693597010336816,
+        6.33760328128119e-06
+      ],
+      [
+        5.010903914026699e-10,
+        0.9999995231628418,
+        1.5955630150443767e-09,
+        4.866237190981337e-07,
+        2.906379303890816e-10
+      ],
+      [
+        2.2264106519287452e-05,
+        0.0002318811893928796,
+        0.02854343131184578,
+        2.919279040725087e-06,
+        0.9711995720863342
+      ],
+      [
+        0.009267997927963734,
+        0.013781688176095486,
+        0.0008466535364277661,
+        0.9760832786560059,
+        2.03479085030267e-05
+      ],
+      [
+        5.011835130935838e-13,
+        1.0,
+        5.966074162477852e-11,
+        1.0814426021354961e-09,
+        1.9075092894116352e-10
+      ],
+      [
+        2.3628396461639056e-10,
+        1.3807913319396903e-06,
+        0.9999868869781494,
+        5.478314690776642e-09,
+        1.1736031410691794e-05
+      ],
+      [
+        1.0042479914318392e-07,
+        4.778464699484175e-07,
+        0.9999948740005493,
+        4.874697867585098e-10,
+        4.5137794586480595e-06
+      ],
+      [
+        1.3874328118682056e-12,
+        1.0,
+        3.0831812103393474e-10,
+        4.777191975335882e-10,
+        3.9507289106843757e-10
+      ],
+      [
+        2.6014037146637747e-08,
+        0.9999986886978149,
+        1.5884852189174126e-07,
+        1.195436084344692e-06,
+        5.378579803760886e-09
+      ],
+      [
+        0.9999955892562866,
+        6.686545306160141e-13,
+        4.368783720565261e-06,
+        2.9558269720730834e-10,
+        7.264443907528673e-11
+      ],
+      [
+        2.2642467456535087e-07,
+        0.992929995059967,
+        0.006735160481184721,
+        1.3393550943874288e-05,
+        0.0003212390001863241
+      ],
+      [
+        0.009368646889925003,
+        0.04778474569320679,
+        0.9192112684249878,
+        0.02064197137951851,
+        0.002993374364450574
+      ],
+      [
+        5.9716264051712376e-12,
+        2.7705145035777923e-12,
+        2.3564556118985938e-15,
+        1.0,
+        1.161861991207821e-16
+      ],
+      [
+        1.1891383877582484e-08,
+        4.5021472772077686e-08,
+        4.026015354430257e-10,
+        1.0,
+        9.473144491067842e-11
+      ],
+      [
+        4.14765224832081e-07,
+        0.9951800107955933,
+        0.00030728598358109593,
+        9.461717127123848e-06,
+        0.0045028747990727425
+      ],
+      [
+        0.0003257859207224101,
+        0.5684753656387329,
+        0.0053045013919472694,
+        0.00017419432697352022,
+        0.4257201552391052
+      ],
+      [
+        0.9999992847442627,
+        3.993042008154646e-11,
+        7.717878247603949e-07,
+        1.6445644845930474e-08,
+        3.133430404034243e-09
+      ],
+      [
+        2.3135257265494147e-07,
+        2.92852547545408e-07,
+        0.9999815225601196,
+        7.327774498300244e-10,
+        1.7944519640877843e-05
+      ],
+      [
+        7.136439772459369e-10,
+        1.508824709617329e-07,
+        1.8767046583434421e-07,
+        2.1848679809810534e-10,
+        0.9999996423721313
+      ],
+      [
+        1.1911749879800482e-06,
+        2.998591241976101e-08,
+        0.9999983310699463,
+        3.472384324521016e-10,
+        4.424285293680441e-07
+      ],
+      [
+        9.430373149044158e-13,
+        1.0,
+        7.243089461539398e-10,
+        1.000161398145849e-09,
+        2.5057542707429548e-09
+      ],
+      [
+        2.4298386051668786e-05,
+        0.026841970160603523,
+        0.04187341779470444,
+        1.9271676137577742e-05,
+        0.9312410354614258
+      ],
+      [
+        8.17966883914778e-06,
+        0.3911570906639099,
+        0.5991629958152771,
+        0.0001841118064476177,
+        0.00948762334883213
+      ],
+      [
+        0.999927282333374,
+        1.3453267666552193e-10,
+        7.273279334185645e-05,
+        1.4465446618316946e-09,
+        3.277346394270353e-08
+      ],
+      [
+        0.0035320622846484184,
+        0.8774731159210205,
+        0.10752154886722565,
+        0.010108113288879395,
+        0.0013652037596330047
+      ],
+      [
+        1.0580409934846102e-06,
+        0.00043844879837706685,
+        2.4738043066463433e-05,
+        1.786437309192479e-07,
+        0.9995355606079102
+      ],
+      [
+        1.4034390005690511e-05,
+        0.024576500058174133,
+        0.0035884652752429247,
+        5.1870949391741306e-05,
+        0.9717692136764526
+      ],
+      [
+        0.0007028384716250002,
+        6.37215464394103e-07,
+        0.0002256635925732553,
+        1.487139940081761e-07,
+        0.9990707039833069
+      ],
+      [
+        0.999538779258728,
+        8.192038336574115e-08,
+        0.00027700403006747365,
+        3.3750213333405554e-05,
+        0.0001503873209003359
+      ],
+      [
+        6.172283519845223e-06,
+        4.105127118236851e-06,
+        0.0122169628739357,
+        1.7863669432571783e-09,
+        0.9877727627754211
+      ],
+      [
+        2.0676101541994285e-07,
+        0.0034104252699762583,
+        0.9942283630371094,
+        8.376421646971721e-06,
+        0.0023525708820670843
+      ],
+      [
+        0.9945012331008911,
+        3.04020272778871e-06,
+        0.00016930753190536052,
+        0.00018640761845745146,
+        0.005139980465173721
+      ],
+      [
+        3.796814951328997e-08,
+        2.5170079425151926e-06,
+        1.7037050881185678e-08,
+        0.9999839067459106,
+        1.34536794575979e-05
+      ],
+      [
+        3.534602655008712e-08,
+        0.9999821186065674,
+        5.584189111118576e-08,
+        1.7823962480179034e-05,
+        3.637875778395028e-08
+      ],
+      [
+        1.477222337509243e-11,
+        4.5872524528922654e-11,
+        3.3973390371538556e-14,
+        1.0,
+        2.9419748023363015e-14
+      ],
+      [
+        4.006830145453222e-10,
+        6.373124961100984e-08,
+        0.9999992847442627,
+        5.6121157721023e-10,
+        5.994563707645284e-07
+      ],
+      [
+        8.70516430495627e-07,
+        0.00033797495416365564,
+        7.930430001579225e-05,
+        7.92383673342556e-07,
+        0.9995810389518738
+      ],
+      [
+        7.245151145696127e-09,
+        6.592750878553488e-08,
+        1.7889389525294064e-08,
+        0.9999998807907104,
+        7.9039441658324e-11
+      ],
+      [
+        4.2485456219765183e-07,
+        4.008954057610481e-09,
+        1.1149022611789405e-06,
+        3.530762071601856e-10,
+        0.9999984502792358
+      ],
+      [
+        6.986123485264173e-11,
+        1.6907816871025716e-06,
+        0.9999960660934448,
+        2.1254470183862395e-08,
+        2.2605836420552805e-06
+      ],
+      [
+        6.688881057925755e-07,
+        1.6741182662372012e-06,
+        1.1465151317224809e-07,
+        0.9999974966049194,
+        2.93654128791232e-10
+      ],
+      [
+        0.9999967813491821,
+        2.447718139286792e-10,
+        2.707406565605197e-06,
+        1.819325490259871e-07,
+        2.6555582621767826e-07
+      ],
+      [
+        0.9999947547912598,
+        9.433391567892357e-11,
+        5.2885484365106095e-06,
+        1.3370129003931197e-08,
+        6.4002696475995435e-09
+      ],
+      [
+        0.9999980926513672,
+        6.701331156655499e-10,
+        1.9426624930929393e-06,
+        7.92088528100976e-09,
+        2.2844586222703356e-09
+      ],
+      [
+        0.9999508857727051,
+        2.1023454976898392e-08,
+        4.834864739677869e-05,
+        2.044039248971785e-08,
+        6.63894240915397e-07
+      ],
+      [
+        8.603268361184746e-05,
+        1.8386859812480338e-09,
+        5.211973075347487e-07,
+        4.426004562851915e-10,
+        0.9999134540557861
+      ],
+      [
+        3.636861833911098e-08,
+        0.999995231628418,
+        1.5989500923296873e-07,
+        4.624768280336866e-06,
+        9.477554741010863e-09
+      ],
+      [
+        0.9990131855010986,
+        1.362204515853449e-10,
+        0.0009867309127002954,
+        4.428200028883111e-09,
+        1.4905356238159584e-07
+      ],
+      [
+        1.75183697592729e-06,
+        0.9998369216918945,
+        3.241917511331849e-05,
+        4.8421301471535116e-05,
+        8.049659663811326e-05
+      ],
+      [
+        0.000739819894079119,
+        0.9705464839935303,
+        0.00039644408388994634,
+        0.028220562264323235,
+        9.673823660705239e-05
+      ],
+      [
+        1.562087504680676e-06,
+        0.9999620914459229,
+        7.859131073928438e-06,
+        2.7726766347768717e-05,
+        7.715692618148751e-07
+      ],
+      [
+        1.0371936554065542e-07,
+        0.9999126195907593,
+        2.2434462607634487e-06,
+        8.465413702651858e-05,
+        3.9800707440917904e-07
+      ],
+      [
+        0.994616687297821,
+        5.209449938092803e-08,
+        0.0002149480424122885,
+        1.1529955372679979e-06,
+        0.005167162977159023
+      ],
+      [
+        7.047324470477179e-05,
+        0.878594160079956,
+        0.08444108814001083,
+        0.0018392024794593453,
+        0.035055119544267654
+      ],
+      [
+        2.6017682230872197e-08,
+        0.999997615814209,
+        3.526266922904142e-08,
+        2.430829454169725e-06,
+        2.541503185682359e-08
+      ],
+      [
+        1.533111593232661e-08,
+        2.207253373853746e-06,
+        1.4311992799775908e-06,
+        1.282320499784717e-10,
+        0.9999963045120239
+      ],
+      [
+        1.2786929848296325e-10,
+        0.9999996423721313,
+        3.426667944950168e-07,
+        2.060501458345243e-08,
+        1.5025747757135832e-08
+      ],
+      [
+        3.5297770750730706e-07,
+        8.943099237512797e-05,
+        0.9998818635940552,
+        1.3658964235219173e-05,
+        1.4667240066046361e-05
+      ],
+      [
+        1.728922387200793e-11,
+        7.253434830545302e-08,
+        0.9999995231628418,
+        2.6546043141451037e-10,
+        3.668170052151254e-07
+      ],
+      [
+        0.003203014377504587,
+        0.00043754218495450914,
+        0.10356464982032776,
+        9.172238787868991e-05,
+        0.892703115940094
+      ],
+      [
+        2.7388518120119443e-08,
+        2.1065850887680426e-05,
+        6.04399986059434e-07,
+        0.9999783039093018,
+        2.254981623650565e-08
+      ],
+      [
+        9.608543041395023e-05,
+        2.6845977117773145e-05,
+        0.008286005817353725,
+        1.3163377161617973e-06,
+        0.9915897250175476
+      ],
+      [
+        1.2735188192891655e-07,
+        9.03384898265358e-06,
+        0.9998878240585327,
+        8.309831400765688e-08,
+        0.00010291129729012027
+      ],
+      [
+        7.318962276514629e-12,
+        2.3187679207281597e-11,
+        9.7067959139302e-13,
+        1.0,
+        6.4595185720239725e-15
+      ],
+      [
+        1.341955521638738e-05,
+        2.5704004656290635e-05,
+        7.894341820247064e-07,
+        0.9999600648880005,
+        7.580869820777991e-10
+      ],
+      [
+        6.374117813429114e-13,
+        1.8607042306939547e-07,
+        0.9999992847442627,
+        7.815014607670534e-11,
+        4.70263444185548e-07
+      ],
+      [
+        5.520034392247908e-06,
+        0.9988216757774353,
+        0.000706485181581229,
+        5.83575019845739e-05,
+        0.00040799262933433056
+      ],
+      [
+        0.9988188147544861,
+        4.1982693232966994e-07,
+        0.00030581431929022074,
+        1.0250058039673604e-05,
+        0.000864681787788868
+      ],
+      [
+        2.774123430970832e-10,
+        0.9999998807907104,
+        2.9071371088207343e-08,
+        8.779171167816457e-08,
+        1.0946332729133701e-08
+      ],
+      [
+        5.249072273727506e-06,
+        0.01822405308485031,
+        2.4967962417576928e-06,
+        0.9817681312561035,
+        3.3931463860881195e-08
+      ],
+      [
+        5.6019176554400474e-05,
+        1.2779636904269864e-08,
+        1.2263533790246584e-05,
+        2.6100497318992666e-09,
+        0.9999316930770874
+      ],
+      [
+        1.14180065402536e-09,
+        2.4639433604534133e-07,
+        0.9999970197677612,
+        1.972632723834522e-09,
+        2.7593951017479412e-06
+      ],
+      [
+        0.00010195067443419248,
+        9.8351803899277e-05,
+        0.005106598604470491,
+        4.45853584096767e-05,
+        0.9946485161781311
+      ],
+      [
+        2.5020068505909876e-07,
+        3.567374960766756e-06,
+        5.340152497979034e-08,
+        0.9999958276748657,
+        3.475296352917212e-07
+      ],
+      [
+        0.0006764858844690025,
+        8.342422574969532e-07,
+        6.272012979025021e-05,
+        1.3430944818537682e-06,
+        0.9992585778236389
+      ],
+      [
+        1.0590142096589261e-07,
+        3.558988055374357e-06,
+        5.737504693570372e-07,
+        0.9999957084655762,
+        7.70467245558848e-09
+      ],
+      [
+        0.9999940395355225,
+        6.262060869843822e-10,
+        4.160684966336703e-06,
+        2.146873967490137e-08,
+        1.8054112160825753e-06
+      ],
+      [
+        1.0686201923348904e-11,
+        4.305166001472571e-08,
+        0.9999980926513672,
+        1.402158510827034e-11,
+        1.8556081613496644e-06
+      ],
+      [
+        5.481514619987138e-08,
+        2.2503117147465446e-09,
+        8.5362195090255e-10,
+        6.551272111604556e-12,
+        1.0
+      ],
+      [
+        0.9999957084655762,
+        6.639787053508428e-10,
+        2.6787208753376035e-06,
+        4.751197124619466e-08,
+        1.714458221613313e-06
+      ],
+      [
+        0.9991925358772278,
+        8.649788014736259e-07,
+        0.0006562798516824841,
+        0.00013112460146658123,
+        1.9189856175216846e-05
+      ],
+      [
+        0.9985733032226562,
+        6.116505080200341e-10,
+        0.0014262585900723934,
+        3.3392055343028915e-08,
+        5.008348011870112e-07
+      ],
+      [
+        0.9999914169311523,
+        1.1136530808641965e-08,
+        7.888520485721529e-06,
+        8.401618600828442e-08,
+        5.582311359830783e-07
+      ],
+      [
+        3.4615920867508976e-06,
+        2.321997953913524e-06,
+        0.9998970031738281,
+        3.2200567545714875e-08,
+        9.71942426986061e-05
+      ],
+      [
+        7.10092763256398e-07,
+        0.9997778534889221,
+        3.4504042560001835e-05,
+        0.00014302250929176807,
+        4.38467031926848e-05
+      ],
+      [
+        5.181612916516087e-10,
+        4.411368536239024e-06,
+        5.210649192122219e-07,
+        1.5116435880813128e-11,
+        0.9999951124191284
+      ],
+      [
+        2.2708282187977602e-07,
+        0.00014997090329416096,
+        0.9994619488716125,
+        5.89388719163253e-06,
+        0.000381957070203498
+      ],
+      [
+        5.011067827354054e-08,
+        4.141498664012033e-07,
+        7.135682835723856e-07,
+        6.198952462455054e-10,
+        0.9999988079071045
+      ],
+      [
+        7.0098620241765275e-09,
+        1.1198544314083847e-08,
+        0.9999997615814209,
+        1.7691680065379245e-10,
+        2.0938212230703357e-07
+      ],
+      [
+        0.00015793573402334005,
+        1.676849933573976e-05,
+        0.0002518590772524476,
+        1.2111871683373465e-06,
+        0.999572217464447
+      ],
+      [
+        7.75347286374739e-10,
+        0.9998977184295654,
+        9.033632522914559e-05,
+        3.667371629489935e-06,
+        8.252223778981715e-06
+      ],
+      [
+        0.00020058982772752643,
+        0.07643330842256546,
+        4.5332242734730244e-05,
+        0.9233202338218689,
+        5.842765631314251e-07
+      ],
+      [
+        0.05541578307747841,
+        0.004758902359753847,
+        0.0046287355944514275,
+        0.9351039528846741,
+        9.261550439987332e-05
+      ],
+      [
+        3.224597548978636e-06,
+        1.5220732166199014e-05,
+        9.459314753712533e-08,
+        0.9999814033508301,
+        1.4953704940978696e-09
+      ],
+      [
+        8.075201094470685e-07,
+        0.9837146401405334,
+        0.00806038361042738,
+        2.1485695469891652e-05,
+        0.00820271298289299
+      ],
+      [
+        4.7981797251850367e-05,
+        0.0006691714515909553,
+        6.522023795696441e-06,
+        0.999276340007782,
+        4.051713986541472e-08
+      ],
+      [
+        1.8611597596418505e-08,
+        4.308585630496964e-06,
+        7.359590159516927e-10,
+        0.9999957084655762,
+        2.760127015832836e-09
+      ],
+      [
+        9.508180482953321e-07,
+        0.00011036185605917126,
+        0.959364652633667,
+        1.3921851405029884e-07,
+        0.040523871779441833
+      ],
+      [
+        2.486686689895379e-10,
+        0.0007240899722091854,
+        0.9990418553352356,
+        2.894143946718941e-08,
+        0.0002340392384212464
+      ],
+      [
+        6.769402460804486e-08,
+        1.3206904441176448e-06,
+        1.3529744435913926e-08,
+        0.9999985694885254,
+        4.194978045490849e-11
+      ],
+      [
+        2.645769413560546e-14,
+        1.0,
+        9.24820723474662e-12,
+        2.840262192105314e-10,
+        2.06608723185564e-11
+      ],
+      [
+        2.2852025651008516e-14,
+        1.1637450985507725e-12,
+        1.6567399318499618e-16,
+        1.0,
+        7.509676319837399e-17
+      ],
+      [
+        0.9988961219787598,
+        1.3636500817426622e-08,
+        5.1561062718974426e-05,
+        0.0010523488745093346,
+        2.808106280838274e-08
+      ],
+      [
+        3.296875365776941e-05,
+        3.745546791833476e-06,
+        0.9994162321090698,
+        1.656973012131857e-07,
+        0.0005470022442750633
+      ],
+      [
+        3.2497115398655296e-07,
+        7.793527038302273e-05,
+        0.9966562986373901,
+        1.3289572109442815e-07,
+        0.0032652246300131083
+      ],
+      [
+        1.1528656614245847e-05,
+        4.5589764340547845e-05,
+        7.354366857725836e-07,
+        0.9999421834945679,
+        1.503146940251554e-09
+      ],
+      [
+        5.196427446207963e-05,
+        0.9945569038391113,
+        2.590607891761465e-06,
+        0.005388547666370869,
+        2.4560268485629422e-08
+      ],
+      [
+        8.721341357431633e-12,
+        4.502119566041074e-09,
+        2.4372229495001063e-12,
+        1.0,
+        8.80670482285989e-13
+      ],
+      [
+        1.0396308380150598e-12,
+        1.0,
+        2.100785323477794e-08,
+        1.5029070210559325e-09,
+        2.017878308890886e-09
+      ],
+      [
+        3.5679683207945345e-08,
+        0.9999972581863403,
+        5.886612370886724e-07,
+        1.708550598777947e-06,
+        4.713419059498847e-07
+      ],
+      [
+        3.851470864901785e-06,
+        4.486244051804533e-07,
+        2.452226226523635e-06,
+        2.3269552951177275e-09,
+        0.9999932050704956
+      ],
+      [
+        0.008723861537873745,
+        7.111788727343082e-05,
+        0.00022904128127265722,
+        0.00023442207020707428,
+        0.9907416105270386
+      ],
+      [
+        2.5403718018068844e-10,
+        0.9999996423721313,
+        1.0440480480156111e-08,
+        3.1781598863744875e-07,
+        8.978408017057404e-10
+      ],
+      [
+        3.880083809804091e-08,
+        1.7192688517297938e-07,
+        0.9999991655349731,
+        2.3913566682409737e-09,
+        5.411867505245027e-07
+      ],
+      [
+        5.377541612006098e-08,
+        2.4564303657825803e-07,
+        9.471754491841011e-10,
+        0.9999996423721313,
+        3.003354509534262e-10
+      ],
+      [
+        2.934253950925836e-10,
+        0.9999812841415405,
+        1.4764597835892346e-05,
+        4.282941574729193e-07,
+        3.4700447031354997e-06
+      ],
+      [
+        0.00011542737775016576,
+        1.5824736692593433e-05,
+        0.00011250795796513557,
+        2.494605951142148e-06,
+        0.9997537732124329
+      ],
+      [
+        3.902064088512347e-11,
+        2.231945704644911e-11,
+        6.29765066050697e-13,
+        1.0,
+        1.3397932631766581e-14
+      ],
+      [
+        1.5922111719357535e-12,
+        6.849419642573906e-11,
+        1.1127123697538422e-14,
+        1.0,
+        9.953194477917322e-15
+      ],
+      [
+        4.922383567418365e-08,
+        5.817638157168403e-05,
+        0.9929896593093872,
+        3.195404119082923e-08,
+        0.006952082272619009
+      ],
+      [
+        1.864950048232651e-14,
+        1.0,
+        4.563434699567104e-12,
+        1.2510389425790525e-11,
+        2.02958344575066e-11
+      ],
+      [
+        0.999649167060852,
+        1.8532753998101725e-08,
+        7.196453952929005e-05,
+        6.320383363345172e-07,
+        0.00027825767756439745
+      ],
+      [
+        0.00019496947061270475,
+        2.113757318511489e-06,
+        1.495059450462577e-06,
+        9.944968724084902e-07,
+        0.9998005032539368
+      ],
+      [
+        9.113640771829523e-06,
+        2.7585883799474686e-08,
+        4.5974566376116854e-08,
+        4.951256737939502e-09,
+        0.9999908208847046
+      ],
+      [
+        4.98067802279234e-11,
+        0.9999998807907104,
+        3.2410354400269625e-09,
+        2.7754585296690948e-09,
+        6.424105691849036e-08
+      ],
+      [
+        6.722544187987012e-10,
+        0.9999998807907104,
+        1.7320811451781992e-08,
+        7.20259336617346e-08,
+        4.752113724748597e-08
+      ],
+      [
+        3.5468890473566717e-06,
+        7.284802268259227e-05,
+        0.9946630001068115,
+        3.683014256239403e-06,
+        0.005256951320916414
+      ],
+      [
+        0.948613166809082,
+        1.7797345208236948e-05,
+        0.0003377412213012576,
+        0.0003795067314058542,
+        0.05065176635980606
+      ],
+      [
+        0.0008814269094727933,
+        5.5306772992480546e-05,
+        0.002223686780780554,
+        3.5707901133719133e-06,
+        0.9968359470367432
+      ],
+      [
+        8.989281923277304e-06,
+        0.006084004882723093,
+        0.0016861777985468507,
+        3.799742387400329e-07,
+        0.9922204613685608
+      ],
+      [
+        6.378902739356818e-09,
+        2.99179241380898e-08,
+        1.802163696051906e-10,
+        1.0,
+        4.0337094775466653e-10
+      ],
+      [
+        2.731338355488333e-08,
+        3.1243283160620194e-07,
+        0.9999911785125732,
+        8.553534547317554e-10,
+        8.491416338074487e-06
+      ],
+      [
+        7.023631676261743e-10,
+        2.3455204445355093e-10,
+        1.0,
+        1.0503539227615932e-12,
+        6.169980526493646e-09
+      ],
+      [
+        7.106309851678816e-08,
+        1.6624685486021917e-06,
+        0.9998799562454224,
+        1.868761589918222e-09,
+        0.00011820640065707266
+      ],
+      [
+        0.9999992847442627,
+        1.0171338771236549e-10,
+        2.440525577185326e-07,
+        4.1929894223358133e-07,
+        2.3569093898778704e-10
+      ],
+      [
+        0.9999992847442627,
+        6.094630876363194e-12,
+        4.7615901621611556e-07,
+        2.276349846397352e-07,
+        1.3030745926734255e-10
+      ],
+      [
+        7.353416486832742e-11,
+        1.0,
+        4.694920896497479e-09,
+        1.1914722541916944e-08,
+        1.6606760411264077e-08
+      ],
+      [
+        7.811637448007502e-10,
+        1.948126140405293e-07,
+        0.9999938011169434,
+        1.3373978313691026e-10,
+        5.93870208831504e-06
+      ],
+      [
+        0.9999995231628418,
+        7.430586528023309e-12,
+        4.741919497064373e-07,
+        3.486118616002898e-10,
+        3.680125093552533e-09
+      ],
+      [
+        0.0002602289605420083,
+        0.9791587591171265,
+        0.00019242375856265426,
+        0.020354289561510086,
+        3.428095442359336e-05
+      ],
+      [
+        5.310323558660457e-07,
+        4.4706995050436404e-11,
+        1.4294789796309715e-09,
+        1.502272195530452e-10,
+        0.9999995231628418
+      ],
+      [
+        0.9912749528884888,
+        8.460942524379789e-08,
+        0.00870064552873373,
+        5.13324084749911e-06,
+        1.9148319552186877e-05
+      ],
+      [
+        7.166952855186537e-06,
+        1.1393245586077683e-05,
+        1.207049649565306e-06,
+        0.9999802112579346,
+        1.7315878508838978e-08
+      ],
+      [
+        2.7211934623488053e-14,
+        1.0,
+        7.190911928411925e-12,
+        3.9546019237057806e-11,
+        1.797356881383383e-11
+      ],
+      [
+        4.3063214669528116e-13,
+        1.0,
+        6.771842808728223e-11,
+        2.0297596936558193e-09,
+        9.415860452444136e-11
+      ],
+      [
+        0.9999995231628418,
+        1.2286769691949306e-11,
+        4.7466340902246884e-07,
+        1.5492959803964368e-08,
+        1.016273620813024e-09
+      ],
+      [
+        8.809308534377114e-13,
+        1.0,
+        1.5968181221737154e-09,
+        7.558778047922488e-10,
+        1.2511786051661034e-09
+      ],
+      [
+        0.9999488592147827,
+        9.790417365707071e-09,
+        5.04542731505353e-05,
+        7.167667490648455e-07,
+        8.451239708051617e-09
+      ],
+      [
+        7.308685212592536e-09,
+        0.0013534030877053738,
+        0.9980002045631409,
+        7.599518880851974e-07,
+        0.0006456755218096077
+      ],
+      [
+        3.2996351419407877e-14,
+        2.953610880179758e-12,
+        1.053948008494153e-16,
+        1.0,
+        1.4378749562600252e-16
+      ],
+      [
+        6.1729024309897795e-06,
+        1.2122050918605964e-07,
+        4.458617866021086e-07,
+        2.3718426334085052e-08,
+        0.9999932050704956
+      ],
+      [
+        6.5175081545021385e-06,
+        2.963889400575681e-08,
+        4.2298265725548845e-06,
+        1.9934965678203298e-08,
+        0.9999891519546509
+      ],
+      [
+        1.1637025636446197e-05,
+        1.5049286048451904e-06,
+        1.303335750435508e-07,
+        0.9999865293502808,
+        2.575493738277146e-07
+      ],
+      [
+        1.9281996247073885e-13,
+        5.340230480044283e-10,
+        4.2764129368731696e-13,
+        1.0,
+        9.4905278026549e-14
+      ],
+      [
+        1.2719012854652684e-15,
+        3.2106179694013637e-12,
+        1.9753547366216763e-15,
+        1.0,
+        3.231586336079214e-16
+      ],
+      [
+        0.9994520545005798,
+        1.3181000213080551e-05,
+        0.0001824193896027282,
+        9.69173270277679e-05,
+        0.000255395018029958
+      ],
+      [
+        4.3612024569483765e-07,
+        1.547577653582266e-06,
+        4.000244371127337e-05,
+        1.716204849344649e-07,
+        0.999957799911499
+      ],
+      [
+        0.2534164786338806,
+        0.0005545061430893838,
+        0.0007128587458282709,
+        0.0020672872196882963,
+        0.7432488799095154
+      ],
+      [
+        0.9999988079071045,
+        2.425644537659699e-12,
+        1.1829758932435652e-06,
+        8.817077623568537e-10,
+        1.2908230040409308e-08
+      ],
+      [
+        3.525994145547884e-07,
+        0.9991838335990906,
+        2.0560482880682684e-06,
+        0.000813102989923209,
+        6.709916533509386e-07
+      ],
+      [
+        3.613444179290104e-13,
+        1.0,
+        6.150918663294647e-10,
+        3.792878899844254e-09,
+        3.7285224907535053e-10
+      ],
+      [
+        1.8408534288028022e-06,
+        0.000473246444016695,
+        7.166295290517155e-06,
+        0.9995166063308716,
+        1.1535003068274818e-06
+      ],
+      [
+        1.3095608153435023e-08,
+        0.9996516704559326,
+        1.947283453773707e-05,
+        2.6681686904339585e-06,
+        0.0003262335085310042
+      ],
+      [
+        6.809160822740523e-06,
+        1.4048301011371223e-07,
+        7.891920176916756e-06,
+        5.64955655590893e-07,
+        0.999984622001648
+      ],
+      [
+        1.6494698229507776e-07,
+        0.9999597072601318,
+        1.6859601601026952e-05,
+        1.0917801773757674e-05,
+        1.2422257896105293e-05
+      ],
+      [
+        1.022502638114986e-10,
+        0.9999995231628418,
+        1.057838705520453e-08,
+        2.1704737562799892e-08,
+        5.36101481429796e-07
+      ],
+      [
+        1.615179883174278e-07,
+        6.087996666792606e-07,
+        3.4095783121301793e-06,
+        2.041728869306425e-10,
+        0.9999958276748657
+      ],
+      [
+        9.72368713325622e-11,
+        3.81661635628916e-09,
+        4.993041570477974e-12,
+        1.0,
+        5.569138900041182e-13
+      ],
+      [
+        0.0005626315250992775,
+        8.767034387346939e-07,
+        0.002535958541557193,
+        2.537305476835172e-07,
+        0.9969003200531006
+      ],
+      [
+        2.0228353714291103e-10,
+        0.9999994039535522,
+        8.693684350191688e-08,
+        3.976750928558204e-09,
+        4.673707962865592e-07
+      ],
+      [
+        1.2774610240740003e-06,
+        0.9998557567596436,
+        2.3851016521803103e-05,
+        0.00011780560453189537,
+        1.3602639228338376e-06
+      ],
+      [
+        1.918504182185643e-07,
+        0.07882414758205414,
+        0.9137523770332336,
+        2.1555208149948157e-05,
+        0.007401690818369389
+      ],
+      [
+        4.4685387117979203e-13,
+        1.462610867974945e-07,
+        0.9999996423721313,
+        7.881845731638748e-10,
+        2.658297546531685e-07
+      ],
+      [
+        0.999875545501709,
+        3.656150227016042e-08,
+        7.054337038425729e-05,
+        5.201249587116763e-05,
+        1.9662622889882186e-06
+      ],
+      [
+        1.092859580609229e-08,
+        3.069613967454643e-06,
+        0.9999880790710449,
+        3.874243148516143e-08,
+        8.768700354266912e-06
+      ],
+      [
+        9.711374066023737e-11,
+        5.296456947689876e-06,
+        0.9999822378158569,
+        3.3822469824862367e-10,
+        1.2478307326091453e-05
+      ],
+      [
+        6.104081649860316e-12,
+        4.4636488949478803e-10,
+        1.3333754673300335e-12,
+        1.0,
+        3.715213629362085e-13
+      ],
+      [
+        0.9989269375801086,
+        2.5098252365296503e-09,
+        0.0010175186907872558,
+        3.442710010403971e-07,
+        5.515903467312455e-05
+      ],
+      [
+        3.64770357919042e-07,
+        2.6551165319688153e-06,
+        0.9999557733535767,
+        6.770249427745512e-08,
+        4.1104172851191834e-05
+      ],
+      [
+        1.5957342391903495e-10,
+        0.00015072607493493706,
+        0.9998364448547363,
+        1.787912538020464e-07,
+        1.2473109563870821e-05
+      ],
+      [
+        4.6348600335477386e-06,
+        4.4908145468980365e-07,
+        1.5177326062598695e-08,
+        0.9999948740005493,
+        7.428288539834682e-11
+      ],
+      [
+        0.0001846405939431861,
+        7.190560427261516e-05,
+        0.9996071457862854,
+        5.558280918194214e-06,
+        0.00013071134162601084
+      ],
+      [
+        3.8561624933208805e-06,
+        0.0015129477251321077,
+        0.02709970809519291,
+        2.837473687122838e-07,
+        0.9713832139968872
+      ],
+      [
+        0.9995906949043274,
+        3.729857311896012e-09,
+        0.00034450486418791115,
+        2.641399134972744e-07,
+        6.456371920648962e-05
+      ]
+    ],
+    "history": [
+      {
+        "phase": 1,
+        "epoch": 1,
+        "lr": 0.001,
+        "train_loss": 1.2471336445251069,
+        "train_acc": 0.4987012987012987,
+        "val_loss": 0.8708870631275755,
+        "val_acc": 0.6909090909090909
+      },
+      {
+        "phase": 1,
+        "epoch": 2,
+        "lr": 0.001,
+        "train_loss": 0.8883078124616053,
+        "train_acc": 0.687012987012987,
+        "val_loss": 0.7714491880301273,
+        "val_acc": 0.7303030303030303
+      },
+      {
+        "phase": 1,
+        "epoch": 3,
+        "lr": 0.001,
+        "train_loss": 0.8284862050762424,
+        "train_acc": 0.6857142857142857,
+        "val_loss": 0.7539296847401243,
+        "val_acc": 0.7303030303030303
+      },
+      {
+        "phase": 1,
+        "epoch": 4,
+        "lr": 0.001,
+        "train_loss": 0.7480121073784767,
+        "train_acc": 0.7227272727272728,
+        "val_loss": 0.7069370146953698,
+        "val_acc": 0.7666666666666667
+      },
+      {
+        "phase": 1,
+        "epoch": 5,
+        "lr": 0.001,
+        "train_loss": 0.7042682492113733,
+        "train_acc": 0.7454545454545455,
+        "val_loss": 0.5562824429887714,
+        "val_acc": 0.793939393939394
+      },
+      {
+        "phase": 1,
+        "epoch": 6,
+        "lr": 0.001,
+        "train_loss": 0.6873007049808254,
+        "train_acc": 0.7357142857142858,
+        "val_loss": 0.5835002165852171,
+        "val_acc": 0.803030303030303
+      },
+      {
+        "phase": 1,
+        "epoch": 7,
+        "lr": 0.001,
+        "train_loss": 0.6356963465740154,
+        "train_acc": 0.762987012987013,
+        "val_loss": 0.5022434577797399,
+        "val_acc": 0.8363636363636363
+      },
+      {
+        "phase": 1,
+        "epoch": 8,
+        "lr": 0.001,
+        "train_loss": 0.6325628416878837,
+        "train_acc": 0.7636363636363637,
+        "val_loss": 0.5179461201032003,
+        "val_acc": 0.8272727272727273
+      },
+      {
+        "phase": 1,
+        "epoch": 9,
+        "lr": 0.001,
+        "train_loss": 0.6117237917788617,
+        "train_acc": 0.7642857142857142,
+        "val_loss": 0.5426602905446832,
+        "val_acc": 0.8121212121212121
+      },
+      {
+        "phase": 1,
+        "epoch": 10,
+        "lr": 0.001,
+        "train_loss": 0.5621836844976846,
+        "train_acc": 0.7961038961038961,
+        "val_loss": 0.5139165215420001,
+        "val_acc": 0.8303030303030303
+      },
+      {
+        "phase": 1,
+        "epoch": 11,
+        "lr": 0.001,
+        "train_loss": 0.5711200355709373,
+        "train_acc": 0.8,
+        "val_loss": 0.4338296547080531,
+        "val_acc": 0.8484848484848485
+      },
+      {
+        "phase": 1,
+        "epoch": 12,
+        "lr": 0.001,
+        "train_loss": 0.5767675902936366,
+        "train_acc": 0.7837662337662338,
+        "val_loss": 0.4997500152298898,
+        "val_acc": 0.8151515151515152
+      },
+      {
+        "phase": 1,
+        "epoch": 13,
+        "lr": 0.001,
+        "train_loss": 0.5192566655285946,
+        "train_acc": 0.801948051948052,
+        "val_loss": 0.4399642613801089,
+        "val_acc": 0.8515151515151516
+      },
+      {
+        "phase": 1,
+        "epoch": 14,
+        "lr": 0.001,
+        "train_loss": 0.5334585335347559,
+        "train_acc": 0.8077922077922078,
+        "val_loss": 0.43756656375798314,
+        "val_acc": 0.8575757575757575
+      },
+      {
+        "phase": 1,
+        "epoch": 15,
+        "lr": 0.001,
+        "train_loss": 0.4857034389074747,
+        "train_acc": 0.824025974025974,
+        "val_loss": 0.4811404733043728,
+        "val_acc": 0.8454545454545455
+      },
+      {
+        "phase": 1,
+        "epoch": 16,
+        "lr": 0.001,
+        "train_loss": 0.5457040316098696,
+        "train_acc": 0.801948051948052,
+        "val_loss": 0.46498501923951235,
+        "val_acc": 0.8363636363636363
+      },
+      {
+        "phase": 1,
+        "epoch": 17,
+        "lr": 0.001,
+        "train_loss": 0.514512753331816,
+        "train_acc": 0.8175324675324676,
+        "val_loss": 0.42130245394778976,
+        "val_acc": 0.8575757575757575
+      },
+      {
+        "phase": 1,
+        "epoch": 18,
+        "lr": 0.001,
+        "train_loss": 0.49173596060121216,
+        "train_acc": 0.8253246753246753,
+        "val_loss": 0.4356783191363017,
+        "val_acc": 0.8393939393939394
+      },
+      {
+        "phase": 1,
+        "epoch": 19,
+        "lr": 0.001,
+        "train_loss": 0.5289096548959806,
+        "train_acc": 0.7954545454545454,
+        "val_loss": 0.387835284706318,
+        "val_acc": 0.8636363636363636
+      },
+      {
+        "phase": 1,
+        "epoch": 20,
+        "lr": 0.001,
+        "train_loss": 0.47808254438561276,
+        "train_acc": 0.8227272727272728,
+        "val_loss": 0.4303659656734178,
+        "val_acc": 0.8484848484848485
+      },
+      {
+        "phase": 1,
+        "epoch": 21,
+        "lr": 0.001,
+        "train_loss": 0.4822002941911871,
+        "train_acc": 0.8207792207792208,
+        "val_loss": 0.45798901680744053,
+        "val_acc": 0.8363636363636363
+      },
+      {
+        "phase": 1,
+        "epoch": 22,
+        "lr": 0.001,
+        "train_loss": 0.46315978858378026,
+        "train_acc": 0.8194805194805195,
+        "val_loss": 0.3977226475874583,
+        "val_acc": 0.8606060606060606
+      },
+      {
+        "phase": 1,
+        "epoch": 23,
+        "lr": 0.001,
+        "train_loss": 0.47237012974627607,
+        "train_acc": 0.8214285714285714,
+        "val_loss": 0.39819896004416727,
+        "val_acc": 0.8757575757575757
+      },
+      {
+        "phase": 1,
+        "epoch": 24,
+        "lr": 0.001,
+        "train_loss": 0.48223880606812314,
+        "train_acc": 0.8045454545454546,
+        "val_loss": 0.43841411593285473,
+        "val_acc": 0.8454545454545455
+      },
+      {
+        "phase": 1,
+        "epoch": 25,
+        "lr": 0.0005,
+        "train_loss": 0.4313063534823331,
+        "train_acc": 0.8441558441558441,
+        "val_loss": 0.41945474247137704,
+        "val_acc": 0.8757575757575757
+      },
+      {
+        "phase": 1,
+        "epoch": 26,
+        "lr": 0.0005,
+        "train_loss": 0.3973671913146973,
+        "train_acc": 0.8571428571428571,
+        "val_loss": 0.40813377075123064,
+        "val_acc": 0.8545454545454545
+      },
+      {
+        "phase": 1,
+        "epoch": 27,
+        "lr": 0.0005,
+        "train_loss": 0.42309232377386713,
+        "train_acc": 0.8415584415584415,
+        "val_loss": 0.38627853614814356,
+        "val_acc": 0.8696969696969697
+      },
+      {
+        "phase": 1,
+        "epoch": 28,
+        "lr": 0.0005,
+        "train_loss": 0.4143208850900848,
+        "train_acc": 0.8487012987012987,
+        "val_loss": 0.3651028736974254,
+        "val_acc": 0.8757575757575757
+      },
+      {
+        "phase": 1,
+        "epoch": 29,
+        "lr": 0.0005,
+        "train_loss": 0.37934868335723876,
+        "train_acc": 0.8636363636363636,
+        "val_loss": 0.37454131435264243,
+        "val_acc": 0.8818181818181818
+      },
+      {
+        "phase": 1,
+        "epoch": 30,
+        "lr": 0.0005,
+        "train_loss": 0.41408615700610274,
+        "train_acc": 0.8487012987012987,
+        "val_loss": 0.3641007041389292,
+        "val_acc": 0.8818181818181818
+      },
+      {
+        "phase": 2,
+        "epoch": 1,
+        "lr": 0.001,
+        "train_loss": 1.1109995331083025,
+        "train_acc": 0.612987012987013,
+        "val_loss": 0.8103390028982451,
+        "val_acc": 0.6666666666666666
+      },
+      {
+        "phase": 2,
+        "epoch": 2,
+        "lr": 0.001,
+        "train_loss": 0.6376532980373928,
+        "train_acc": 0.7746753246753246,
+        "val_loss": 0.5094917356967926,
+        "val_acc": 0.8212121212121212
+      },
+      {
+        "phase": 2,
+        "epoch": 3,
+        "lr": 0.001,
+        "train_loss": 0.5621141577695872,
+        "train_acc": 0.8142857142857143,
+        "val_loss": 0.5447068631197467,
+        "val_acc": 0.8363636363636363
+      },
+      {
+        "phase": 2,
+        "epoch": 4,
+        "lr": 0.001,
+        "train_loss": 0.4891320666709504,
+        "train_acc": 0.8454545454545455,
+        "val_loss": 0.35213514896053255,
+        "val_acc": 0.8606060606060606
+      },
+      {
+        "phase": 2,
+        "epoch": 5,
+        "lr": 0.001,
+        "train_loss": 0.36128173633055255,
+        "train_acc": 0.8844155844155844,
+        "val_loss": 0.22211090934773287,
+        "val_acc": 0.9212121212121213
+      },
+      {
+        "phase": 2,
+        "epoch": 6,
+        "lr": 0.001,
+        "train_loss": 0.38465312460026185,
+        "train_acc": 0.8675324675324675,
+        "val_loss": 0.4806726118493261,
+        "val_acc": 0.8757575757575757
+      },
+      {
+        "phase": 2,
+        "epoch": 7,
+        "lr": 0.001,
+        "train_loss": 0.32321030783962895,
+        "train_acc": 0.9,
+        "val_loss": 0.3032973274588585,
+        "val_acc": 0.8878787878787879
+      },
+      {
+        "phase": 2,
+        "epoch": 8,
+        "lr": 0.001,
+        "train_loss": 0.3146080015541671,
+        "train_acc": 0.9019480519480519,
+        "val_loss": 0.5154694367538799,
+        "val_acc": 0.8787878787878788
+      },
+      {
+        "phase": 2,
+        "epoch": 9,
+        "lr": 0.001,
+        "train_loss": 0.3525105357170105,
+        "train_acc": 0.8707792207792208,
+        "val_loss": 0.2716227478319497,
+        "val_acc": 0.9272727272727272
+      },
+      {
+        "phase": 2,
+        "epoch": 10,
+        "lr": 0.001,
+        "train_loss": 0.2646164342954561,
+        "train_acc": 0.9077922077922078,
+        "val_loss": 0.24249897588495956,
+        "val_acc": 0.9424242424242424
+      },
+      {
+        "phase": 2,
+        "epoch": 11,
+        "lr": 0.0005,
+        "train_loss": 0.35214158846186355,
+        "train_acc": 0.8837662337662338,
+        "val_loss": 0.32844683257016266,
+        "val_acc": 0.8878787878787879
+      },
+      {
+        "phase": 2,
+        "epoch": 12,
+        "lr": 0.0005,
+        "train_loss": 0.18171423874892198,
+        "train_acc": 0.938961038961039,
+        "val_loss": 0.1472355698573224,
+        "val_acc": 0.9393939393939394
+      },
+      {
+        "phase": 2,
+        "epoch": 13,
+        "lr": 0.0005,
+        "train_loss": 0.17260278215656033,
+        "train_acc": 0.9435064935064935,
+        "val_loss": 0.1323197480790744,
+        "val_acc": 0.9606060606060606
+      },
+      {
+        "phase": 2,
+        "epoch": 14,
+        "lr": 0.0005,
+        "train_loss": 0.15595702292857233,
+        "train_acc": 0.95,
+        "val_loss": 0.13209052153979428,
+        "val_acc": 0.9454545454545454
+      },
+      {
+        "phase": 2,
+        "epoch": 15,
+        "lr": 0.0005,
+        "train_loss": 0.07434480489267932,
+        "train_acc": 0.9759740259740259,
+        "val_loss": 0.06617483214641018,
+        "val_acc": 0.9696969696969697
+      },
+      {
+        "phase": 2,
+        "epoch": 16,
+        "lr": 0.0005,
+        "train_loss": 0.08248554224559626,
+        "train_acc": 0.9733766233766233,
+        "val_loss": 0.2225062781380433,
+        "val_acc": 0.9424242424242424
+      },
+      {
+        "phase": 2,
+        "epoch": 17,
+        "lr": 0.0005,
+        "train_loss": 0.07289315414699642,
+        "train_acc": 0.9785714285714285,
+        "val_loss": 0.11465537232043889,
+        "val_acc": 0.9545454545454546
+      },
+      {
+        "phase": 2,
+        "epoch": 18,
+        "lr": 0.0005,
+        "train_loss": 0.07819556219914517,
+        "train_acc": 0.977922077922078,
+        "val_loss": 0.12515811302935506,
+        "val_acc": 0.9606060606060606
+      },
+      {
+        "phase": 2,
+        "epoch": 19,
+        "lr": 0.0005,
+        "train_loss": 0.26714129378269247,
+        "train_acc": 0.9181818181818182,
+        "val_loss": 0.13755182506319022,
+        "val_acc": 0.9575757575757575
+      },
+      {
+        "phase": 2,
+        "epoch": 20,
+        "lr": 0.0005,
+        "train_loss": 0.08153753316622567,
+        "train_acc": 0.9714285714285714,
+        "val_loss": 0.0847033825526799,
+        "val_acc": 0.9727272727272728
+      }
+    ],
+    "hyperparameters": {
+      "epochs_head": 30,
+      "epochs_finetune": 20,
+      "batch_size": 32,
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "scheduler": "ReduceLROnPlateau(factor=0.5, patience=5)",
+      "loss": "CrossEntropyLoss(weight=inverse_frequency)",
+      "unfrozen_blocks": 19
+    },
+    "reproduces_saved_metrics": true
+  },
+  "fusion": {
+    "n": 330,
+    "unified_classes": [
+      "healthy",
+      "nutrient_stress",
+      "water_stress",
+      "disease_stress",
+      "pest_stress",
+      "stress_generic"
+    ],
+    "simulation": {
+      "method": "categorical draw from the XGBoost test confusion matrix, then Dirichlet noise around the drawn class",
+      "seed": 42,
+      "concentration": 25.0,
+      "healthy_row_class": "healthy",
+      "simulated_prediction_counts": {
+        "healthy": 51,
+        "nutrient_stress": 98,
+        "stress_generic": 57,
+        "water_stress": 124
+      },
+      "confusion_matrix": [
+        [
+          0.6822916666666666,
+          0.15104166666666666,
+          0.1640625,
+          0.0026041666666666665
+        ],
+        [
+          0.009373458312777503,
+          0.9797730636408486,
+          0.008386778490379871,
+          0.00246669955599408
+        ],
+        [
+          0.032759184563392565,
+          0.04524146953014281,
+          0.6579635887931974,
+          0.2640357571132672
+        ],
+        [
+          0.0,
+          0.00045265254390729675,
+          0.001539018649284809,
+          0.9980083288068079
+        ]
+      ],
+      "note": "Tabular probabilities on the image test set are simulated; the two datasets are not paired."
+    },
+    "rule_usage": {
+      "R1": 98,
+      "R2": 171,
+      "R3": 2,
+      "R4": 45,
+      "R5": 14,
+      "R6": 0
+    },
+    "rule_usage_share": {
+      "R1": 0.297,
+      "R2": 0.5182,
+      "R3": 0.0061,
+      "R4": 0.1364,
+      "R5": 0.0424,
+      "R6": 0.0
+    },
+    "tabular_only_simulated": {
+      "accuracy": 0.9272727272727272,
+      "macro_f1": 0.8777777777777778,
+      "healthy_recall": 0.6956521739130435,
+      "stress_recall": 0.9885057471264368,
+      "support_healthy": 69,
+      "support_stress": 261
+    },
+    "cnn_only": {
+      "accuracy": 0.9818181818181818,
+      "macro_f1": 0.9725137431284359,
+      "healthy_recall": 0.9565217391304348,
+      "stress_recall": 0.9885057471264368,
+      "support_healthy": 69,
+      "support_stress": 261
+    },
+    "fusion": {
+      "accuracy": 0.9696969696969697,
+      "macro_f1": 0.9515390037593985,
+      "healthy_recall": 0.855072463768116,
+      "stress_recall": 1.0,
+      "support_healthy": 69,
+      "support_stress": 261
+    },
+    "fused_label_counts": {
+      "healthy": 59,
+      "nutrient_stress": 98,
+      "water_stress": 2,
+      "disease_stress": 171,
+      "pest_stress": 0,
+      "stress_generic": 0
+    },
+    "per_sample": [
+      {
+        "index": 0,
+        "image": "train\\Blast\\Thermalimage11i__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 1,
+        "image": "train\\BLB\\thermalimage38a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 2,
+        "image": "train\\Blast\\Thermalimage10m__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 3,
+        "image": "val\\BLB\\thermalimage61b.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 4,
+        "image": "train\\hispa\\thermalimage30a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 5,
+        "image": "val\\hispa\\thermalimage13c__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 6,
+        "image": "val\\healthy\\thermalimage3d__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 7,
+        "image": "train\\BLB\\thermalimage101b.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 8,
+        "image": "val\\hispa\\thermalimage57a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 9,
+        "image": "train\\hispa\\thermalimage15a__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 10,
+        "image": "train\\leaf_spot\\thermalimage1e__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 11,
+        "image": "val\\Blast\\Thermalimage7b__fliph.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 12,
+        "image": "train\\leaf_spot\\thermalimage4a.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 13,
+        "image": "train\\BLB\\thermalimage44a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 14,
+        "image": "train\\BLB\\thermalimage54a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 15,
+        "image": "train\\BLB\\thermalimage4a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 16,
+        "image": "train\\leaf_spot\\thermalimage1b__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 17,
+        "image": "train\\Blast\\Thermalimage10i__flipv.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 18,
+        "image": "test\\BLB\\thermalimage4d__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 19,
+        "image": "val\\Blast\\Thermalimagex__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 20,
+        "image": "train\\healthy\\thermalimage8s.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 21,
+        "image": "train\\leaf_spot\\thermalimage12a__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 22,
+        "image": "train\\healthy\\thermalimage8r__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 23,
+        "image": "train\\healthy\\thermalimage6q.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 24,
+        "image": "val\\healthy\\thermalimage8hh__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 25,
+        "image": "train\\leaf_spot\\thermalimage5a__flipv.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 26,
+        "image": "train\\leaf_spot\\thermalimage2g__flipv.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 27,
+        "image": "train\\leaf_spot\\thermalimage2e__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 28,
+        "image": "train\\healthy\\thermalimage8x__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 29,
+        "image": "val\\hispa\\thermalimage72a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 30,
+        "image": "train\\BLB\\thermalimage68a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 31,
+        "image": "val\\Blast\\Thermalimage11s.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 32,
+        "image": "val\\hispa\\thermalimage20a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 33,
+        "image": "train\\leaf_spot\\thermalimage12f__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 34,
+        "image": "train\\Blast\\Thermalimage10j__fliph.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 35,
+        "image": "val\\leaf_spot\\thermalimage1g__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 36,
+        "image": "train\\BLB\\thermalimage51a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 37,
+        "image": "train\\hispa\\thermalimage57c__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 38,
+        "image": "val\\healthy\\thermalimage8rr__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 39,
+        "image": "train\\BLB\\thermalimage78b__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 40,
+        "image": "train\\BLB\\thermalimage101a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 41,
+        "image": "train\\healthy\\thermalimage8jj.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 42,
+        "image": "train\\Blast\\Thermalimage11q__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 43,
+        "image": "train\\BLB\\thermalimage76b__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 44,
+        "image": "train\\Blast\\Thermalimage3a__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "water_stress",
+        "rule": "R3"
+      },
+      {
+        "index": 45,
+        "image": "train\\healthy\\thermalimage8t__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 46,
+        "image": "val\\leaf_spot\\thermalimage12a__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 47,
+        "image": "train\\Blast\\Thermalimage9g__flipv.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 48,
+        "image": "train\\BLB\\thermalimage74a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 49,
+        "image": "train\\BLB\\thermalimage36a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 50,
+        "image": "test\\Blast\\Thermalimage1d__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 51,
+        "image": "val\\healthy\\thermalimage8l__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 52,
+        "image": "val\\healthy\\thermalimage6j__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 53,
+        "image": "train\\hispa\\thermalimage15d__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 54,
+        "image": "train\\healthy\\thermalimage8r__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 55,
+        "image": "train\\BLB\\thermalimage3e__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 56,
+        "image": "train\\hispa\\thermalimage9a__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 57,
+        "image": "val\\leaf_spot\\thermalimage26c__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 58,
+        "image": "test\\hispa\\thermalimage15e.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 59,
+        "image": "train\\BLB\\thermalimage5b__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 60,
+        "image": "val\\Blast\\Thermalimage5d__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 61,
+        "image": "test\\healthy\\thermalimage8z__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 62,
+        "image": "train\\hispa\\thermalimage2b__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 63,
+        "image": "train\\leaf_spot\\thermalimage24b.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 64,
+        "image": "train\\hispa\\thermalimage71a__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 65,
+        "image": "val\\hispa\\thermalimage29b__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 66,
+        "image": "train\\hispa\\thermalimage65b__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 67,
+        "image": "val\\BLB\\thermalimage58a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 68,
+        "image": "train\\Blast\\Thermalimage10i__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 69,
+        "image": "train\\Blast\\Thermalimage9a__flipv.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 70,
+        "image": "val\\BLB\\thermalimage28b.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 71,
+        "image": "train\\healthy\\thermalimage8kk__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 72,
+        "image": "train\\leaf_spot\\thermalimage3a__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 73,
+        "image": "train\\healthy\\thermalimage8xx__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 74,
+        "image": "train\\healthy\\thermalimage7a__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 75,
+        "image": "train\\healthy\\thermalimage8y__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 76,
+        "image": "train\\BLB\\thermalimage2i__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 77,
+        "image": "train\\hispa\\thermalimage__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 78,
+        "image": "train\\Blast\\Thermalimage2a__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 79,
+        "image": "test\\healthy\\thermalimage5a__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 80,
+        "image": "train\\leaf_spot\\thermalimage1j.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 81,
+        "image": "test\\hispa\\thermalimage2a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 82,
+        "image": "test\\healthy\\thermalimage6a__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 83,
+        "image": "train\\Blast\\Thermalimage1i__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 84,
+        "image": "train\\hispa\\thermalimage14b__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 85,
+        "image": "train\\BLB\\thermalimage65a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 86,
+        "image": "train\\leaf_spot\\thermalimage3a.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 87,
+        "image": "train\\BLB\\thermalimage1d__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 88,
+        "image": "val\\healthy\\thermalimage3c__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 89,
+        "image": "train\\healthy\\thermalimage8y__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 90,
+        "image": "val\\leaf_spot\\thermalimage30c__flipv.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 91,
+        "image": "train\\hispa\\thermalimage1g.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 92,
+        "image": "train\\BLB\\thermalimage2g.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 93,
+        "image": "train\\Blast\\Thermalimage1g__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 94,
+        "image": "train\\Blast\\Thermalimage11g__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 95,
+        "image": "train\\BLB\\thermalimage59b.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 96,
+        "image": "train\\BLB\\thermalimage22a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 97,
+        "image": "val\\leaf_spot\\thermalimage1k__flipv.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 98,
+        "image": "val\\Blast\\Thermalimage10a__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 99,
+        "image": "train\\hispa\\thermalimage28a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 100,
+        "image": "test\\Blast\\Thermalimage9b.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 101,
+        "image": "val\\leaf_spot\\thermalimage24b__flipv.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 102,
+        "image": "train\\BLB\\thermalimage50a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 103,
+        "image": "train\\Blast\\Thermalimage10b__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 104,
+        "image": "train\\hispa\\thermalimage50a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 105,
+        "image": "train\\hispa\\thermalimage4a__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 106,
+        "image": "train\\hispa\\thermalimage61a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 107,
+        "image": "train\\BLB\\thermalimage16a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 108,
+        "image": "train\\Blast\\Thermalimage10h__rot-45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 109,
+        "image": "test\\healthy\\thermalimage6t__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 110,
+        "image": "train\\healthy\\thermalimage6i__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 111,
+        "image": "val\\BLB\\thermalimage103f__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 112,
+        "image": "train\\hispa\\thermalimage15g.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 113,
+        "image": "test\\BLB\\thermalimage70c.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 114,
+        "image": "train\\hispa\\thermalimage5a__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 115,
+        "image": "train\\healthy\\thermalimage6q__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 116,
+        "image": "train\\healthy\\thermalimage8j__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 117,
+        "image": "test\\leaf_spot\\thermalimage33b__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 118,
+        "image": "train\\Blast\\Thermalimage10a__rot-45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 119,
+        "image": "train\\Blast\\Thermalimage5b__flipv.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 120,
+        "image": "train\\healthy\\thermalimage8r.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 121,
+        "image": "train\\leaf_spot\\thermalimage27a__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 122,
+        "image": "train\\BLB\\thermalimage62g.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 123,
+        "image": "test\\hispa\\thermalimage29c__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 124,
+        "image": "test\\hispa\\thermalimage63b__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 125,
+        "image": "train\\healthy\\thermalimage4c__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 126,
+        "image": "train\\leaf_spot\\thermalimage2b__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 127,
+        "image": "train\\healthy\\thermalimage6g__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 128,
+        "image": "train\\BLB\\thermalimage32b__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 129,
+        "image": "train\\BLB\\thermalimage82c__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 130,
+        "image": "train\\BLB\\thermalimage5g.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 131,
+        "image": "test\\leaf_spot\\thermalimage21a__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 132,
+        "image": "train\\healthy\\thermalimage8ff__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 133,
+        "image": "train\\BLB\\thermalimage1d.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 134,
+        "image": "train\\leaf_spot\\thermalimage28a__flipv.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 135,
+        "image": "train\\hispa\\thermalimage65b__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 136,
+        "image": "train\\healthy\\thermalimage5b__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 137,
+        "image": "train\\Blast\\Thermalimage11i__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 138,
+        "image": "val\\healthy\\thermalimage8ii.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 139,
+        "image": "train\\hispa\\thermalimage6b__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 140,
+        "image": "test\\healthy\\thermalimage8jj__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 141,
+        "image": "val\\leaf_spot\\thermalimage9a.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 142,
+        "image": "train\\hispa\\thermalimage57b__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 143,
+        "image": "train\\Blast\\Thermalimage11m.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 144,
+        "image": "train\\leaf_spot\\thermalimage31c__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 145,
+        "image": "train\\Blast\\Thermalimage1d__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 146,
+        "image": "val\\BLB\\thermalimage76a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 147,
+        "image": "train\\Blast\\Thermalimagex__fliph.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 148,
+        "image": "train\\leaf_spot\\thermalimage21a__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 149,
+        "image": "val\\hispa\\thermalimage1e__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 150,
+        "image": "test\\Blast\\Thermalimage11l__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 151,
+        "image": "train\\healthy\\thermalimage8i__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 152,
+        "image": "train\\healthy\\thermalimage8dd__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 153,
+        "image": "train\\Blast\\Thermalimage11f__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 154,
+        "image": "val\\Blast\\Thermalimage1h__fliph.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 155,
+        "image": "test\\BLB\\thermalimage48a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 156,
+        "image": "train\\Blast\\Thermalimage1i__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 157,
+        "image": "train\\Blast\\Thermalimage3a.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 158,
+        "image": "train\\hispa\\thermalimage13a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 159,
+        "image": "train\\hispa\\thermalimage16m__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 160,
+        "image": "train\\Blast\\Thermalimage1a__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 161,
+        "image": "train\\healthy\\thermalimage5b__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 162,
+        "image": "train\\BLB\\thermalimage18b.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 163,
+        "image": "train\\healthy\\thermalimage8w.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 164,
+        "image": "train\\leaf_spot\\thermalimage24a__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 165,
+        "image": "train\\healthy\\thermalimage6e.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 166,
+        "image": "train\\Blast\\Thermalimage10c__rot-45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 167,
+        "image": "val\\leaf_spot\\thermalimage31a__flipv.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 168,
+        "image": "train\\healthy\\thermalimage8ii__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 169,
+        "image": "val\\BLB\\thermalimage61b__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 170,
+        "image": "train\\healthy\\thermalimage8e__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 171,
+        "image": "test\\leaf_spot\\thermalimage2d__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 172,
+        "image": "test\\leaf_spot\\thermalimage1a__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 173,
+        "image": "train\\leaf_spot\\thermalimage17a__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 174,
+        "image": "test\\BLB\\thermalimage72c__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 175,
+        "image": "test\\leaf_spot\\thermalimage30a__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 176,
+        "image": "train\\healthy\\thermalimage3b__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 177,
+        "image": "train\\BLB\\thermalimage4b.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 178,
+        "image": "train\\hispa\\thermalimage29b__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 179,
+        "image": "train\\Blast\\Thermalimage11f__flipv.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 180,
+        "image": "train\\hispa\\thermalimage6a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 181,
+        "image": "train\\healthy\\thermalimage6k__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 182,
+        "image": "val\\leaf_spot\\thermalimage1b__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 183,
+        "image": "train\\hispa\\thermalimage1b__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 184,
+        "image": "train\\leaf_spot\\thermalimage26c.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 185,
+        "image": "test\\healthy\\thermalimage2a__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 186,
+        "image": "val\\hispa\\thermalimage63a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 187,
+        "image": "train\\BLB\\thermalimage75a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 188,
+        "image": "train\\BLB\\thermalimage22a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 189,
+        "image": "train\\BLB\\thermalimage19a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 190,
+        "image": "train\\BLB\\thermalimage3d.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 191,
+        "image": "train\\leaf_spot\\thermalimage33b.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 192,
+        "image": "val\\Blast\\Thermalimage1h.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 193,
+        "image": "train\\BLB\\thermalimage72b.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 194,
+        "image": "train\\Blast\\Thermalimage10g.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 195,
+        "image": "val\\Blast\\Thermalimage9d__flipv.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 196,
+        "image": "val\\Blast\\Thermalimage5e.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 197,
+        "image": "train\\Blast\\Thermalimage11v.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 198,
+        "image": "train\\BLB\\thermalimage2j.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 199,
+        "image": "test\\Blast\\Thermalimage7b__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 200,
+        "image": "val\\Blast\\Thermalimage11f.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 201,
+        "image": "val\\leaf_spot\\thermalimage30c__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 202,
+        "image": "train\\Blast\\Thermalimage1i__rot-45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 203,
+        "image": "train\\healthy\\thermalimage3b__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 204,
+        "image": "test\\healthy\\thermalimage6s__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 205,
+        "image": "train\\leaf_spot\\thermalimage12f__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 206,
+        "image": "val\\hispa\\thermalimage__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 207,
+        "image": "val\\leaf_spot\\thermalimage33c__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 208,
+        "image": "test\\healthy\\thermalimage8a.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 209,
+        "image": "train\\hispa\\thermalimage13c__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 210,
+        "image": "val\\hispa\\thermalimage16m__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 211,
+        "image": "test\\healthy\\thermalimage6o__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 212,
+        "image": "val\\Blast\\Thermalimage10o.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 213,
+        "image": "train\\BLB\\thermalimage82b__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 214,
+        "image": "val\\Blast\\Thermalimage10f__fliph.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 215,
+        "image": "train\\hispa\\thermalimage58b.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 216,
+        "image": "train\\leaf_spot\\thermalimage32c.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 217,
+        "image": "train\\healthy\\thermalimage5a__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 218,
+        "image": "test\\leaf_spot\\thermalimage25a__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 219,
+        "image": "train\\hispa\\thermalimage52a__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 220,
+        "image": "train\\leaf_spot\\thermalimage2i__flipv.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 221,
+        "image": "train\\hispa\\thermalimage5a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 222,
+        "image": "train\\BLB\\thermalimage62h__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 223,
+        "image": "train\\healthy\\thermalimage8r__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 224,
+        "image": "test\\leaf_spot\\thermalimage7a__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 225,
+        "image": "val\\BLB\\thermalimage104e.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 226,
+        "image": "train\\BLB\\thermalimage12a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 227,
+        "image": "train\\BLB\\thermalimage104b__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 228,
+        "image": "train\\BLB\\thermalimage2b.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 229,
+        "image": "train\\healthy\\thermalimage8u.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 230,
+        "image": "train\\Blast\\Thermalimage1e__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 231,
+        "image": "test\\leaf_spot\\thermalimage25b__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 232,
+        "image": "val\\healthy\\thermalimage8j__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 233,
+        "image": "train\\leaf_spot\\thermalimage29b__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 234,
+        "image": "val\\healthy\\thermalimage8qq.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 235,
+        "image": "val\\leaf_spot\\thermalimage27b.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 236,
+        "image": "train\\Blast\\Thermalimage10l__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 237,
+        "image": "test\\hispa\\thermalimage59b.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 238,
+        "image": "test\\hispa\\thermalimage2b.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 239,
+        "image": "val\\hispa\\thermalimage15d__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 240,
+        "image": "val\\Blast\\Thermalimage5a__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 241,
+        "image": "train\\hispa\\thermalimage59a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 242,
+        "image": "train\\hispa\\thermalimage39a__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 243,
+        "image": "train\\healthy\\thermalimage6f__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 244,
+        "image": "val\\healthy\\thermalimage8y__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 245,
+        "image": "train\\hispa\\thermalimage10a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 246,
+        "image": "val\\Blast\\Thermalimage9g__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 247,
+        "image": "train\\hispa\\thermalimage51a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 248,
+        "image": "train\\BLB\\thermalimage52a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 249,
+        "image": "train\\healthy\\thermalimage6l.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 250,
+        "image": "train\\healthy\\thermalimage8o.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 251,
+        "image": "val\\hispa\\thermalimage56a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 252,
+        "image": "train\\Blast\\Thermalimage1e.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 253,
+        "image": "train\\hispa\\thermalimage5b.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 254,
+        "image": "train\\Blast\\Thermalimage11c__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 255,
+        "image": "train\\Blast\\Thermalimage10h__fliph.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 256,
+        "image": "train\\leaf_spot\\thermalimage33c__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 257,
+        "image": "val\\leaf_spot\\thermalimage8a__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 258,
+        "image": "val\\Blast\\Thermalimage10n__fliph.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 259,
+        "image": "train\\healthy\\thermalimage8rr.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 260,
+        "image": "train\\hispa\\thermalimage55a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 261,
+        "image": "train\\Blast\\Thermalimage10j__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 262,
+        "image": "train\\leaf_spot\\thermalimage1j__flipv.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 263,
+        "image": "train\\hispa\\thermalimage12b__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 264,
+        "image": "train\\hispa\\thermalimage7a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 265,
+        "image": "test\\healthy\\thermalimage8u__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 266,
+        "image": "test\\Blast\\Thermalimage11k__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 267,
+        "image": "train\\BLB\\thermalimage98a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 268,
+        "image": "train\\leaf_spot\\thermalimage2a__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 269,
+        "image": "train\\leaf_spot\\thermalimage1e.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 270,
+        "image": "train\\Blast\\Thermalimage11w__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 271,
+        "image": "test\\Blast\\Thermalimage11o__fliph.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 272,
+        "image": "train\\healthy\\thermalimage6a__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 273,
+        "image": "val\\BLB\\thermalimage4f.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 274,
+        "image": "train\\leaf_spot\\thermalimage1k__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 275,
+        "image": "train\\leaf_spot\\thermalimage2g__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 276,
+        "image": "train\\hispa\\thermalimage43a__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 277,
+        "image": "val\\healthy\\thermalimage8v.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 278,
+        "image": "train\\healthy\\thermalimage8oo.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 279,
+        "image": "train\\healthy\\thermalimage8aa.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 280,
+        "image": "train\\BLB\\thermalimage42a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 281,
+        "image": "train\\BLB\\thermalimage39a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 282,
+        "image": "train\\Blast\\Thermalimage10m__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 283,
+        "image": "train\\healthy\\thermalimage8s__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 284,
+        "image": "train\\BLB\\thermalimage62f__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 285,
+        "image": "val\\Blast\\Thermalimage9c__flipv.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 286,
+        "image": "train\\leaf_spot\\thermalimage6a.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 287,
+        "image": "val\\BLB\\thermalimage71a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 288,
+        "image": "test\\hispa\\thermalimage16n__fliph.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 289,
+        "image": "train\\Blast\\Thermalimage11d__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 290,
+        "image": "val\\Blast\\Thermalimage8b__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 291,
+        "image": "train\\BLB\\thermalimage103e.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 292,
+        "image": "train\\Blast\\Thermalimage10e__rot-45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 293,
+        "image": "val\\BLB\\thermalimage9a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 294,
+        "image": "train\\healthy\\thermalimage7b__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 295,
+        "image": "train\\hispa\\thermalimage23a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 296,
+        "image": "train\\leaf_spot\\thermalimage27b__fliph.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 297,
+        "image": "test\\leaf_spot\\thermalimage24a.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 298,
+        "image": "val\\hispa\\thermalimage44a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 299,
+        "image": "train\\hispa\\thermalimage22a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 300,
+        "image": "train\\hispa\\thermalimage23a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 301,
+        "image": "train\\BLB\\thermalimage32a__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 302,
+        "image": "train\\leaf_spot\\thermalimage31b.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 303,
+        "image": "train\\BLB\\thermalimage4g.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 304,
+        "image": "val\\BLB\\thermalimage96a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 305,
+        "image": "train\\Blast\\Thermalimage11s__fliph.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 306,
+        "image": "train\\Blast\\Thermalimage11v__rot45.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 307,
+        "image": "train\\hispa\\thermalimage28a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 308,
+        "image": "train\\Blast\\Thermalimage9g__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 309,
+        "image": "train\\leaf_spot\\thermalimage10a.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 310,
+        "image": "val\\Blast\\Thermalimage1h__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 311,
+        "image": "train\\Blast\\Thermalimage11w__rot90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 312,
+        "image": "train\\leaf_spot\\thermalimage28c__rot90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 313,
+        "image": "test\\hispa\\thermalimage50a__flipv.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 314,
+        "image": "train\\leaf_spot\\thermalimage19a.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 315,
+        "image": "train\\Blast\\Thermalimage11o__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 316,
+        "image": "train\\Blast\\Thermalimage1a.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "blast",
+        "tabular_prediction": "nutrient_stress",
+        "fused_prediction": "nutrient_stress",
+        "rule": "R1"
+      },
+      {
+        "index": 317,
+        "image": "train\\Blast\\Thermalimage3a__rot-90.jpg",
+        "true_class": "blast",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "water_stress",
+        "rule": "R3"
+      },
+      {
+        "index": 318,
+        "image": "train\\healthy\\thermalimage6r__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 319,
+        "image": "train\\BLB\\thermalimage80a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 320,
+        "image": "val\\healthy\\thermalimage6c__flipv.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 321,
+        "image": "val\\healthy\\thermalimage8mm__rot-90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 322,
+        "image": "train\\hispa\\thermalimage33a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 323,
+        "image": "train\\BLB\\thermalimage90a.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 324,
+        "image": "train\\healthy\\thermalimage4a__fliph.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 325,
+        "image": "val\\healthy\\thermalimage8tt__rot90.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "healthy",
+        "fused_prediction": "healthy",
+        "rule": "R4"
+      },
+      {
+        "index": 326,
+        "image": "train\\hispa\\thermalimage16a.jpg",
+        "true_class": "hispa",
+        "cnn_prediction": "hispa",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 327,
+        "image": "train\\healthy\\thermalimage3b.jpg",
+        "true_class": "healthy",
+        "cnn_prediction": "healthy",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "healthy",
+        "rule": "R5"
+      },
+      {
+        "index": 328,
+        "image": "test\\leaf_spot\\thermalimage2a__rot-90.jpg",
+        "true_class": "leaf_spot",
+        "cnn_prediction": "leaf_spot",
+        "tabular_prediction": "stress_generic",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      },
+      {
+        "index": 329,
+        "image": "train\\BLB\\thermalimage2k__fliph.jpg",
+        "true_class": "BLB",
+        "cnn_prediction": "BLB",
+        "tabular_prediction": "water_stress",
+        "fused_prediction": "disease_stress",
+        "rule": "R2"
+      }
+    ]
+  },
+  "comparison": {
+    "tabular_test_4class_accuracy": 0.7968745086941483,
+    "tabular_test_4class_macro_f1": 0.7084300156559942,
+    "tabular_test_binary_accuracy": 0.9766688677168821,
+    "image_test_5class_accuracy": 0.9727272727272728,
+    "image_test_5class_macro_f1": 0.9731229312899213,
+    "image_test_binary_accuracy": 0.9818181818181818,
+    "fusion_binary_accuracy": 0.9696969696969697,
+    "simulated_tabular_binary_accuracy_on_image_test": 0.9272727272727272
+  }
+}

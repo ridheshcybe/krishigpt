@@ -1,0 +1,76 @@
+{
+  "n_fields": 600,
+  "t_history": 21,
+  "t_future": 14,
+  "t_total": 35,
+  "shapes": {
+    "ndvi": [
+      600,
+      35
+    ],
+    "weather": [
+      600,
+      35,
+      4
+    ],
+    "labels": [
+      600,
+      35
+    ]
+  },
+  "input_dim": 5,
+  "ndvi_is_proxy": true,
+  "weather_is_proxy": true,
+  "weather_source": "proxy",
+  "ndvi_range": [
+    0.2745014429092407,
+    0.8087919354438782
+  ],
+  "ndvi_mean": 0.6686214804649353,
+  "weather_ranges": {
+    "temperature": [
+      19.470489501953125,
+      43.116783142089844
+    ],
+    "humidity": [
+      31.090106964111328,
+      99.0
+    ],
+    "rainfall": [
+      0.0,
+      103.55760955810547
+    ],
+    "soil_moisture": [
+      3.0,
+      75.0
+    ]
+  },
+  "future_class_day_counts": {
+    "healthy": 4769,
+    "water_stress": 1952,
+    "nutrient_stress": 903,
+    "disease_stress": 513,
+    "pest_stress": 145,
+    "stress_generic": 118
+  },
+  "label_derivation": "weather thresholds + hysteresis (see trajectory_data)",
+  "stressed_at_forecast_origin": 227,
+  "stressed_at_horizon_day0": 244,
+  "onset_within_alert_horizon": 385,
+  "rule_decoder_agreement": 0.7486,
+  "rule_decoder_per_class_recall": {
+    "healthy": 0.9412,
+    "water_stress": 0.8319,
+    "nutrient_stress": 0.0005,
+    "disease_stress": 0.1216,
+    "pest_stress": 0.0252,
+    "stress_generic": 0.0406
+  },
+  "split": {
+    "train": 420,
+    "val": 90,
+    "test": 90
+  },
+  "split_by_field_disjoint": true,
+  "seed": 42
+}

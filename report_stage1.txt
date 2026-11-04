@@ -1,0 +1,78 @@
+========================================================================================
+STAGE 1 - UNIFIED MULTI-MODAL ATTENTION FUSION (KisanGPT)
+========================================================================================
+
+1. DATA AND PAIRING (Stage-1A contract; details in PAIRING_STRATEGY.md)
+  tabular rows ............ 212,019 (CHES, real) -> 27-dim model vector
+  leaf images ............. 2,200 (paddy, real)
+  samples ................. 213,754 (row-sourced 212,019 + image-sourced disease_stress 1,735)
+  splits .................. train 149,627 / val 32,063 / test 32,064 (stratified on the unified 6-class label, seed 42; pairing is split-restricted - no photo or row crosses splits)
+  class order ............. healthy, water_stress, nutrient_stress, disease_stress, pest_stress, stress_generic (stage1_config.CLASS_MAP; water/nutrient swap vs Stage 0)
+  pairing ................. WEAK - healthy row -> healthy photo, stress row -> random disease photo; disease_stress comes from image-sourced samples (CHES has no disease label)
+  NDVI .................... PROXY = True, class-conditional (20 steps) - can encode the label by construction; prototype only
+  pest_stress ............. RESERVED, untrained (support 0 in every split)
+  binary=0 out-of-window .. 61,263 rows routed to stress_generic (Option B, documented - not ignored)
+  class counts: healthy=2,558, water_stress=73,638, nutrient_stress=13,512, disease_stress=1,735, pest_stress=0, stress_generic=122,311
+
+2. ARCHITECTURE
+  image ................... MobileNetV2 -> 1280d
+  tabular ................. MLP [27, 256, 128] -> 128d
+  ndvi .................... 1D-CNN -> 128d (PROXY input)
+  fusion .................. concat 1536d -> 3 tokens -> 4-head attention -> pooled 256d
+  heads ................... Linear(256, 6) logits (softmax at inference) + per-modality attention weights
+
+3. TRAINING
+  loss .................... CrossEntropyLoss (inverse-frequency, mean-normalised)
+  optimizer ............... AdamW lr=0.0001 weight_decay=1e-05
+  scheduler ............... CosineAnnealingLR
+  batch / epochs .......... 32 / 50 (early stopping patience 10 on val loss)
+  mixed precision ......... on (cuda), gradient clipping max_norm=1.0
+  best epoch .............. 25 (val loss 1.0855e-05)
+
+4. RESULTS (6-class, shared held-out test samples)
+
+  system                                accuracy  macro F1
+  --------------------------------------------------------
+  attention fusion (Stage 1)              0.9999    0.8330
+  XGBoost tabular-only                    0.8571    0.5415
+  MobileNetV2 image-only                  0.0196    0.1144
+  rule-based fusion (post-fix)            0.8514    0.5528
+
+  Per-class (attention fusion):
+  class              precision    recall        f1   support
+  healthy                1.000     1.000     1.000       384
+  water_stress           1.000     1.000     1.000     11046
+  nutrient_stress        1.000     1.000     1.000      2027
+  disease_stress         0.996     1.000     0.998       261
+  pest_stress            0.000     0.000     0.000         0
+  stress_generic         1.000     1.000     1.000     18346
+
+5. ATTENTION ANALYSIS (mean weight per modality per class)
+  class                    image     tabular        ndvi
+  healthy                 0.4004      0.2364      0.3632
+  water_stress            0.3050      0.3330      0.3620
+  nutrient_stress         0.2534      0.2979      0.4488
+  disease_stress          0.2277      0.1997      0.5726
+  pest_stress             0.0000      0.0000      0.0000
+  stress_generic          0.2747      0.3495      0.3758
+
+  dominant modality per class: healthy -> image, water_stress -> ndvi, nutrient_stress -> ndvi, disease_stress -> ndvi, stress_generic -> ndvi
+
+6. LIMITATIONS (read before citing any number above)
+  - Weak pairing: rows and photos are never jointly observed; the
+    image branch sees a random same-binary-class leaf. Attention
+    weights describe the model's use of that evidence, not field-
+    measured importance.
+  - PROXY NDVI is class-conditional, so the third modality alone can
+    recover the label by construction. Any gain attributed to it is a
+    property of the proxy; replace dataset.build_proxy_ndvi() with a
+    real Sentinel-2 export before drawing satellite conclusions.
+  - disease_stress labels come from image-sourced samples, so the
+    image-only and rule-fusion baselines are structurally strong there
+    while XGBoost cannot predict that class at all.
+  - pest_stress is reserved and untrained (0 support): its precision/
+    recall/F1 are 0 by construction, not a model failure.
+  - See PAIRING_STRATEGY.md for the full pairing rationale, verified
+    invariants and split policy.
+
+========================================================================================

@@ -1,0 +1,269 @@
+========================================================================================
+ CROP STRESS DETECTION - VALIDATION REPORT
+========================================================================================
+ generated ....... 2026-10-31 00:44:00
+ validation ...... 2026-10-31T00:43:52 -> 2026-10-31T00:43:59 (6.1s)
+ datasets ........ data/ches_dataset.csv, data/paddy_images
+ artifacts ....... artifacts/xgb_stress_model.json, artifacts/mobilenet_paddy.pth
+ mode ............ real data only (no dummy samples)
+
+----------------------------------------------------------------------------------------
+1. DATASET STATISTICS
+----------------------------------------------------------------------------------------
+CHES tabular dataset (C:\Users\admin\Downloads\code\kisangpt\data\ches_dataset.csv)
+  rows ................. 212,019
+  columns .............. 32
+  binary label column .. Crop_Health_Label (0 = 63,821 healthy, 1 = 148,198 stressed)
+  missing values ....... 0.00% overall (0 column(s) with missing data)
+  columns with missing data (%): none
+  split (70/15/15) ..... train 148,413, val 31,803, test 31,803
+
+  Multi-class label distribution (deterministic stress-type rules):
+  class              count   share
+  ---------------  -------  ------
+  healthy            2,558   1.21%
+  nutrient_stress   13,512   6.37%
+  stress_generic   122,311  57.69%
+  water_stress      73,638  34.73%
+
+  Label rules applied:
+    healthy         binary = 0 and soil_moisture in [20.0, 60.0] and rainfall in [50.0, 200.0]
+    water_stress    binary = 1 and soil_moisture < 20.0
+    nutrient_stress binary = 1 and soil pH outside [6.0, 7.5]
+    stress_generic  remaining samples (residual bucket)
+    threshold relaxation step used: 0; binary=0 rows outside the strict healthy window: 61,263
+    residual policy: those binary=0 rows are routed to stress_generic as a documented residual class (Option B). Widening the window was evaluated and rejected: the CHES binary flag is almost independent of the features inside either window, so the wider window only relabels rows and does not make the healthy/stress boundary learnable.
+
+Paddy leaf dataset (C:\Users\admin\Downloads\code\kisangpt\data\paddy_images)
+  readable images ...... 2,200 (size 224x224, 0 corrupted skipped)
+  class distribution:
+  class      images  folders
+  ---------  ------  ----------------------------------------------
+  BLB           440  test\BLB, train\BLB, val\BLB
+  blast         469  test\Blast, train\Blast, val\Blast
+  healthy       465  test\healthy, train\healthy, val\healthy
+  hispa         426  test\hispa, train\hispa, val\hispa
+  leaf_spot     400  test\leaf_spot, train\leaf_spot, val\leaf_spot
+  ImageNet normalisation: mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+  split (70/15/15) ..... train 1,540, val 330, test 330
+
+----------------------------------------------------------------------------------------
+2. MODEL ARCHITECTURES
+----------------------------------------------------------------------------------------
+XGBoost tabular classifier (artifacts/xgb_stress_model.json)
+  objective ............ multi:softprob
+  trees (n_estimators) . 2000
+  max_depth ............ 8
+  learning_rate ........ 0.05
+  colsample_bytree ..... 0.8
+  subsample ............ 0.8
+  early stopping ....... patience=30 on validation mlogloss
+  best iteration ....... 1037
+  tree budget .......... 2000
+  device ............... cpu
+  healthy class weight . inverse-frequency x200.00 (focal-style; scale_pos_weight is binary-only)
+  input features ....... 27 (25 scaled features + 2 ordinal encodings)
+  output classes ....... healthy, nutrient_stress, stress_generic, water_stress
+
+MobileNetV2 image classifier (artifacts/mobilenet_paddy.pth)
+  backbone ............. torchvision mobilenet_v2 (ImageNet weights)
+  head ................. AdaptiveAvgPool2d(1) -> Flatten -> Linear(1280, 128) -> ReLU -> Dropout(0.3) -> Linear(128, 5)
+  output activations ... logits -- no in-head softmax, because CrossEntropyLoss consumes logits; softmax is applied at inference (predict_proba, fusion_inference, validation)
+  input ................ 224x224 RGB, ImageNet mean/std normalisation
+  output classes ....... BLB, blast, healthy, hispa, leaf_spot
+  phase 1 .............. frozen backbone, 30 epochs
+  phase 2 .............. top 19 blocks unfrozen, 20 epochs
+  optimiser ............ Adam lr=0.001
+  scheduler ............ ReduceLROnPlateau(factor=0.5, patience=5)
+  loss ................. CrossEntropyLoss(weight=inverse_frequency)
+  batch size ........... 32
+
+Rule-based fusion (fusion_inference.py)
+  unified space ........ [healthy, nutrient_stress, water_stress, disease_stress, pest_stress, stress_generic]
+  image-gated order .... the image model arbitrates before any tabular rule may force a stress label
+  R1 ................... image disease_stress > 0.60 -> disease_stress
+  R2 ................... image healthy > 0.50 and tabular healthy < 0.40 -> healthy (override)
+  R3 ................... tabular healthy > 0.50 and image healthy > 0.50 -> healthy
+  R4 ................... tabular nutrient_stress > 0.70 and image disease_stress < 0.50 -> nutrient_stress
+  R5 ................... tabular water_stress > 0.70 and image disease_stress < 0.50 -> water_stress
+  R6 ................... tabular argmax, preferring a specific stress class
+
+----------------------------------------------------------------------------------------
+3. MODEL METRICS (held-out test splits)
+----------------------------------------------------------------------------------------
+3.1 XGBoost tabular model -- 31,803 test rows
+  accuracy ......... 0.7960
+  macro precision .. 0.6687
+  macro recall ..... 0.8298
+  macro F1 ......... 0.7083
+  weighted F1 ...... 0.7970
+  binary healthy vs stress:
+  binary accuracy .. 0.9766
+  binary macro F1 .. 0.7065
+  healthy recall ... 0.7161
+  stress recall .... 0.9798
+  per-class:
+  class            precision  recall      f1  support
+  ---------------  ---------  ------  ------  -------
+  healthy             0.3022  0.7161  0.4250      384
+  nutrient_stress     0.6903  0.9467  0.7984    2,027
+  stress_generic      0.9883  0.6609  0.7921   18,346
+  water_stress        0.6939  0.9955  0.8178   11,046
+
+3.2 MobileNetV2 image model -- 330 test images
+  accuracy ......... 0.9727
+  macro precision .. 0.9729
+  macro recall ..... 0.9735
+  macro F1 ......... 0.9731
+  weighted F1 ...... 0.9727
+  binary healthy vs disease_stress:
+  binary accuracy .. 0.9818
+  binary macro F1 .. 0.9725
+  healthy recall ... 0.9565
+  stress recall .... 0.9885
+  per-class:
+  class      precision  recall      f1  support
+  ---------  ---------  ------  ------  -------
+  BLB           0.9846  0.9697  0.9771       66
+  blast         0.9714  0.9577  0.9645       71
+  healthy       0.9565  0.9565  0.9565       69
+  hispa         0.9846  1.0000  0.9922       64
+  leaf_spot     0.9672  0.9833  0.9752       60
+
+3.3 Rule-based fusion -- 330 image test samples (tabular probabilities simulated)
+  tabular-only (simulated) healthy vs stress:
+  binary accuracy .. 0.9303
+  binary macro F1 .. 0.8836
+  healthy recall ... 0.7101
+  stress recall .... 0.9885
+  CNN-only healthy vs disease:
+  binary accuracy .. 0.9818
+  binary macro F1 .. 0.9725
+  healthy recall ... 0.9565
+  stress recall .... 0.9885
+  fusion healthy vs disease:
+  binary accuracy .. 0.9818
+  binary macro F1 .. 0.9725
+  healthy recall ... 0.9565
+  stress recall .... 0.9885
+  fused label distribution:
+  unified class    predictions
+  ---------------  -----------
+  healthy                   69
+  nutrient_stress           90
+  water_stress             132
+  disease_stress             5
+  pest_stress                0
+  stress_generic            34
+  simulation: categorical draw from the XGBoost test confusion matrix, then Dirichlet noise around the drawn class (seed=42, concentration=25.0)
+  simulated tabular predictions: healthy=52, nutrient_stress=94, stress_generic=49, water_stress=135
+
+----------------------------------------------------------------------------------------
+4. CONFUSION MATRICES (text)
+----------------------------------------------------------------------------------------
+XGBoost 4-class, n=31,803
+true \ pred
+                 healthy  nutrient_stress  stress_generic  water_stress
+---------------  -------  ---------------  --------------  ------------
+healthy              275               37              71             1
+nutrient_stress       78            1,919              22             8
+stress_generic       557              824          12,124         4,841
+water_stress           0                0              50        10,996
+
+MobileNetV2 5-class, n=330
+true \ pred
+           BLB  blast  healthy  hispa  leaf_spot
+---------  ---  -----  -------  -----  ---------
+BLB         64      0        0      1          1
+blast        0     68        3      0          0
+healthy      0      2       66      0          1
+hispa        0      0        0     64          0
+leaf_spot    1      0        0      0         59
+
+----------------------------------------------------------------------------------------
+5. TOP-10 XGBOOST FEATURE IMPORTANCES (gain)
+----------------------------------------------------------------------------------------
+rank  feature                gain   share
+----  -------------------  ------  ------
+   1  Rainfall             269.56  49.04%
+   2  Soil_Moisture        151.06  27.48%
+   3  Soil_pH               58.70  10.68%
+   4  Organic_Matter         9.47   1.72%
+   5  Spatial_Resolution     5.54   1.01%
+   6  Temporal_Images        3.59   0.65%
+   7  Chlorophyll_Content    3.37   0.61%
+   8  Weed_Coverage          2.90   0.53%
+   9  Pest_Hotspots          2.84   0.52%
+  10  GPS_Coordinates        2.70   0.49%
+
+----------------------------------------------------------------------------------------
+6. FUSION RULE USAGE
+----------------------------------------------------------------------------------------
+  rule  samples   share
+  ----  -------  ------
+  R1          5   1.52%
+  R2         22   6.67%
+  R3         47  14.24%
+  R4         90  27.27%
+  R5        132  40.00%
+  R6         34  10.30%
+
+Per-sample log (first 15 rows; full log in the validation JSON):
+   #  image                        true       cnn        tabular          fused            rule
+  --  ---------------------------  ---------  ---------  ---------------  ---------------  ----
+   0  Thermalimage11i__rot-90.jpg  blast      blast      water_stress     water_stress     R5
+   1  thermalimage38a.jpg          BLB        BLB        water_stress     water_stress     R5
+   2  Thermalimage10m__rot-90.jpg  blast      blast      water_stress     water_stress     R5
+   3  thermalimage61b.jpg          BLB        BLB        water_stress     water_stress     R5
+   4  thermalimage30a.jpg          hispa      hispa      water_stress     water_stress     R5
+   5  thermalimage13c__flipv.jpg   hispa      hispa      water_stress     water_stress     R5
+   6  thermalimage3d__rot90.jpg    healthy    healthy    healthy          healthy          R3
+   7  thermalimage101b.jpg         BLB        BLB        water_stress     water_stress     R5
+   8  thermalimage57a.jpg          hispa      hispa      water_stress     water_stress     R5
+   9  thermalimage15a__fliph.jpg   hispa      hispa      water_stress     water_stress     R5
+  10  thermalimage1e__rot-90.jpg   leaf_spot  leaf_spot  water_stress     water_stress     R5
+  11  Thermalimage7b__fliph.jpg    blast      blast      nutrient_stress  nutrient_stress  R4
+  12  thermalimage4a.jpg           leaf_spot  leaf_spot  water_stress     water_stress     R5
+  13  thermalimage44a.jpg          BLB        BLB        water_stress     water_stress     R5
+  14  thermalimage54a__fliph.jpg   BLB        BLB        water_stress     water_stress     R5
+
+----------------------------------------------------------------------------------------
+7. COMPARISON: XGBOOST vs CNN vs FUSION
+----------------------------------------------------------------------------------------
+evaluation                                           n  accuracy  macro F1
+----------------------------------------------  ------  --------  --------
+XGBoost, tabular test, 4-class                  31,803    0.7960    0.7083
+XGBoost, tabular test, healthy vs stress        31,803    0.9766    0.7065
+MobileNetV2, image test, 5-class                   330    0.9727    0.9731
+MobileNetV2, image test, healthy vs disease        330    0.9818    0.9725
+Tabular-only (simulated), image test               330    0.9303    0.8836
+Fusion (R1-R6), image test, healthy vs disease     330    0.9818    0.9725
+
+Note: the tabular and image test sets are different datasets, so only rows sharing an evaluation set are directly comparable. The fusion row uses simulated tabular probabilities (see section 3.3).
+Finding: fusion changes binary accuracy by +0.0000 versus CNN-only on the image test set; its healthy recall moves from 0.9565 to 0.9565 and its stress recall from 0.9885 to 0.9885. 256 of 330 samples were decided by a tabular rule (R4-R6); when that count is zero the image-gated order has reduced fusion to the CNN decision.
+
+----------------------------------------------------------------------------------------
+8. VERIFICATION AND ARTIFACTS
+----------------------------------------------------------------------------------------
+  runtime ...................... 6.1s
+  started ...................... 2026-10-31T00:43:52
+  finished ..................... 2026-10-31T00:43:59
+  test splits .................. rebuilt with the training seeds (70/15/15 stratified)
+  XGBoost metrics match saved .. yes
+  CNN metrics match saved ...... yes
+  torch device ................. cuda
+
+  plots written:
+    C:\Users\admin\Downloads\code\kisangpt\plots\tabular_confusion_matrix.png
+    C:\Users\admin\Downloads\code\kisangpt\plots\image_confusion_matrix.png
+    C:\Users\admin\Downloads\code\kisangpt\plots\feature_importance.png
+    C:\Users\admin\Downloads\code\kisangpt\plots\training_curves.png
+    C:\Users\admin\Downloads\code\kisangpt\plots\fusion_rule_usage.png
+
+
+  Limitations:
+    - Fusion tabular inputs are simulated from the XGBoost confusion matrix (Dirichlet noise) because no paired sensor/leaf dataset exists; fusion accuracy therefore measures rule arbitration, not field data.
+    - The XGBoost 'healthy' class excludes 61,263 binary=0 rows that fall outside the strict moisture/rainfall window; they are bucketed into stress_generic, which caps healthy precision.
+    - The paddy archive contains augmented flips/rotations of the same leaves, so the CNN score is a within-dataset estimate.
+    - XGBoost per-round loss history was not saved, so training_curves.png shows the MobileNetV2 phases only.
+    - MobileNetV2 emits logits (no in-head softmax): CrossEntropyLoss consumes logits, so softmax is applied at inference (predict_proba, fusion_inference, validation) instead.
