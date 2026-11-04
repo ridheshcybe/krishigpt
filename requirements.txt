@@ -20,7 +20,7 @@ onnx==1.23.2
 onnxruntime==1.30.0
 
 # Image loading and processing
-pillow==12.2.0
+pillow==13.0.0
 
 # Interactive dashboard and web visualizations (Stage 2B & 3B)
 streamlit==1.66.1
